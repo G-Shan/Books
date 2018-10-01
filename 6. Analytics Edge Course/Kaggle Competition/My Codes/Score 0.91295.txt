@@ -1,0 +1,110 @@
+##Score 0.91123 when Nodesize=2, ntree=3000
+##Score 0.91295 when nodesize=50, ntree=1000
+###Imputations, Bag of Words, RandomForest
+NewsTrain = read.csv("NYTimesBlogTrain.csv", stringsAsFactors=FALSE, na.strings="")
+NewsTest = read.csv("NYTimesBlogTest.csv", stringsAsFactors=FALSE, na.strings="")
+nrow(NewsTrain)
+
+
+
+news = rbind(NewsTrain, NewsTest)
+#Here it wont bind since NewsTest doesnt have Popular column
+
+#Create a dummy variable Popular for NewsTest
+NewsTest$Popular = rep(0,nrow(NewsTest)) 
+
+#NOw binds the both dataframes
+news = rbind(NewsTrain, NewsTest)
+
+news$NewsDesk = as.factor(news$NewsDesk)
+news$SectionName = as.factor(news$SectionName)
+news$SubsectionName = as.factor(news$SubsectionName)
+
+#Create a subset for the data to be imputed
+imputeData = news[c("NewsDesk", "SectionName", "SubsectionName", "Abstract","Snippet","Headline")]
+library(mice)
+
+#RUn the imputation
+imputed = complete(mice(imputeData))
+
+#Copying the imputed data to the dataframe
+news$NewsDesk = imputed$NewsDesk
+news$SectionName = imputed$SectionName
+news$SubsectionName = imputed$SubsectionName
+
+
+news$PubDate = strptime(news$PubDate, "%Y-%m-%d %H:%M:%S")
+news$Weekday = news$PubDate$wday
+news$Hour = news$PubDate$hour
+news$Month = news$PubDate$mon
+#Splitting the data
+NewsTrain1 = news[1:6532, ]
+NewsTest1 = news[6533:8402, ]
+nrow(NewsTest1)
+
+###
+
+###TEXT ANALYTICS###Combine test and train Headline & Snippet.  Then corpus them:
+library(NLP)
+library(tm)
+library(SnowballC)
+
+
+corpusHeadline = Corpus(VectorSource(c(NewsTrain1$Headline, NewsTest1$Headline)))
+
+corpusHeadline = tm_map(corpusHeadline, content_transformer(tolower))
+corpusHeadline = tm_map(corpusHeadline, removePunctuation)
+corpusHeadline = tm_map(corpusHeadline, removeWords, stopwords("english"))
+corpusHeadline = tm_map(corpusHeadline, stemDocument)
+dtmHeadline = DocumentTermMatrix(corpusHeadline)
+
+
+#taking terms that appear in at least 3% of documents
+dtmrsHeadline = removeSparseTerms(dtmHeadline, 0.98) #only 5 terms now
+dtmrsHeadline
+
+#Creata a matrix HeadlineWords with dtmrsHeadline
+HeadlineWords = as.data.frame(as.matrix(dtmrsHeadline))
+str(HeadlineWords)
+
+#use the make.names function to make the variable names of emailsSparse valid
+colnames(HeadlineWords) = make.names(colnames(HeadlineWords))
+colnames(HeadlineWords) = paste0("H", colnames(HeadlineWords))
+
+
+#####DO same for snippet
+corpusSnippet = Corpus(VectorSource(c(NewsTrain1$Snippet, NewsTest1$Snippet)))
+corpusSnippet = tm_map(corpusSnippet, content_transformer(tolower))
+corpusSnippet = tm_map(corpusSnippet, removePunctuation)
+corpusSnippet = tm_map(corpusSnippet, removeWords, stopwords("english"))
+corpusSnippet = tm_map(corpusSnippet, stemDocument)
+dtmSnippet = DocumentTermMatrix(corpusSnippet)
+dtmrsSnippet = removeSparseTerms(dtmSnippet, 0.97)
+dtmrsSnippet
+SnippetWords = as.data.frame(as.matrix(dtmrsSnippet))
+
+colnames(SnippetWords) = make.names(colnames(SnippetWords))
+colnames(SnippetWords) = paste0("S", colnames(SnippetWords))
+
+##COmbine the two matrices we created
+dtmWords = cbind(HeadlineWords, SnippetWords, row.names=NULL)
+str(dtmWords)
+##Split data back to Train and Test set:
+WordsTrain = head(dtmWords, nrow(NewsTrain1))
+WordsTest = tail(dtmWords, nrow(NewsTest1))
+
+#Combine dataframe and create new Train set and new Test set
+NewsTrain2=cbind(WordsTrain, NewsTrain1)
+NewsTest2=cbind(WordsTest, NewsTest1)
+names(NewsTrain2)
+
+
+#RandomForest
+library(randomForest)
+ModelRF = randomForest(Popular ~ Hnew+Hdaili+Htoday+Sone+Ssaid+Hreport+Hyork+Sarticl+Scompani+Sfashion+Spresid+Sreport+Sshow+Sstate++WordCount+NewsDesk+SectionName+SubsectionName+Hour+Weekday+Month, data=NewsTrain2, nodesize=50,ntree=1000)
+
+PredTest = predict(ModelRF, newdata=NewsTest2)
+
+
+MySubmission = data.frame(UniqueID = NewsTest2$UniqueID, Probability1 = PredTest)
+write.csv(MySubmission, "SubmissionSimpleLog.csv", row.names=FALSE)

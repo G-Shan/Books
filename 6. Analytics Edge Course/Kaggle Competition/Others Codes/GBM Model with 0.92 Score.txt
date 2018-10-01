@@ -1,0 +1,2 @@
+ I used a mixed GBM/Random Forest and came in 277th place.
+http://phetzel1.github.io/posts/2015/05/05/First-Kaggle-Competition/

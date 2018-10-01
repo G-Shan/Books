@@ -1,0 +1,27 @@
+
+wiki = read.csv("TataMotors.csv", stringsAsFactors=FALSE)
+str(wiki)
+
+
+library(NLP)
+library(tm)
+library(SnowballC)
+corpus = Corpus(VectorSource(wiki$text))
+corpus = tm_map(corpus, content_transformer(tolower))
+corpus = tm_map(corpus, removePunctuation)
+corpus = tm_map(corpus, removeWords, c(c("tata","motors"), stopwords("english")))
+
+dtm = DocumentTermMatrix(corpus)
+Sparse = removeSparseTerms(dtm, 0.98)
+words = as.data.frame(as.matrix(Sparse))
+
+
+library(RColorBrewer)
+library(wordcloud)
+
+#Different colors of Wordcloud
+wordcloud(colnames(words), freq=colSums(words), scale=c(2, 0.25), colors="black")
+wordcloud(colnames(words), freq=colSums(words), scale=c(2, 0.25), colors=brewer.pal(9, "Blues"))
+wordcloud(colnames(words), freq=colSums(words), scale=c(2, 0.25), colors=brewer.pal(9, "Blues")[c(5, 6, 7, 8, 9)])
+
+wordcloud(colnames(words), freq=colSums(words), scale=c(2, 0.25), colors=brewer.pal(9, "Blues")[c(5, 6, 7, 8, 9)], random.order=FALSE,  rot.per=0.5)

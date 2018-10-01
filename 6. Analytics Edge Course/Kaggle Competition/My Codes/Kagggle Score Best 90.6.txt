@@ -1,0 +1,98 @@
+##Create variables Weekday, Hour & month from pubdate. Bag of
+#words from Snippet & headline. LogReg
+
+##Score 0.906
+
+NewsTrain = read.csv("NYTimesBlogTrain.csv", stringsAsFactors=FALSE)
+NewsTest = read.csv("NYTimesBlogTest.csv", stringsAsFactors=FALSE)
+summary(NewsTrain)
+summary(NewsTest)
+str(NewsTrain$PubDate)
+
+#We need to convert the Date in a format that R can understand using strptime function
+NewsTrain$PubDate = strptime(NewsTrain$PubDate, "%Y-%m-%d %H:%M:%S")
+NewsTest$PubDate = strptime(NewsTest$PubDate, "%Y-%m-%d %H:%M:%S")
+#Here 1st arg is the variable. 2nd argument is the formate of the variable
+str(NewsTrain)
+NewsTrain$Weekday = NewsTrain$PubDate$wday
+NewsTest$Weekday = NewsTest$PubDate$wday
+
+NewsTrain$Hour = NewsTrain$PubDate$hour
+NewsTest$Hour = NewsTest$PubDate$hour
+
+NewsTrain$Month = NewsTrain$PubDate$mon
+NewsTest$Month = NewsTest$PubDate$mon
+?strptime
+?POSIXlt
+
+NewsTrain$NewsDesk = as.factor(NewsTrain$NewsDesk)
+NewsTrain$SectionName = as.factor(NewsTrain$SectionName)
+NewsTrain$SubSectionName = as.factor(NewsTrain$NewsDesk)
+
+NewsTest$NewsDesk = as.factor(NewsTest$NewsDesk)
+NewsTest$SectionName = as.factor(NewsTest$SectionName)
+NewsTest$SubSectionName = as.factor(NewsTest$NewsDesk)
+
+
+###TEXT ANALYTICS###Combine test and train Headline & Snippet.  Then corpus them:
+library(NLP)
+library(tm)
+library(SnowballC)
+
+
+corpusHeadline = Corpus(VectorSource(c(NewsTrain$Headline, NewsTest$Headline)))
+
+corpusHeadline = tm_map(corpusHeadline, content_transformer(tolower))
+corpusHeadline = tm_map(corpusHeadline, removePunctuation)
+corpusHeadline = tm_map(corpusHeadline, removeWords, stopwords("english"))
+corpusHeadline = tm_map(corpusHeadline, stemDocument)
+dtmHeadline = DocumentTermMatrix(corpusHeadline)
+dtmHeadline
+
+#taking terms that appear in at least 3% of documents
+dtmrsHeadline = removeSparseTerms(dtmHeadline, 0.97) #only 5 terms now
+dtmrsHeadline
+
+#Creata a matrix HeadlineWords with dtmrsHeadline
+HeadlineWords = as.data.frame(as.matrix(dtmrsHeadline))
+str(HeadlineWords)
+
+#use the make.names function to make the variable names of emailsSparse valid
+colnames(HeadlineWords) = make.names(colnames(HeadlineWords))
+colnames(HeadlineWords) = paste0("H", colnames(HeadlineWords))
+
+
+#####DO same for snippet
+corpusSnippet = Corpus(VectorSource(c(NewsTrain$Snippet, NewsTest$Snippet)))
+corpusSnippet = tm_map(corpusSnippet, content_transformer(tolower))
+corpusSnippet = tm_map(corpusSnippet, removePunctuation)
+corpusSnippet = tm_map(corpusSnippet, removeWords, stopwords("english"))
+corpusSnippet = tm_map(corpusSnippet, stemDocument)
+dtmSnippet = DocumentTermMatrix(corpusSnippet)
+dtmrsSnippet = removeSparseTerms(dtmSnippet, 0.93)
+SnippetWords = as.data.frame(as.matrix(dtmrsSnippet))
+
+colnames(SnippetWords) = make.names(colnames(SnippetWords))
+colnames(SnippetWords) = paste0("S", colnames(SnippetWords))
+
+##COmbine the two matrices we created
+dtmWords = cbind(HeadlineWords, SnippetWords, row.names=NULL)
+str(dtmWords)
+
+##Split data back to Train and Test set:
+##Here we use head to get 1st nrows for training data. Thats how we combinaed using VectorSources
+WordsTrain = head(dtmWords, nrow(NewsTrain))
+WordsTest = tail(dtmWords, nrow(NewsTest))
+
+#Combine dataframe and create new Train set and new Test set
+NewsTrain1=cbind(WordsTrain, NewsTrain)
+NewsTest1=cbind(WordsTest, NewsTest)
+str(NewsTrain1)
+
+
+names(NewsTrain1)
+Model1 = glm(Popular ~ Hday+Snew+Hreport+Hyork++Swill+NewsDesk+SectionName+SubsectionName+WordCount+Weekday+Hour+Month, data=NewsTrain1, family=binomial)
+PredTest = predict(Model1, newdata=NewsTest1, type="response")
+
+MySubmission = data.frame(UniqueID = NewsTest1$UniqueID, Probability1 = PredTest)
+write.csv(MySubmission, "SubmissionSimpleLog.csv", row.names=FALSE)

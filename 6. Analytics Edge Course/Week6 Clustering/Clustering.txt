@@ -1,0 +1,55 @@
+This technique of using other user's ratings
+to make predictions is called collaborative filtering
+
+
+Note that we're not using the ratings of other users
+at all here, just information about the movie of the primary user.
+This technique is called content filtering. Content filtering is limited
+because we're suggesting the similar things to user whta he has already liked.
+
+
+
+Netflix actually uses what's called a hybrid recommendation
+system.They use both collaborative and content filtering.
+
+
+
+
+Clustering is called unsupervised learning method. This means that we're just
+trying to segment the data into similar groups, instead of trying to predict
+an outcome.
+
+A clustering algorithm does not predict anything.However, clustering can be
+used to improve predictive methods.You can cluster the data into similar
+groups and then build a predictive model for each group.
+
+Two methods of Clustering:-
+Hierarchical & K-Means Clustering.
+
+Collaborative filering is used by Amazon, last.fm, spotify, Facebook, 
+LinkedIn, Netflix
+
+COntent Filtering is used by Pandora, IMDB, Rotten Tomatoes, Netflix, movielens
+
+Clustering is mostly used in the absence of a target variable
+to search for relationships among input variables
+or to organize data into meaningful groups.
+
+K-Means Clustering Algorithm:-
+1) Specify desired number of clusers K
+2) Randomly assigne each data point to a cluster
+3) Compute cluster centroids
+4) Re-assign each point to the closest cluster centroid
+5) Re-compute the cluster centroids
+6) Repeat 4 & 5 until no improvement is made
+
+
+
+
+If we want to convert a dataframe into vector, always 1st convert it into
+matrix 1st and then into vector.
+
+
+#the Ward’s method (ward.D) is a minimum variance method, which tries to find compact
+and spherical clusters.it tries to minimize the variance within each cluster
+and the distance among clusters.

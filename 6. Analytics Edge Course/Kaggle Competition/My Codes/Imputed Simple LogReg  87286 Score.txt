@@ -1,0 +1,48 @@
+###Imputations
+NewsTrain = read.csv("NYTimesBlogTrain.csv", stringsAsFactors=FALSE, na.strings="")
+NewsTest = read.csv("NYTimesBlogTest.csv", stringsAsFactors=FALSE, na.strings="")
+nrow(NewsTrain)
+
+
+
+news = rbind(NewsTrain, NewsTest)
+#Here it wont bind since NewsTest doesnt have Popular column
+
+#Create a dummy variable Popular for NewsTest
+NewsTest$Popular = rep(0,nrow(NewsTest)) 
+
+#NOw binds the both dataframes
+news = rbind(NewsTrain, NewsTest)
+
+news$NewsDesk = as.factor(news$NewsDesk)
+news$SectionName = as.factor(news$SectionName)
+news$SubsectionName = as.factor(news$SubsectionName)
+
+#Create a subset for the data to be imputed
+imputeData = news[c("NewsDesk", "SectionName", "SubsectionName")]
+library(mice)
+
+#RUn the imputation
+imputed = complete(mice(imputeData))
+
+#Copying the imputed data to the dataframe
+news$NewsDesk = imputed$NewsDesk
+news$SectionName = imputed$SectionName
+news$SubsectionName = imputed$SubsectionName
+
+
+news$PubDate = strptime(news$PubDate, "%Y-%m-%d %H:%M:%S")
+news$Weekday = news$PubDate$wday
+news$Hour = news$PubDate$hour
+news$Month = news$PubDate$mon
+#Splitting the data
+NewsTrain1 = news[1:6532, ]
+NewsTest1 = news[6533:8402, ]
+nrow(news)
+
+simpleGLM = glm(Popular ~ WordCount+NewsDesk+SectionName+SubsectionName+Hour+Month+Weekday, data=NewsTrain1, family="binomial")
+
+PredTest = predict(simpleGLM, newdata=NewsTest1, type="response")
+
+MySubmission = data.frame(UniqueID = NewsTest1$UniqueID, Probability1 = PredTest)
+write.csv(MySubmission, "SubmissionSimpleLog.csv", row.names=FALSE)

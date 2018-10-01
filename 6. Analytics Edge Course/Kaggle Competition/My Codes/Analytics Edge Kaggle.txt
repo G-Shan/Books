@@ -1,0 +1,30 @@
+1) Cleaning the data
+2) Imputations for missing data & Random FOrest
+3)Bag of Words
+4) Take imp words as variables
+5) Apply Naive Bayes
+
+Imp only H new. Not important:- Hyork, Hday, Snew, Anew
+
+Variables Cor(NewsTrain1[c("Hday","Hnew","Hreport","Hweek","Hyork","Snew","Stime","Stime","Swill","Anew","Awill"")])
+
+Remove Hday, Swill, they're highly correlated with other variables.
+Need to change the values of Snippet or abstract
+
+
+
+
+
+#WIth Imputations
+1) Load the data using na.string=""
+2) COnvert the variables into factors
+3) Merge both data sets (rbind) and run mice package
+4)Bag of words using only Headline & Snippet
+5) Log Reg with all variables ##0.905
+
+
+
+Hday,Hnew,Hreport,Hweek,Hyork, Snew, Stime, Swill
+
+##RandomForest
+1) Without bag of words AUC: 
