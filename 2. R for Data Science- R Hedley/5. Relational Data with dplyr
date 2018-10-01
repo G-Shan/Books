@@ -1,0 +1,162 @@
+
+  Read the Relational Data with dplyr pdf document on github for better clarity
+
+
+rm(list = ls())
+library(tidyverse)
+library(nycflights13)
+
+
+# airlines lets you look up the full carrier name from its abbreviated code
+airlines
+
+# airports gives information about each airport, identified by the faa airport code:
+airports
+
+#planes gives information about each plane, identified by its tailnum:
+planes
+
+#weather gives the weather at each NYC airport for each hour:
+weather
+
+# Checking if there are duplicate value of our primary key (tailnum here). count() the primary keys and look
+# for entries where n is greater than one
+planes %>% count(tailnum) %>% filter(n > 1)
+
+#Checking the primary keys. If this returns zero rows, means they're primary keys
+weather %>% count(year, month, day, hour, origin) %>% filter(n > 1)
+
+# Identify the keys in the following datasets babynames::babynames
+
+# Here year, sex and name are primary keys because they return zero rows
+babynames::babynames %>%
+  group_by(year, sex, name) %>%
+  filter(n() > 1) %>%
+  nrow()
+
+
+
+############    MUTATING JOINS      ##########
+
+# A mutating join allows you to combine variables from two tables. It first matches observations by their keys, then copies
+# across variables from one table to the other. Like mutate(), the join functions add variables to the right
+
+flights2 <- flights %>%
+  select(year:day, hour, origin, dest, tailnum, carrier)
+flights2
+
+
+# want to add the full airline name to the flights2 data. You can combine the airlines and flights2 data frames with
+# left_join(). airlines data has two variables carrier & name. We remove origini & dest from flights2
+flights2 %>%
+  select(-origin, -dest) %>%
+  left_join(airlines, by = "carrier")
+
+
+# The result of joining airlines to flights2 is an additional variable: name. This is why I call this type of join a mutating join.
+# We can achieve abose result using R base function as well like below. But its hard to generalize if many variables
+flights2 %>%
+  select(-origin, -dest) %>%
+  mutate(name = airlines$name[match(carrier, airlines$carrier)])
+
+
+
+# The output of inner join is data is contained in both x & y. Unmatched rows are not included (X3, y3 discarded)
+x <- tribble( ~key, ~val_x, 1, "x1", 2, "x2", 3, "x3")
+y <- tribble( ~key, ~val_y, 1, "y1", 2, "y2", 4, "y3")
+
+x %>%
+  inner_join(y, by = "key")
+
+
+x <- tribble( ~key, ~val_x, 1, "x1", 2, "x2", 2, "x3", 1, "x4")
+y <- tribble( ~key, ~val_y, 1, "y1", 2, "y2")
+left_join(x, y, by = "key")
+
+
+# The default, by = NULL, uses all variables that appear in both tables, the so-called natural join. For example, the flights and
+# weather tables match on their common variables: year, month, day, hour, and origin. join does this automatically as we havent 
+# mentioned by argument
+flights2 %>%
+  left_join(weather)
+
+# character vector, by = "x". This is like a natural join, but uses only some of the common variables
+flights2 %>%
+  left_join(planes, by = "tailnum")
+
+# A named character vector: by = c("a" = "b"). This will match variable a in table x to variable b in table y.
+# 
+flights2 %>%
+  left_join(airports, c("dest" = "faa"))
+
+
+base::merge() can perform all four types of mutating join:
+dplyr functions       merge functions
+inner_join(x, y)      merge(x, y)
+left_join(x, y)       merge(x, y, all.x = TRUE) #all.x=T means keep all rows of x
+right_join(x, y)      merge(x, y, all.y = TRUE),
+full_join(x, y)       merge(x, y, all.x = TRUE, all.y = TRUE)
+
+
+
+
+##############    Filtering JOINS    ####################
+
+# Semi-joins are useful for matching filtered summary tables back to the original rows. For eg, suppose you’ve found the top-10 most
+# popular destinations. Now we want to find each flight that went to one of those destinations. You could construct a filter yourself:
+top_dest <- flights %>%  count(dest, sort = TRUE) %>% head(10)
+top_dest
+
+flights %>% filter(dest %in% top_dest$dest)
+
+
+# But it’s difficult to extend that approach to multiple variables. For eg, imagine that you’d found the 10 days with the highest
+# average delays. How would you construct the filter statement that used year, month, and day to match it back to flights?
+  
+# Instead you can use a semi-join, which connects the two tables like a
+# mutating join, but instead of adding new columns, only keeps the rows in x that have a match in y:
+flights %>%
+  semi_join(top_dest)
+
+
+# The inverse of a semi-join is an anti-join. An anti-join keeps the rows that don’t have a match. Anti-joins are useful for
+# diagnosing join mismatches. For example, when connecting flights and planes, you might be interested to
+# know that there are many flights that don’t have a match in planes:
+flights %>%
+  anti_join(planes, by = "tailnum") %>%
+  count(tailnum, sort = TRUE)
+
+#Filter flights to only show flights with planes that have flown at least 100 flights.
+planes_gt100 <- filter(flights) %>% group_by(tailnum) %>% count() %>% filter(n > 100)
+
+flights %>%
+  semi_join(planes_gt100, by = "tailnum")
+
+
+#Combine fueleconomy::vehicles and fueleconomy::common to find only the records for the most common models.
+fueleconomy::vehicles %>%
+  semi_join(fueleconomy::common, by = c("make", "model"))
+
+
+# flights that go to an airport that is not in FAA list of destinations
+anti_join(flights, airports, by = c("dest" = "faa"))
+
+# airports that don’t have a flight in the data,
+anti_join(airports, flights, by = c("faa" = "dest"))
+
+
+################       SET OPERATIONS       ##########################
+
+df1 <- tribble( ~x, ~y, 1, 1, 2, 1)
+df2 <- tribble( ~x, ~y, 1, 1, 1, 2)
+
+
+intersect(df1, df2) # It will shows only the rows common between df1 & df2. Intersection set
+union(df1, df2) # It will show three rows, 1 common row and two diff rows of df1 & df2. Union set
+setdiff(df1, df2) # Observations of df1 that are not preseent in df2
+setdiff(df2, df1)
+
+
+
+
+

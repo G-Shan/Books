@@ -1,0 +1,63 @@
+
+
+
+rm(list = ls())
+setwd("F:\\Yodlee\\15th May\\del")
+
+library(readr)
+df = read_csv("data1.csv")
+
+names(df)
+library(dplyr)
+
+# Group bank names, then show their mean amount. arrange them in descending order
+df %>%
+  group_by(`Bank name`) %>%
+  summarise(mean(amount)) %>%
+  arrange()
+
+
+#Looking at unique values of ForML. It prints only top 10 names. We need to see all names
+df %>%
+   distinct(`For ML`)
+
+
+# n=Inf will print all names. we can also choose say n=100, which will print 1st 100 rows
+# We can also use options(dplyr.print_max = 1e9)
+df %>% 
+  distinct(`For ML`) %>%
+  print(n=Inf)
+
+# Since there are same labels with upper & lower case, converting all labels into lowercase. en is english
+library(stringr)
+df$`For ML` = str_to_lower(df$`For ML`, locale = "en")
+
+
+# Take all the unique categories of yodlee and group them by Bank Name. It will give count of unique yodlee categ
+df %>%
+  group_by(`Bank name`) %>%
+  summarise(lol = n_distinct(Yodlee_Category)) %>%
+  arrange(desc(lol)) %>%
+  print(Inf)
+
+# Count of yodlee categories. Or we can use table(df$Yodlee_Category)
+df %>%
+  group_by(Yodlee_Category) %>%
+  summarise(n=n()) %>%
+  print(n=Inf)
+
+# Or we can use tally
+df %>%
+  group_by(Yodlee_Category) %>%
+  count(Yodlee_Category) %>%
+  tally() %>%
+  arrange(desc(nn))
+
+
+
+# Keeping only those labels of yodlee category for which count is 100 or more
+df1 = df %>%
+         group_by(Yodlee_Category) %>%
+         filter(n() >=100)
+
+

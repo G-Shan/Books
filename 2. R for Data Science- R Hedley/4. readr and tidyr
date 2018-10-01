@@ -1,0 +1,92 @@
+
+
+Here we chnage the file formate into NARROW & WIDE. We also separate two columns and vice-versa
+
+
+
+
+library(tidyverse)
+
+
+challenge <- read_csv(readr_example("challenge.csv"))
+
+# You can see the warnings of readr using problem funcion.In problems, we see there are trailing characters after the integer value. 
+ #That suggests we need to use a double parser instead.
+problems(challenge)
+
+#Here we simply copy read_Csv output and tweak x to col_double from integer earlier. Also y is date column
+challenge <- read_csv(readr_example("challenge.csv"), col_types = cols( x = col_double(),y = col_date()))
+
+# readr by deafult read 1st 1000 rows and predict the column types. We can increase guess using guess_max
+challenge2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)
+
+# We can save a datafram using write_csv
+write_csv(challenge2, "Challenge.csv", col_names = TRUE)
+
+table1
+table2
+table3
+table4a
+table4b
+
+
+##########    Gathering     #################
+# Take table4a;the column names 1999 and 2000 represent values of the year variable, and each row represents two observations, not one.
+
+# we need to gather those columns into a new pair of variables. To describe that operation we need three parameters: 
+1) The set of columns that represent values, not variables. In this example, those are the columns 1999 and 2000. 
+2) The name of the variable whose values form the column names. I call that the key, and here it is year.
+3) The name of the variable whose values are spread over the cells. I call that value, and here it's the number of cases. Together those parameters generate the call to gather():
+
+table4a %>% gather(`1999`, `2000`, key = "year", value = "cases")
+
+#We can use gather() to tidy table4b in a similar fashion. The only difference is the variable stored in the cell values:
+table4b %>% gather(`1999`, `2000`, key = "year", value = "population")
+
+
+# To combine the tidied versions of table4a and table4b into a single tibble, we need to use dplyr::left_join(),
+tidy4a <- table4a %>% gather(`1999`, `2000`, key = "year", value = "cases")
+tidy4b <- table4b %>% gather(`1999`, `2000`, key = "year", value = "population")
+left_join(tidy4a, tidy4b)
+
+
+#########  Spreading
+# Spreading is the opposite of gathering. You use it when an observation is scattered across multiple rows. For example, take 
+# table2-an observation is a country in a year, but each observation is spread across two rows:
+table2
+
+# To tidy this up, we first analyze the representation in a similar way to gather(). This time, however, we only need two parameters: . The column that contains variable names, the key column. Here, it's type. . The column that contains values forms multiple variables, the value column. Here, it's count.
+spread(table2, key = type, value = count)
+
+# As you might have guessed from the common key and value arguments, spread() and gather() are complements. gather() makes wide tables narrower and longer; spread() makes long tables shorter and wider.
+
+
+###### Separating and Pull
+# The rate column contains both cases and population variables, and we need to split it into two variables using separate() func. it splits values wherever it sees a nonalphanumeric character
+table3
+table3 %>% separate(rate, into = c("cases", "population"))
+
+
+# If you wish to use a specific character to separate a column, you can pass the character to the sep argument of separate(). For example, we could rewrite the preceding code as:
+table3 %>% separate(rate, into = c("cases", "population"), sep = "/")
+
+
+# You can also pass a vector of integers to sep. separate() will interpret the integers as positions to split at. we can use this arrangement to separate the last two digits of each year.
+table3 %>% separate(year, into = c("century", "year"), sep = 2)
+
+
+###  UNITE
+# unite() is the inverse of separate().We can use unite() to rejoin the century and year columns that we created in the last example. Default join is underscore. we can mention how they woud join
+table5 %>% unite(new, century, year)
+table5 %>% unite(new, century, year, sep = "")  #Here there wont be any underscore b/w century & year
+
+
+
+
+
+
+
+
+
+
+
