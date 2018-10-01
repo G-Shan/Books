@@ -1,0 +1,56 @@
+
+# If we wanna install a package and there is security issues, then use the command like this in Jupyter notebook
+!pip install --trusted-host pypi.python.org textblob
+
+
+#import BeautifulSoup from bs4. In python2, we can directly import BeautifulSoup
+import requests
+from bs4 import BeautifulSoup as Soup, Tag
+
+r = requests.get("http://www.firstpost.com/india/bhu-students-protest-v-c-tripathi-says-issue-created-deliberately-during-modis-visit-by-outsiders-situation-still-volatile-4082599.html")
+type(r)
+
+# Basically we save the content of r into c
+c = r.content
+type(c)
+
+print (c)
+
+#Content is saved in html tags. We parse it using html parser
+soup = Soup(c,"html.parser")
+
+# We can see the source code here well organized
+print(soup.prettify())
+
+
+list(soup.children)
+
+[type(item) for item in list(soup.children)] 
+
+#THis will give us the content of 3rd paragraph
+soup.find_all('p')[3].get_text()
+
+# RUn a for loop to get all the paragraphs
+for item in soup.findAll('p'):
+    if isinstance(item, Tag):
+        print(item.text)
+
+
+# Saving this in an object as list
+result = []
+for item in soup.findAll('p'):
+    if isinstance(item, Tag):
+        result.append(item.text)
+type(result)
+
+# COnvert the list into a string for sentiment analysis
+result1 = ''.join(result)
+type(result1)
+
+
+# Sentiment analysis using textblob package
+from textblob import TextBlob
+sent = TextBlob(result1)
+sent.sentiment
+
+

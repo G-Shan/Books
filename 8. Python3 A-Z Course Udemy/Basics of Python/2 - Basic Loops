@@ -1,0 +1,256 @@
+#Check out the directory path
+import os
+print os.getcwd()
+stop an infinite loop using CTRL+C
+##########################################################
+> str1 = 'hello';  str2 = ','  ; str3 = 'world';  str4 = str1 + str3
+Indexing examples
+str1[1] = "e"  also str1[-1] = "o"
+str1 + str2 + str3 = "hello,world"
+str3 * 3 = "worldworldworld"
+"r" in str3 = True
+str3[1:3] = "or"  also str3[:3] = "wor"
+str4[1:9:2] = "elwr"  also  str4[::-1] = "dlrowolleh"  also, str[::2] = "hloold"
+#Here s[start:End:Step]. Step will take alternative for each step. In above example, we remove every 2nd element.
+#####################################################
+
+
+########## Conditional Assignment    ############################
+
+varA = 9, varB = adieu
+Write a piece of Python code that prints out one of the following messages:
+"string involved" if either varA or varB are strings
+"bigger" if varA is larger than varB
+"equal" if varA is equal to varB
+"smaller" if varA is smaller than varB
+ 
+ #SOlution
+if type(varA) == str or type(varB) == str:
+   print"string involved"
+elif varA > varB:
+   print "bigger"
+elif varA == varB:
+   print "equal"
+elif varA < varB:
+   print"smaller"
+############################################################
+
+While Loop Examples:
+1. Convert the following into code that uses a while loop.
+print 2
+print 4
+print 6
+print 8
+print 10
+print Goodbye!
+
+Solution:
+num = 2
+while num <= 10:
+     print num
+     num = num + 2
+print "Goodbye!"
+#Here basically, while loop 1st of all test the boolean condition n <=10, if it's true then it perform the set of instructions, it
+ cycles throught he test multiple times. In case boolean condition is met false, then it skips to the last round of code
+2. Convert the following into code that uses a while loop.
+print Hello!; print 10; print 8; print 6; print 4; print 2
+
+Solution:
+num = 10
+print "Hello!"
+while num >= 2:
+    print num
+    num = num -2
+
+# Here is another way to solve this:
+num = 11
+print "Hello!"
+while num > 1:
+    num -= 1
+    if num %2 == 0:
+        print num    
+    
+3. Write a while loop that sums the values 1 through end, inclusive. end is a variable that we define for you. So, for example, if we 
+define end to be 6, your code should print out the result:21 which is 1 + 2 + 3 + 4 + 5 + 6.
+Solution:
+num=1
+total=0
+while num <= end:
+     total=total + num 
+     num = num + 1
+print total
+
+### Basic if and while loops
+4. Create a while loop which prints these values in separare rows: 0, 1, 2, 3, 4, 5, Outside of loop, 6
+num = 0
+while num <= 5:
+    print num                #1st these numbers will be printed, then the boolean condition will hit false
+    num += 1
+print "Outside of loop"    #2nd then this will be printed
+print num                  #3rd this will be printed. Here final number which is 6 will be printed.
+
+5. Print 9, 8, 7, 6, 5, 4, 3 in separate rows each using loop
+num = 10
+while num > 3:
+    num -= 1
+    print num 
+
+
+6. Print the solution of this problem?
+greeting = 'Hello!'
+count = 0
+for letter in greeting:
+    count += 1
+    if count % 2 == 0:
+        print letter 
+    print letter
+print 'done'
+
+Solution:
+H
+e
+e
+l
+l
+l
+0
+!
+!
+
+
+7. What will the solution to this loop
+count = 0
+for letter in 'Snow!':
+    print 'Letter # ' + str(count) + ' is ' + str(letter)
+    count += 1
+    break
+print count 
+
+Solution:     
+Letter # 0 is S, 1
+
+
+8. What will be solution to this problem: 
+for variable in range(20):
+    if variable % 4 == 0:
+        print variable
+    if variable % 16 == 0:
+        print 'Foo!' 
+        
+Solution:
+0 
+Foo!
+4
+8
+12
+16
+Foo!
+
+9.  Convert the following output into code that uses a for loop. print 2
+print 4
+print 6
+print 8
+print 10
+print "Goodbye!"
+
+Solution:
+for i in range(1, 11):
+    if i % 2 == 0:
+        print i
+print "Goodbye!"
+
+
+10. Convert this output into code that uses a for loop.
+print "Hello!"; print 10; print 8; print 6; print 4; print 2
+
+Solution:
+for i in range(10, 0, -2):
+    if i % 2 == 0:
+        print i
+print "Goodbye!"
+
+11. Write loops that will give same output as below loop
+iteration = 0
+count = 0
+while iteration < 5:
+    for letter in "hello, world":
+        count += 1
+    print "Iteration " + str(iteration) + "; count is: " + str(count)
+    iteration += 1 
+
+Solution:
+count = 0
+phrase = "hello, world"
+for iteration in range(5):
+    index = 0
+    while index < len(phrase):
+        count += 1
+        index += 1
+    print "Iteration " + str(iteration) + "; count is: " + str(count)
+
+
+count = 0
+phrase = "hello, world"
+for iteration in range(5):
+    while True:
+        count += len(phrase)
+        break
+    print "Iteration " + str(iteration) + "; count is: " + str(count)
+
+
+count = 0
+phrase = "hello, world"
+for iteration in range(5):
+    count += len(phrase)
+    print "Iteration " + str(iteration) + "; count is: " + str(count)
+
+###################     FUNCTION         ###################################
+
+12. What will "d('apple', 11.1)" will return as output using the below function
+def d(x, y):
+   '''
+   x: Can be of any type.
+   y: Can be of any type.
+   '''
+   return x > y
+ 
+
+Solution: Since return value is boolean assignment; "Apple" will be converted to 5 and 11.1 will be converted to 4. Even dot will be
+considered here and since 5 > 4, the answer of d('apple', 11.1) would be TRUE.
+
+
+13. What would be the solution:
+def foo(x):
+   def bar(x):
+      return x + 1
+   return bar(x * 2)
+foo(3)
+
+Solution: 1st foo(x) & retrun bar (x*2) will be exected which will give 6 (here x=3). then bar(x) & return will be executed which 
+will give 7 as the answer. so the final asnwer is 7.
+
+14. What would be the solution:
+def foo (x):
+   def bar (z):
+      return z + x
+   return bar(3)
+
+foo(2)
+
+Solution: Will be answered same as 13 question. So the answer would be 5.
+
+15. Write a Python function, clip(lo, x, hi) that returns lo if x is less than lo; hi if x is greater than hi; and x otherwise. 
+    For this problem, you can assume that lo < hi. Don't use any conditional statements for this problem. Instead, use the built in 
+    Python functions min and max.
+SOlution: 
+
+def clip(lo, x, hi):
+   return min(max(x, lo), hi)
+   
+   #or we can use below function
+def clip(lo, x, hi):
+   return max(min(x, hi), lo)
+   
+
+
+

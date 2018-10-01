@@ -1,0 +1,74 @@
+
+# Import the essential libraries
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+
+# Import the dataset
+df = pd.read_csv("C:\\Users\\sohail.ahmad\\Desktop\\Machine Learning A-Z Template Folder\\Part 1 - Data Preprocessing\\Data.csv")
+df.dtypes
+
+
+# 1st double dot means we take all the rows, :-1 means we take all the columns except the last one.
+# Here we make the matrix of the independent variables and dependent vars separately in X & Y
+X = df.iloc[:, :-1].values
+X
+Y = df.iloc[:, 3].values
+Y
+
+# CHecking the missing values column-wise. 2nd and 3rd (1,2) columns have misisng values
+df.isnull().sum()
+
+# Taking care of missing values
+from sklearn.preprocessing import Imputer
+imputer = Imputer(missing_values = "NaN", strategy="mean", axis=0)
+
+# Here we're taking only 2nd and 3rd columns (indexes 1 & 2 since python starts counting with zero) since they've missing values
+imputer = imputer.fit(X[:, 1:3])     # imputer object is fitted to matrix x
+X[:,1:3] = imputer.transform(X[:,1:3])   #THis will replace the missing values with mean of the column
+X
+
+# Encoding categorical variables
+# Here we encode the 1st column which is state
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_X = LabelEncoder()
+X[:, 0] = labelencoder_X.fit_transform(X[:, 0])
+onehotencoder = OneHotEncoder(categorical_features = [0])
+X = onehotencoder.fit_transform(X).toarray()
+X
+# Encoding the Dependent Variable
+labelencoder_y = LabelEncoder()
+Y = labelencoder_y.fit_transform(Y)
+Y
+
+
+# Splitting the dataset into training and test set
+#We've mentioned test size as 20% so train would be automatically 80%, random_state is same as set.seed in R
+from sklearn.cross_validation import train_test_split
+X_train, X_test, Y_train, Y_test = train_test_split(X,Y, test_size=0.2, random_state=100)
+X_train
+
+
+
+# Feature Scaling
+# For training set we need to fit and transform the data. FOr test set, we only need to transform
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test)
+
+# All the variables seem to be on the same scale. We have done feature scaling because so many models use euclidean distance.
+# Model wont be biased after feature scaling if the model uses euclidean distnace. FS also makes the convergence easier.
+# We've done FS for dependent variable because it is binary. it doesnt need.
+X_train
+
+
+#Fitting linear relationship
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, Y_train)
+
+Y_pred = regressor.predict(X_test)
+
+

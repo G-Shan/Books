@@ -1,0 +1,107 @@
+
+# If we wanna install a package and there is security issues, then use the command like this in Jupyter notebook
+!pip install --trusted-host pypi.python.org textblob
+
+
+import pandas as pd
+import numpy as np
+
+# For .read_csv, always use header=0 when you know row 0 is the header row
+df = pd.read_csv("C:\\Users\\sohail.ahmad\\Downloads\\ML UW\\Titanic\\train.csv", header=0)
+
+
+########  Exploratory Data Analysis  ###################
+df
+df.head()
+df.head(3)   #Checking the 1st three rows only
+df.dtypes    #Checking the type of variables
+
+type(df)    #CHecking the type of dataframe. It's pandas dataframe
+
+df.info()  #Same as str in R. Object type variable in python means string
+df.describe()  #Same as summary in R. It doesnt consider NA values in considering central tendency
+
+df.apply(lambda x: sum(x.isnull()), axis=0) #Checking the missing values. axis=0 means apply function on each column
+
+df['Age'][0:10]   # Acquiring the first 10 rows of the Age column
+
+df.Age[0:10]     #Alternative method. Acquiring the first 10 rows of the Age column
+
+df['Age'].mean()  #Getting the mean value of Age variable
+df.Age.mean()
+
+df['Age'].median()
+
+df1 = df[['Sex', 'Pclass', 'Age']]  #Making a subset of 3 variables Sex, Age and Pclass
+
+Above60 = df[df['Age'] > 60] #Subset of passengers with age over 60 years
+
+Above60A = df[df['Age'] > 60][['Sex', 'Pclass', 'Age', 'Survived']] 
+#Subset of Above 60 years with only Sex,Pc,Age,Sur as variables
+
+MissAge = df[df['Age'].isnull()][['Sex', 'Pclass', 'Age']] #Subset with NA values of age
+
+#Counting the no. of males in each Pclass
+for i in range(1,4):
+    print i, len(df[ (df['Sex'] == 'male') & (df['Pclass'] == i) ])
+
+#Frequency of each type of label in Pclass variable
+df["Pclass"].value_counts()
+
+#Creating histogram of Age
+import pylab as P
+df['Age'].hist()
+P.show()
+
+#We can also drop missing values and invoke explicitly options for histogram
+df['Age'].dropna().hist(bins=16, range=(0,80), alpha = .5)
+P.show()
+
+
+############      Cleaning the Data       ##########################
+
+df['Gender'] = 0  #Adding a new column GENDER which has 0 as values for all rows
+
+#Iambda x is an built-in function of python for generating an anonymous. Now Gender has M & F as values
+# function in the moment, at runtime. Remember that x[0] of any string returns its first character.
+# This was just done to show the capability of Python
+df['Gender'] = df['Sex'].map( lambda x: x[0].upper() )
+
+#Taking values of Sex, and putting 1 for male and 0 for female in GENDER variable
+df['Gender'] = df['Sex'].map( {'female': 0, 'male': 1} ).astype(int)
+
+#Make a copy of age variable which is AgeFill
+df['AgeFill'] = df['Age']
+df[df['AgeFill'].isnull()] #177 observations have missing values in age
+
+#Imputing the missing observations in AgeFill column with median value
+df["AgeFill"].fillna(int(df["AgeFill"].median()), inplace=True)
+
+
+#Creating a new var FamilySize which is sume of sibling/spouses (SibSp) & parents/Children (Parch)
+df['FamilySize'] = df['SibSp'] + df['Parch']
+
+#We can also make a new var AgeClass which is multiplication of Age and Pclass
+df['AgeClass'] = df.AgeFill * df.Pclass
+
+#Since python ML package SKLearn takes only numerical values, we need to remove string value for ML techniques
+
+df.dtypes
+
+#CHecking variables only those who are string
+df.dtypes[df.dtypes.map(lambda x: x=='object')]
+
+#Dropping the string vars that we'll not use in the model. axis=1 means apply on each row; axis=0 means on each column
+df = df.drop(['Name', 'Sex', 'Ticket', 'Cabin', 'Embarked'], axis=1) 
+df = df.drop(['Age'], axis=1)  #Drop the Age as well since its data is captured in AgeFill
+
+An alternate command is to drop any rows which still have missing values but it will drop a variable with even 1 NA value
+# df = df.dropna()
+
+#The final step is to convert it into a Numpy array. Pandas can always send back an array using the .values method.
+ #Assign to a new variable, train_data:
+train_data = df.values
+train_data
+
+
+

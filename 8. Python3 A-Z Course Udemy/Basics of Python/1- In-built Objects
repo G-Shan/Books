@@ -1,0 +1,44 @@
+
+> str1 = 'exterminate!' 
+> str2 = 'number one - the larch'
+
+1. str1.upper
+function
+
+2. str1.upper()
+"EXTERMINATE!"
+
+3. str1.isupper()  #CHecks if the variable is in upper letters
+  False
+
+4. str2 = str2.capitalize(); str2
+ "Number one - the larch"
+
+5. str2.swapcase()  #HEre it will swap the case. 1st n was capitalized in last arguement hence its lower here
+ "nUMBER ONE - THE LARCH"
+
+
+6. str1.index('e')
+   0
+
+7.str2.index('n')
+   8
+
+8. str2.find('n')
+   8
+
+9. str2.index('!')
+   error
+
+
+10. str2.find('!')  #Find gives -1 in case letter is not there; unlike index.
+   -1
+
+11. str1.count('e')
+    3
+
+12. str1.replace('e', '*') 
+    "*xt*rminat*!"
+
+13.  str2.replace('one', 'seven')
+    "Number seven - the larch"

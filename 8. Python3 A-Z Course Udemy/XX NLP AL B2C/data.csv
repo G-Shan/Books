@@ -1,0 +1,927 @@
+Identifier,LeadID,Industry,Bank_Name,description,transaction_type,amount,B2C_KW_Category,Yodlee_Category
+1,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx7644,debit,856,TRANSFERS,Transfers
+2,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,317.66,TRADE REVENUE,Other Income
+3,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,538.73,TRADE REVENUE,Uncategorized
+4,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx3856,debit,1279,TRANSFERS,Transfers
+5,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,22.84,TRADE REVENUE,Other Income
+6,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,73.83,TRADE REVENUE,Uncategorized
+7,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1277.65,TRADE REVENUE,Uncategorized
+8,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,295.14,TRADE REVENUE,Uncategorized
+9,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSSTL xxxxxxxxx1252 CCD ID: xxxxxx0042,debit,390.95,TRADE PAYMENTS,Travel
+10,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,9.52,TRADE REVENUE,Other Income
+11,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,28.28,TRADE REVENUE,Other Income
+12,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx9491,debit,7772,TRANSFERS,Transfers
+13,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,885.68,TRADE REVENUE,Uncategorized
+14,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE FEE,debit,18,SERVICE CHARGES/FEES,Service Charges/Fees
+15,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,373.66,TRADE REVENUE,Other Income
+16,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1172.43,TRADE REVENUE,Uncategorized
+17,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+18,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,429.89,TRADE REVENUE,Other Income
+19,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,819.07,TRADE REVENUE,Uncategorized
+20,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+21,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,96.16,POSTAGE AND SHIPPING,Postage/Shipping
+22,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,277.42,TRADE REVENUE,Other Income
+23,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,761.44,TRADE REVENUE,Uncategorized
+24,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,2.38,POSTAGE AND SHIPPING,Postage/Shipping
+25,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,9.79,POSTAGE AND SHIPPING,Postage/Shipping
+26,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1970,debit,1901.49,CHECKS,Check Payment
+27,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+28,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE FEE,debit,18,SERVICE CHARGES/FEES,Service Charges/Fees
+29,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,64,TRADE REVENUE,Other Income
+30,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,388.8,TRADE REVENUE,Uncategorized
+31,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,518.96,TRADE REVENUE,Other Income
+32,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,788.74,TRADE REVENUE,Uncategorized
+33,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,222.83,TRADE REVENUE,Uncategorized
+34,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,931.27,TRADE REVENUE,Uncategorized
+35,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,220.31,TRADE REVENUE,Uncategorized
+36,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1081.18,TRADE REVENUE,Uncategorized
+37,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,482.68,TRADE REVENUE,Other Income
+38,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,887.46,TRADE REVENUE,Uncategorized
+39,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,101.22,TRADE REVENUE,Other Income
+40,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1179.62,TRADE REVENUE,Uncategorized
+41,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,289.3,TRADE REVENUE,Other Income
+42,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6126,debit,5526,TRANSFERS,Transfers
+43,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,253.38,TRADE REVENUE,Uncategorized
+44,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1206.63,TRADE REVENUE,Uncategorized
+45,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,60.71,TRADE REVENUE,Uncategorized
+46,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,689.47,TRADE REVENUE,Uncategorized
+47,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,964.11,TRADE REVENUE,Uncategorized
+48,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,217.79,TRADE REVENUE,Other Income
+49,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1564.93,TRADE REVENUE,Other Income
+50,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,278.99,TRADE REVENUE,Uncategorized
+51,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1099.85,TRADE REVENUE,Other Income
+52,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx8730,debit,3213,TRANSFERS,Transfers
+53,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,272.51,TRADE REVENUE,Uncategorized
+54,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1491.58,TRADE REVENUE,Uncategorized
+55,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,349.73,TRADE REVENUE,Other Income
+56,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx2992,debit,1302,TRANSFERS,Transfers
+57,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,94.63,TRADE REVENUE,Uncategorized
+58,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,124.5,TRADE REVENUE,Other Income
+59,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,265.61,TRADE REVENUE,Uncategorized
+60,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,218.68,TRADE REVENUE,Uncategorized
+61,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,418.67,TRADE REVENUE,Uncategorized
+62,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,29.09,TRADE REVENUE,Other Income
+63,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,84.28,TRADE REVENUE,Other Income
+64,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,66.34,TRADE REVENUE,Other Income
+65,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx9890,debit,3026,TRANSFERS,Transfers
+66,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,254.23,TRADE REVENUE,Uncategorized
+67,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1004.64,TRADE REVENUE,Other Income
+68,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,380.3,TRADE REVENUE,Uncategorized
+69,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,92.76,TRADE REVENUE,Other Income
+70,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,311.89,TRADE REVENUE,Uncategorized
+71,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,8.97,TRADE REVENUE,Other Income
+72,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,972.68,TRADE REVENUE,Uncategorized
+73,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6677,debit,1179,TRANSFERS,Transfers
+74,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,432.93,TRADE REVENUE,Uncategorized
+75,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,746.61,TRADE REVENUE,Uncategorized
+76,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS AXP DISCNT xxxxxx9665 CCD ID: xxxxxx2250,debit,226.2,CREDIT CARD PAYMENTS,Credit Card Payments
+77,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,298.3,TRADE REVENUE,Other Income
+78,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx9231,debit,741,TRANSFERS,Transfers
+79,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,641.6,TRADE REVENUE,Uncategorized
+80,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,132.62,TRADE REVENUE,Other Income
+81,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,336.78,TRADE REVENUE,Uncategorized
+82,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSSTL xxxxxxxxx1252 CCD ID: xxxxxx0042,debit,442.66,TRADE PAYMENTS,Travel
+83,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6920,debit,627,TRANSFERS,Transfers
+84,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,645.95,TRADE REVENUE,Uncategorized
+85,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx5906,debit,8644,TRANSFERS,Transfers
+86,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,193.47,TRADE REVENUE,Other Income
+87,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE FEE,debit,18,SERVICE CHARGES/FEES,Service Charges/Fees
+88,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1018.32,TRADE REVENUE,Uncategorized
+89,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,178.25,TRADE REVENUE,Other Income
+90,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,274.14,TRADE REVENUE,Uncategorized
+91,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx5332,debit,2788,TRANSFERS,Transfers
+92,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,592.73,TRADE REVENUE,Other Income
+93,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1103.54,TRADE REVENUE,Uncategorized
+94,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSSTL xxxxxxxxx1252 CCD ID: xxxxxx0042,debit,547.77,TRADE PAYMENTS,Travel
+95,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,658.44,TRADE REVENUE,Other Income
+96,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,999.6,TRADE REVENUE,Uncategorized
+97,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx8118,debit,1876,TRANSFERS,Transfers
+98,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,17.13,TRADE REVENUE,Other Income
+99,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,136.01,TRADE REVENUE,Uncategorized
+100,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE FEE,debit,18,SERVICE CHARGES/FEES,Service Charges/Fees
+101,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,443.65,TRADE REVENUE,Uncategorized
+102,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1279.43,TRADE REVENUE,Uncategorized
+103,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,178.25,TRADE REVENUE,Other Income
+104,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx1241,debit,436,TRANSFERS,Transfers
+105,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,254.75,TRADE REVENUE,Other Income
+106,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx2067,debit,433,TRANSFERS,Transfers
+107,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,435.77,TRADE REVENUE,Uncategorized
+108,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1055.33,TRADE REVENUE,Other Income
+109,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx2608,debit,14163,TRANSFERS,Transfers
+110,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1390.26,TRADE REVENUE,Uncategorized
+111,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,2015.65,TRADE REVENUE,Other Income
+112,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,248.95,TRADE REVENUE,Uncategorized
+113,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,151.98,TRADE REVENUE,Other Income
+114,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1236.14,TRADE REVENUE,Uncategorized
+115,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,77.12,TRADE REVENUE,Uncategorized
+116,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,24,TRADE REVENUE,Other Income
+117,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1306.28,TRADE REVENUE,Uncategorized
+118,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,882.53,TRADE REVENUE,Uncategorized
+119,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,84.76,TRADE REVENUE,Other Income
+120,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS CHGBCK/ADJ xxxxxx9665 CCD ID: xxxxxx2250,credit,110,REFUNDS/ADJUSTMENTS,Refunds/Adjusments
+121,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,263.12,TRADE REVENUE,Other Income
+122,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,809.75,TRADE REVENUE,Uncategorized
+123,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,478.73,TRADE REVENUE,Other Income
+124,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1815.85,TRADE REVENUE,Uncategorized
+125,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,586.84,TRADE REVENUE,Other Income
+126,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1625.33,TRADE REVENUE,Uncategorized
+127,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx0026,debit,5327,TRANSFERS,Transfers
+128,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,3945.28,TRADE REVENUE,Other Income
+129,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,597.22,TRADE REVENUE,Uncategorized
+130,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS CHGBCK/ADJ xxxxxx9665 CCD ID: xxxxxx2250,debit,155.75,REFUNDS/ADJUSTMENTS,Credit Card Payments
+131,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,32.52,TRADE REVENUE,Uncategorized
+132,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,210.16,TRADE REVENUE,Uncategorized
+133,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,698.04,TRADE REVENUE,Uncategorized
+134,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,762.53,TRADE REVENUE,Other Income
+135,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS CHGBCK/ADJ xxxxxx9665 CCD ID: xxxxxx2250,debit,110,REFUNDS/ADJUSTMENTS,Credit Card Payments
+136,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,858.9,TRADE REVENUE,Other Income
+137,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4794,debit,1640,TRANSFERS,Transfers
+138,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,128.2,TRADE REVENUE,Uncategorized
+139,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx1237,debit,1467,TRANSFERS,Transfers
+140,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,309.97,TRADE REVENUE,Other Income
+141,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1156.71,TRADE REVENUE,Uncategorized
+142,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,140,TRADE REVENUE,Other Income
+143,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx2548,debit,513,TRANSFERS,Transfers
+144,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,373.75,TRADE REVENUE,Uncategorized
+145,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx2556,debit,3663,TRANSFERS,Transfers
+146,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,36.75,TRADE REVENUE,Other Income
+147,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1288.89,TRADE REVENUE,Uncategorized
+148,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,372.02,TRADE REVENUE,Uncategorized
+149,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,247.77,TRADE REVENUE,Uncategorized
+150,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,598.7,TRADE REVENUE,Uncategorized
+151,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,121.66,TRADE REVENUE,Other Income
+152,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,183.54,TRADE REVENUE,Other Income
+153,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,813.52,TRADE REVENUE,Uncategorized
+154,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx9773,debit,2295,TRANSFERS,Transfers
+155,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS AXP DISCNT xxxxxx9665 CCD ID: xxxxxx2250,debit,404.45,CREDIT CARD PAYMENTS,Credit Card Payments
+156,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1147.23,TRADE REVENUE,Uncategorized
+157,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,42.41,TRADE REVENUE,Other Income
+158,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1509.92,TRADE REVENUE,Uncategorized
+159,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx9254,debit,2658,TRANSFERS,Transfers
+160,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1767.98,TRADE REVENUE,Other Income
+161,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,889.42,TRADE REVENUE,Uncategorized
+162,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx9370,debit,1852,TRANSFERS,Transfers
+163,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS COLLECTION xxxxxx9665 CCD ID: xxxxxx2250,debit,7.95,CREDIT CARD PAYMENTS,Credit Card Payments
+164,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,989.46,TRADE REVENUE,Uncategorized
+165,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,158.38,TRADE REVENUE,Uncategorized
+166,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1272.99,TRADE REVENUE,Uncategorized
+167,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSSTL xxxxxxxxx1252 CCD ID: xxxxxx0042,debit,560.43,TRADE PAYMENTS,Travel
+168,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,389.63,TRADE REVENUE,Other Income
+169,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,232.54,TRADE REVENUE,Other Income
+170,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,593.94,TRADE REVENUE,Uncategorized
+171,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx2826,debit,1198,TRANSFERS,Transfers
+172,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6270,debit,1422,TRANSFERS,Transfers
+173,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,297.04,TRADE REVENUE,Other Income
+174,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1124.68,TRADE REVENUE,Uncategorized
+175,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE FEE,debit,18,SERVICE CHARGES/FEES,Service Charges/Fees
+176,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx8964,debit,1114,TRANSFERS,Transfers
+177,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1114.58,TRADE REVENUE,Uncategorized
+178,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx0099,debit,1586,TRANSFERS,Transfers
+179,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,480.86,TRADE REVENUE,Uncategorized
+180,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1104.64,TRADE REVENUE,Uncategorized
+181,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,452.73,TRADE REVENUE,Other Income
+182,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,262.98,TRADE REVENUE,Other Income
+183,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6784,debit,3079,TRANSFERS,Transfers
+184,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1826.23,TRADE REVENUE,Uncategorized
+185,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,157.2,TRADE REVENUE,Other Income
+186,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,380.16,TRADE REVENUE,Uncategorized
+187,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx7335,debit,9493,TRANSFERS,Transfers
+188,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,640.44,TRADE REVENUE,Other Income
+189,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,977.01,TRADE REVENUE,Uncategorized
+190,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,873.68,TRADE REVENUE,Other Income
+191,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,992.68,TRADE REVENUE,Uncategorized
+192,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,13.87,TRADE REVENUE,Other Income
+193,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,185.76,TRADE REVENUE,Uncategorized
+194,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,911.39,TRADE REVENUE,Uncategorized
+195,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1481.36,TRADE REVENUE,Uncategorized
+196,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1562,TRADE REVENUE,Other Income
+197,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,140.19,TRADE REVENUE,Other Income
+198,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,302.2,TRADE REVENUE,Uncategorized
+199,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,636.18,TRADE REVENUE,Other Income
+200,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,775.47,TRADE REVENUE,Uncategorized
+201,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx1545,debit,1453,TRANSFERS,Transfers
+202,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1057.39,TRADE REVENUE,Other Income
+203,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,395.72,TRADE REVENUE,Uncategorized
+204,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,732.85,TRADE REVENUE,Other Income
+205,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx5574,debit,1726,TRANSFERS,Transfers
+206,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,993.92,TRADE REVENUE,Uncategorized
+207,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4466,debit,2043,TRANSFERS,Transfers
+208,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,4.08,TRADE REVENUE,Other Income
+209,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,81.59,TRADE REVENUE,Uncategorized
+210,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,926.39,TRADE REVENUE,Uncategorized
+211,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1030.29,TRADE REVENUE,Uncategorized
+212,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,2566.21,TRADE REVENUE,Other Income
+213,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx0251,debit,2566,TRANSFERS,Transfers
+214,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,407.3,TRADE REVENUE,Other Income
+215,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,706.27,TRADE REVENUE,Uncategorized
+216,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4985,debit,2411,TRANSFERS,Transfers
+217,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,216.09,TRADE REVENUE,Other Income
+218,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,380.9,TRADE REVENUE,Uncategorized
+219,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,175.2,TRADE REVENUE,Other Income
+220,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,525.48,TRADE REVENUE,Uncategorized
+221,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,851.64,TRADE REVENUE,Other Income
+222,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx3175,debit,1739,TRANSFERS,Transfers
+223,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,887.25,TRADE REVENUE,Uncategorized
+224,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx8913,debit,1142,TRANSFERS,Transfers
+225,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS AXP DISCNT xxxxxx9665 CCD ID: xxxxxx2250,debit,396.35,CREDIT CARD PAYMENTS,Credit Card Payments
+226,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,535.91,TRADE REVENUE,Uncategorized
+227,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,214.5,TRADE REVENUE,Uncategorized
+228,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,788.34,TRADE REVENUE,Uncategorized
+229,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,426.19,TRADE REVENUE,Other Income
+230,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx7077,debit,2731,TRANSFERS,Transfers
+231,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,184.46,TRADE REVENUE,Other Income
+232,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSSTL xxxxxxxxx1252 CCD ID: xxxxxx0042,debit,525.87,TRADE PAYMENTS,Travel
+233,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,476.3,TRADE REVENUE,Uncategorized
+234,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,969.88,TRADE REVENUE,Other Income
+235,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS COLLECTION xxxxxx9665 CCD ID: xxxxxx2250,debit,7.95,CREDIT CARD PAYMENTS,Credit Card Payments
+236,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1225.11,TRADE REVENUE,Uncategorized
+237,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx1409,debit,4322,TRANSFERS,Transfers
+238,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,222.08,TRADE REVENUE,Other Income
+239,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1922.03,TRADE REVENUE,Uncategorized
+240,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE FEE,debit,18,SERVICE CHARGES/FEES,Service Charges/Fees
+241,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,697.7,TRADE REVENUE,Other Income
+242,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1480.86,TRADE REVENUE,Uncategorized
+243,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx5032,debit,2526,TRANSFERS,Transfers
+244,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,517.29,TRADE REVENUE,Uncategorized
+245,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,772.81,TRADE REVENUE,Uncategorized
+246,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1235.77,TRADE REVENUE,Uncategorized
+247,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,372.4,TRADE REVENUE,Other Income
+248,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,806.33,TRADE REVENUE,Other Income
+249,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx3966,debit,1943,TRANSFERS,Transfers
+250,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,764.2,TRADE REVENUE,Uncategorized
+251,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1231.36,TRADE REVENUE,Other Income
+252,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx2372,debit,15687,TRANSFERS,Transfers
+253,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,296.67,TRADE REVENUE,Uncategorized
+254,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,430.08,TRADE REVENUE,Other Income
+255,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,359.77,TRADE REVENUE,Uncategorized
+256,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,17.67,TRADE REVENUE,Other Income
+257,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,550.45,TRADE REVENUE,Uncategorized
+258,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,412.25,TRADE REVENUE,Uncategorized
+259,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,324.85,TRADE REVENUE,Uncategorized
+260,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,441.82,TRADE REVENUE,Uncategorized
+261,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,229.83,TRADE REVENUE,Other Income
+262,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,770.46,TRADE REVENUE,Other Income
+263,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,341.02,TRADE REVENUE,Uncategorized
+264,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,425.57,TRADE REVENUE,Uncategorized
+265,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,627.65,TRADE REVENUE,Other Income
+266,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,112.16,TRADE REVENUE,Other Income
+267,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1010,TRADE REVENUE,Uncategorized
+268,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,117.45,TRADE REVENUE,Other Income
+269,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,899.02,TRADE REVENUE,Uncategorized
+270,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,912.53,TRADE REVENUE,Other Income
+271,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,21.21,TRADE REVENUE,Other Income
+272,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1206.41,TRADE REVENUE,Uncategorized
+273,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,604.91,TRADE REVENUE,Uncategorized
+274,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,2132.55,TRADE REVENUE,Other Income
+275,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,658.43,TRADE REVENUE,Uncategorized
+276,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,258.37,TRADE REVENUE,Other Income
+277,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1294.89,TRADE REVENUE,Uncategorized
+278,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx9669,debit,6583,TRANSFERS,Transfers
+279,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,67.91,TRADE REVENUE,Other Income
+280,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1390.34,TRADE REVENUE,Uncategorized
+281,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,210.25,TRADE REVENUE,Other Income
+282,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,849.18,TRADE REVENUE,Uncategorized
+283,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,209.58,TRADE REVENUE,Uncategorized
+284,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,326.59,TRADE REVENUE,Uncategorized
+285,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,271.23,TRADE REVENUE,Other Income
+286,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS AXP DISCNT xxxxxx9665 CCD ID: xxxxxx2250,debit,210.27,CREDIT CARD PAYMENTS,Credit Card Payments
+287,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1195.23,TRADE REVENUE,Uncategorized
+288,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1413.53,TRADE REVENUE,Other Income
+289,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,858.78,TRADE REVENUE,Uncategorized
+290,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx0108,debit,6016,TRANSFERS,Transfers
+291,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1608.89,TRADE REVENUE,Other Income
+292,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSSTL xxxxxxxxx1252 CCD ID: xxxxxx0042,debit,461.03,TRADE PAYMENTS,Travel
+293,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,399.69,TRADE REVENUE,Uncategorized
+294,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,30.45,TRADE REVENUE,Other Income
+295,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS COLLECTION xxxxxx9665 CCD ID: xxxxxx2250,debit,7.95,CREDIT CARD PAYMENTS,Credit Card Payments
+296,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1701.53,TRADE REVENUE,Uncategorized
+297,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE FEE,debit,18,SERVICE CHARGES/FEES,Service Charges/Fees
+298,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,39.97,TRADE REVENUE,Uncategorized
+299,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,110.75,TRADE REVENUE,Other Income
+300,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,876.95,TRADE REVENUE,Uncategorized
+301,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,573.7,TRADE REVENUE,Uncategorized
+302,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,81.86,TRADE REVENUE,Other Income
+303,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,583.77,TRADE REVENUE,Uncategorized
+304,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,495.43,TRADE REVENUE,Other Income
+305,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1293.16,TRADE REVENUE,Other Income
+306,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6319,debit,1928,TRANSFERS,Transfers
+307,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,634.79,TRADE REVENUE,Uncategorized
+308,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx5891,debit,1032,TRANSFERS,Transfers
+309,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,80.65,TRADE REVENUE,Other Income
+310,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,952,TRADE REVENUE,Uncategorized
+311,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx2925,debit,11405,TRANSFERS,Transfers
+312,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,195.45,TRADE REVENUE,Other Income
+313,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1782.16,TRADE REVENUE,Uncategorized
+314,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,58.16,TRADE REVENUE,Uncategorized
+315,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,33.98,TRADE REVENUE,Other Income
+316,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,773.21,TRADE REVENUE,Uncategorized
+317,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,236.08,TRADE REVENUE,Uncategorized
+318,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,435.06,TRADE REVENUE,Other Income
+319,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,438.73,TRADE REVENUE,Other Income
+320,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,439.69,TRADE REVENUE,Uncategorized
+321,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,131.45,TRADE REVENUE,Other Income
+322,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,765.92,TRADE REVENUE,Uncategorized
+323,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,866.25,TRADE REVENUE,Other Income
+324,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,232.68,TRADE REVENUE,Uncategorized
+325,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,215.49,TRADE REVENUE,Other Income
+326,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,415.58,TRADE REVENUE,Uncategorized
+327,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,217.06,TRADE REVENUE,Uncategorized
+328,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,13.59,TRADE REVENUE,Other Income
+329,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,459.2,TRADE REVENUE,Uncategorized
+330,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,400.23,TRADE REVENUE,Uncategorized
+331,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,68,TRADE REVENUE,Other Income
+332,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,9,TRADE REVENUE,Other Income
+333,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,608.94,TRADE REVENUE,Uncategorized
+334,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,400.83,TRADE REVENUE,Other Income
+335,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,254.53,TRADE REVENUE,Uncategorized
+336,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,634.77,TRADE REVENUE,Other Income
+337,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,454.96,TRADE REVENUE,Uncategorized
+338,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,186,TRADE REVENUE,Other Income
+339,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,677.19,TRADE REVENUE,Uncategorized
+340,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,89.66,TRADE REVENUE,Uncategorized
+341,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx2814,debit,1310,TRANSFERS,Transfers
+342,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,662.07,TRADE REVENUE,Uncategorized
+343,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,395.66,TRADE REVENUE,Uncategorized
+344,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,163.42,TRADE REVENUE,Other Income
+345,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4128,debit,851,TRANSFERS,Transfers
+346,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,143.92,TRADE REVENUE,Other Income
+347,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,338.96,TRADE REVENUE,Uncategorized
+348,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS AXP DISCNT xxxxxx9665 CCD ID: xxxxxx2250,debit,277.1,CREDIT CARD PAYMENTS,Credit Card Payments
+349,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,346.5,TRADE REVENUE,Other Income
+350,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,298.27,TRADE REVENUE,Uncategorized
+351,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx9669,debit,1530,TRANSFERS,Transfers
+352,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,277.27,TRADE REVENUE,Other Income
+353,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1253.18,TRADE REVENUE,Uncategorized
+354,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,478.69,TRADE REVENUE,Uncategorized
+355,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx1310,debit,1249,TRANSFERS,Transfers
+356,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSSTL xxxxxxxxx1252 CCD ID: xxxxxx0042,debit,622.82,TRADE PAYMENTS,Travel
+357,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1279.58,TRADE REVENUE,Uncategorized
+358,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,121.52,TRADE REVENUE,Other Income
+359,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,293.89,TRADE REVENUE,Other Income
+360,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS COLLECTION xxxxxx9665 CCD ID: xxxxxx2250,debit,7.95,CREDIT CARD PAYMENTS,Credit Card Payments
+361,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,775.3,TRADE REVENUE,Uncategorized
+362,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx8574,debit,9800,TRANSFERS,Transfers
+363,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,469.14,TRADE REVENUE,Other Income
+364,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,812.01,TRADE REVENUE,Uncategorized
+365,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE FEE,debit,18,SERVICE CHARGES/FEES,Service Charges/Fees
+366,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,839.83,TRADE REVENUE,Other Income
+367,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,993.12,TRADE REVENUE,Uncategorized
+368,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,846.43,TRADE REVENUE,Uncategorized
+369,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,407.65,TRADE REVENUE,Uncategorized
+370,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,938.21,TRADE REVENUE,Uncategorized
+371,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1405.42,TRADE REVENUE,Other Income
+372,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,640.75,TRADE REVENUE,Other Income
+373,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1396.26,TRADE REVENUE,Uncategorized
+374,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4330,debit,6474,TRANSFERS,Transfers
+375,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1200.17,TRADE REVENUE,Uncategorized
+376,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,665.44,TRADE REVENUE,Other Income
+377,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,606.18,TRADE REVENUE,Uncategorized
+378,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,317.13,TRADE REVENUE,Uncategorized
+379,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,96.66,TRADE REVENUE,Other Income
+380,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,403.92,TRADE REVENUE,Uncategorized
+381,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,367.17,TRADE REVENUE,Uncategorized
+382,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,950.63,TRADE REVENUE,Other Income
+383,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,499.48,TRADE REVENUE,Other Income
+384,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,528.46,TRADE REVENUE,Uncategorized
+385,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,97.48,TRADE REVENUE,Other Income
+386,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,266.01,TRADE REVENUE,Uncategorized
+387,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,302.83,TRADE REVENUE,Other Income
+388,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,171.73,TRADE REVENUE,Uncategorized
+389,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6238,debit,7212,TRANSFERS,Transfers
+390,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,74.75,TRADE REVENUE,Other Income
+391,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,6042.4,TRADE REVENUE,Uncategorized
+392,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,541.71,TRADE REVENUE,Uncategorized
+393,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,475.25,TRADE REVENUE,Uncategorized
+394,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,866.48,TRADE REVENUE,Other Income
+395,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,78.57,TRADE REVENUE,Other Income
+396,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,142.58,TRADE REVENUE,Uncategorized
+397,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4989,debit,1009,TRANSFERS,Transfers
+398,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx3075,debit,2011,TRANSFERS,Transfers
+399,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,674.95,TRADE REVENUE,Other Income
+400,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1336.01,TRADE REVENUE,Uncategorized
+401,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,175.15,TRADE REVENUE,Other Income
+402,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS AXP DISCNT xxxxxx9665 CCD ID: xxxxxx2250,debit,268.03,CREDIT CARD PAYMENTS,Credit Card Payments
+403,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,2610.68,TRADE REVENUE,Uncategorized
+404,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx7990,debit,2518,TRANSFERS,Transfers
+405,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx9956,debit,804,TRANSFERS,Transfers
+406,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,22.56,TRADE REVENUE,Uncategorized
+407,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,371.11,TRADE REVENUE,Uncategorized
+408,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSSTL xxxxxxxxx1252 CCD ID: xxxxxx0042,debit,373.3,TRADE PAYMENTS,Travel
+409,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,783.06,TRADE REVENUE,Uncategorized
+410,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,660.16,TRADE REVENUE,Other Income
+411,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1591.71,TRADE REVENUE,Other Income
+412,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS COLLECTION xxxxxx9665 CCD ID: xxxxxx2250,debit,7.95,CREDIT CARD PAYMENTS,Credit Card Payments
+413,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4089,debit,2979,TRANSFERS,Transfers
+414,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,926.72,TRADE REVENUE,Uncategorized
+415,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx0620,debit,652,TRANSFERS,Transfers
+416,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE FEE,debit,18,SERVICE CHARGES/FEES,Service Charges/Fees
+417,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,61.25,TRADE REVENUE,Other Income
+418,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,364.59,TRADE REVENUE,Uncategorized
+419,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,37.52,TRADE REVENUE,Other Income
+420,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,15.18,TRADE REVENUE,Uncategorized
+421,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,190.58,TRADE REVENUE,Uncategorized
+422,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6336,debit,5991,TRANSFERS,Transfers
+423,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,394.55,TRADE REVENUE,Uncategorized
+424,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,702.12,TRADE REVENUE,Other Income
+425,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,458,TRADE REVENUE,Other Income
+426,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1170.55,TRADE REVENUE,Uncategorized
+427,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,849.37,TRADE REVENUE,Uncategorized
+428,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,1722.44,TRADE REVENUE,Other Income
+429,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,483.91,TRADE REVENUE,Uncategorized
+430,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,19.3,TRADE REVENUE,Other Income
+431,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4636,debit,2136,TRANSFERS,Transfers
+432,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,249.89,TRADE REVENUE,Uncategorized
+433,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,490.27,TRADE REVENUE,Other Income
+434,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,794.08,TRADE REVENUE,Uncategorized
+435,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,601.74,TRADE REVENUE,Uncategorized
+436,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6899,debit,174,TRANSFERS,Transfers
+437,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,174.44,TRADE REVENUE,Uncategorized
+438,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6730,debit,881,TRANSFERS,Transfers
+439,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,489.34,TRADE REVENUE,Other Income
+440,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,391.77,TRADE REVENUE,Uncategorized
+441,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,132.4,TRADE REVENUE,Other Income
+442,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,744.27,TRADE REVENUE,Uncategorized
+443,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx8594,debit,877,TRANSFERS,Transfers
+444,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4705,debit,4231,TRANSFERS,Transfers
+445,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS COLLECTION xxxxxx9665 CCD ID: xxxxxx2250,debit,122.75,CREDIT CARD PAYMENTS,Credit Card Payments
+446,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,633.7,TRADE REVENUE,Uncategorized
+447,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,308.59,TRADE REVENUE,Uncategorized
+448,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,707.46,TRADE REVENUE,Uncategorized
+449,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,23.97,TRADE REVENUE,Other Income
+450,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,15.66,TRADE REVENUE,Other Income
+451,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,983.34,TRADE REVENUE,Uncategorized
+452,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,319.19,TRADE REVENUE,Other Income
+453,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,136.99,TRADE REVENUE,Uncategorized
+454,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,841.76,TRADE REVENUE,Other Income
+455,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,383.14,TRADE REVENUE,Uncategorized
+456,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4598,debit,4657,TRANSFERS,Transfers
+457,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,778.46,TRADE REVENUE,Other Income
+458,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,814.19,TRADE REVENUE,Uncategorized
+459,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,515.56,TRADE REVENUE,Uncategorized
+460,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1554.73,TRADE REVENUE,Uncategorized
+461,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,294.22,TRADE REVENUE,Other Income
+462,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS AXP DISCNT xxxxxx9665 CCD ID: xxxxxx2250,debit,375.26,CREDIT CARD PAYMENTS,Credit Card Payments
+463,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSSTL xxxxxxxxx1252 CCD ID: xxxxxx0042,debit,454.47,TRADE PAYMENTS,Travel
+464,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,585.59,TRADE REVENUE,Uncategorized
+465,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,78.78,TRADE REVENUE,Other Income
+466,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS COLLECTION xxxxxx9665 CCD ID: xxxxxx2250,debit,7.95,CREDIT CARD PAYMENTS,Credit Card Payments
+467,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,749.5,TRADE REVENUE,Uncategorized
+468,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,141.5,TRADE REVENUE,Other Income
+469,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx2109,debit,2254,TRANSFERS,Transfers
+470,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,407.46,TRADE REVENUE,Other Income
+471,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,581.82,TRADE REVENUE,Uncategorized
+472,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE FEE,debit,18,SERVICE CHARGES/FEES,Service Charges/Fees
+473,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSADJ xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,87.89,TRADE REVENUE,Uncategorized
+474,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,276.27,TRADE REVENUE,Uncategorized
+475,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSADJ xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,88.94,TRADE REVENUE,Uncategorized
+476,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,debit,177.36,TRADE PAYMENTS,Travel
+477,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,989.22,TRADE REVENUE,Uncategorized
+478,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,16.86,TRADE REVENUE,Other Income
+479,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx7778,debit,6357,TRANSFERS,Transfers
+480,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,117.85,TRADE REVENUE,Uncategorized
+481,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,35.34,TRADE REVENUE,Other Income
+482,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,819.31,TRADE REVENUE,Other Income
+483,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,407.93,TRADE REVENUE,Uncategorized
+484,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,75.59,TRADE REVENUE,Other Income
+485,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,750.95,TRADE REVENUE,Uncategorized
+486,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,468.64,TRADE REVENUE,Uncategorized
+487,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,479.09,TRADE REVENUE,Uncategorized
+488,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,613.79,TRADE REVENUE,Other Income
+489,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,131.25,TRADE REVENUE,Other Income
+490,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,188.23,TRADE REVENUE,Uncategorized
+491,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,866.05,TRADE REVENUE,Other Income
+492,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,471.25,TRADE REVENUE,Uncategorized
+493,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx0856,debit,4412,TRANSFERS,Transfers
+494,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,651.69,TRADE REVENUE,Other Income
+495,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,263.5,TRADE REVENUE,Uncategorized
+496,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,808.6,TRADE REVENUE,Other Income
+497,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,379.21,TRADE REVENUE,Uncategorized
+498,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,780.94,TRADE REVENUE,Uncategorized
+499,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,2129.62,TRADE REVENUE,Uncategorized
+500,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4419,debit,1637,TRANSFERS,Transfers
+501,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,312.94,TRADE REVENUE,Other Income
+502,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,926.06,TRADE REVENUE,Uncategorized
+503,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,710.91,TRADE REVENUE,Uncategorized
+504,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx8337,debit,1565,TRANSFERS,Transfers
+505,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,221,TRADE REVENUE,Other Income
+506,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,456.69,TRADE REVENUE,Uncategorized
+507,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,250.87,TRADE REVENUE,Other Income
+508,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,636.45,TRADE REVENUE,Uncategorized
+509,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,607.23,TRADE REVENUE,Uncategorized
+510,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6867,debit,1807,TRANSFERS,Transfers
+511,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1200.53,TRADE REVENUE,Uncategorized
+512,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6355,debit,7377,TRANSFERS,Transfers
+513,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,54.92,TRADE REVENUE,Other Income
+514,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1926.37,TRADE REVENUE,Uncategorized
+515,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,38.56,POSTAGE AND SHIPPING,Postage/Shipping
+516,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,42.31,POSTAGE AND SHIPPING,Postage/Shipping
+517,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,11.89,POSTAGE AND SHIPPING,Postage/Shipping
+518,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,45.76,POSTAGE AND SHIPPING,Postage/Shipping
+519,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,523.71,TRADE REVENUE,Uncategorized
+520,2369,Health Care and Social Assistance,Dag Site - Bank,WIRE REVERSAL B/O: BANK OF CHINALIMITED HEAD OFFICE BEIJING CHIN,credit,4980,REFUNDS/ADJUSTMENTS,Uncategorized
+521,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,226.1,TRADE REVENUE,Uncategorized
+522,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,320.92,TRADE REVENUE,Uncategorized
+523,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+524,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,120.53,TRADE REVENUE,Uncategorized
+525,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,427.78,TRADE REVENUE,Other Income
+526,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,5000,TRANSFERS,Transfers
+527,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+528,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,1357.11,TRADE REVENUE,Uncategorized
+529,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,835.76,TRADE REVENUE,Other Income
+530,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+531,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,843.19,TRADE REVENUE,Uncategorized
+532,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,362.23,TRADE REVENUE,Other Income
+533,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1945,debit,1242.72,CHECKS,Check Payment
+534,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+535,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx9395,credit,11194,TRANSFERS,Transfers
+536,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT M0290 WEB ID: xxxxxx2111,debit,150,CREDIT CARD PAYMENTS,Credit Card Payments
+537,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+538,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx9395,debit,11194,TRANSFERS,Transfers
+539,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,8545.92,TRADE REVENUE,Other Income
+540,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,406.59,TRADE REVENUE,Uncategorized
+541,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+542,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,400,CREDIT CARD PAYMENTS,Credit Card Payments
+543,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,530.11,TRADE REVENUE,Uncategorized
+544,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,40.12,TRADE REVENUE,Uncategorized
+545,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,247.14,TRADE REVENUE,Uncategorized
+546,2369,Health Care and Social Assistance,Dag Site - Bank,CATHAYPACAIRxxxxxxx2089 EL SEGUNDO CA 11/13,debit,749.36,TRAVEL,Uncategorized
+547,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+548,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,324.14,TRADE REVENUE,Other Income
+549,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,866.93,TRADE REVENUE,Other Income
+550,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,232.52,TRADE REVENUE,Uncategorized
+551,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4958,debit,1123,TRANSFERS,Transfers
+552,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,91.35,TRADE REVENUE,Other Income
+553,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,350.83,TRADE REVENUE,Uncategorized
+554,2369,Health Care and Social Assistance,Dag Site - Bank,IRS USATAXPYMT xxxxxxxxxxx4660 CCD ID: xxxxxx2000,debit,1321.36,TAXES,Taxes
+555,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,5000,TRANSFERS,Transfers
+556,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,2400,,Deposits
+557,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+558,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,680.77,TRADE REVENUE,Uncategorized
+559,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4958,credit,1123,TRANSFERS,Transfers
+560,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx8904,credit,968,TRANSFERS,Transfers
+561,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,4364.96,,Deposits
+562,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+563,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,256,CREDIT CARD PAYMENTS,Credit Card Payments
+564,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx8904,debit,968,TRANSFERS,Transfers
+565,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,111.26,TRADE REVENUE,Other Income
+566,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,296.5,TRADE REVENUE,Other Income
+567,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,560.89,TRADE REVENUE,Uncategorized
+568,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,600.28,TRADE REVENUE,Uncategorized
+569,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx6187,debit,1013,TRANSFERS,Transfers
+570,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,102.55,TRADE REVENUE,Uncategorized
+571,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,116.25,TRADE REVENUE,Other Income
+572,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx6187,credit,1013,TRANSFERS,Transfers
+573,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,193.37,TRADE REVENUE,Uncategorized
+574,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+575,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+576,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1986,debit,443.28,CHECKS,Check Payment
+577,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,146.31,TRADE REVENUE,Other Income
+578,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx3042,credit,542,TRANSFERS,Transfers
+579,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx7974,credit,266,TRANSFERS,Transfers
+580,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx7974,debit,266,TRANSFERS,Transfers
+581,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,265.93,TRADE REVENUE,Uncategorized
+582,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,396.21,TRADE REVENUE,Other Income
+583,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx3042,debit,542,TRANSFERS,Transfers
+584,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4722,credit,517,TRANSFERS,Transfers
+585,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+586,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx4722,debit,517,TRANSFERS,Transfers
+587,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,82.38,TRADE REVENUE,Other Income
+588,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,499.99,TRADE REVENUE,Uncategorized
+589,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx2448,credit,330,TRANSFERS,Transfers
+590,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+591,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer to CHK ...4328 transaction#: xxxxxx2448,debit,330,TRANSFERS,Transfers
+592,2369,Health Care and Social Assistance,Dag Site - Bank,UNITED MS UNITDMSDEP xxxxxxxxx1252 CCD ID: xxxxxx0042,credit,204.41,TRADE REVENUE,Uncategorized
+593,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS AXP DISCNT xxxxxx9665 CCD ID: xxxxxx2250,debit,203.2,CREDIT CARD PAYMENTS,Credit Card Payments
+594,2369,Health Care and Social Assistance,Dag Site - Bank,AMERICAN EXPRESS SETTLEMENT xxxxxx9665 CCD ID: xxxxxx2250,credit,263.14,TRADE REVENUE,Other Income
+595,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx7644,credit,856,TRANSFERS,Transfers
+596,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+597,2369,Health Care and Social Assistance,Dag Site - Bank,ATM CASH DEPOSIT 11/04 1260 BROADWAY NEW YORK NY,credit,650,DEPOSITS,Deposits
+598,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1985,debit,22769.31,CHECKS,Check Payment
+599,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,8.77,POSTAGE AND SHIPPING,Postage/Shipping
+600,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,12.48,POSTAGE AND SHIPPING,Postage/Shipping
+601,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE CHARGES FOR THE MONTH OF OCTOBER,debit,20,SERVICE CHARGES/FEES,Uncategorized
+602,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,27.82,POSTAGE AND SHIPPING,Postage/Shipping
+603,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,19.49,POSTAGE AND SHIPPING,Postage/Shipping
+604,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL 1xxxx0000F586Y7 CCD ID: xxxxxx0436,debit,39.78,POSTAGE AND SHIPPING,Postage/Shipping
+605,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,2680,,Deposits
+606,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1938,debit,1242.72,CHECKS,Check Payment
+607,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx3856,credit,1279,TRANSFERS,Transfers
+608,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+609,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1984,debit,1847.1,CHECKS,Check Payment
+610,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1983,debit,1847.1,CHECKS,Check Payment
+611,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,9320,,Deposits
+612,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+613,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx9491,credit,7772,TRANSFERS,Transfers
+614,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT W0030 WEB ID: xxxxxx2111,debit,500,CREDIT CARD PAYMENTS,Credit Card Payments
+615,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+616,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT W7796 WEB ID: xxxxxx2111,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+617,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE CHARGES FOR THE MONTH OF JUNE,debit,100,SERVICE CHARGES/FEES,Uncategorized
+618,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,300,CREDIT CARD PAYMENTS,Credit Card Payments
+619,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+620,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx5332,credit,2788,TRANSFERS,Transfers
+621,2369,Health Care and Social Assistance,Dag Site - Bank,VERIZON VERIZON Re xxxxxxxxx8021 PPD ID: xxxxxx7101,credit,53.24,CABLE/SATELLITE SERVICES,Uncategorized
+622,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+623,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx8118,credit,1876,TRANSFERS,Transfers
+624,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+625,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx1241,credit,436,TRANSFERS,Transfers
+626,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx2067,credit,433,TRANSFERS,Transfers
+627,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+628,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx2608,credit,14163,TRANSFERS,Transfers
+629,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+630,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+631,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+632,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+633,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1962,debit,1847.1,CHECKS,Check Payment
+634,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1944,debit,1901.49,CHECKS,Check Payment
+635,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+636,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,6470.6,,Deposits
+637,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1961,debit,26.5,CHECKS,Check Payment
+638,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+639,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+640,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx0026,credit,5327,TRANSFERS,Transfers
+641,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+642,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+643,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,300,CREDIT CARD PAYMENTS,Credit Card Payments
+644,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4794,credit,1640,TRANSFERS,Transfers
+645,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+646,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx1237,credit,1467,TRANSFERS,Transfers
+647,2369,Health Care and Social Assistance,Dag Site - Bank,IRS USATAXPYMT xxxxxxxxxxx4192 CCD ID: xxxxxx2000,debit,1339.72,TAXES,Taxes
+648,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+649,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx2548,credit,513,TRANSFERS,Transfers
+650,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+651,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,5000,TRANSFERS,Transfers
+652,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1957,debit,63.39,CHECKS,Check Payment
+653,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+654,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx2556,credit,3663,TRANSFERS,Transfers
+655,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+656,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1960,debit,554.1,CHECKS,Check Payment
+657,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1955,debit,154.63,CHECKS,Check Payment
+658,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+659,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1956,debit,510.53,CHECKS,Check Payment
+660,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT W3104 WEB ID: xxxxxx2111,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+661,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx9773,credit,2295,TRANSFERS,Transfers
+662,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+663,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+664,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+665,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE CHARGES FOR THE MONTH OF MAY,debit,100,SERVICE CHARGES/FEES,Uncategorized
+666,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx9254,credit,2658,TRANSFERS,Transfers
+667,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,24.87,POSTAGE AND SHIPPING,Postage/Shipping
+668,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,37.6,POSTAGE AND SHIPPING,Postage/Shipping
+669,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,19.25,POSTAGE AND SHIPPING,Postage/Shipping
+670,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,58.95,POSTAGE AND SHIPPING,Postage/Shipping
+671,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,66.71,POSTAGE AND SHIPPING,Postage/Shipping
+672,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,5000,TRANSFERS,Transfers
+673,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,654.23,,Deposits
+674,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx9370,credit,1852,TRANSFERS,Transfers
+675,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+676,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx2826,credit,1198,TRANSFERS,Transfers
+677,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+678,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+679,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx6270,credit,1422,TRANSFERS,Transfers
+680,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+681,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx8964,credit,1114,TRANSFERS,Transfers
+682,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1953,debit,22769.31,CHECKS,Check Payment
+683,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+684,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+685,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx0099,credit,1586,TRANSFERS,Transfers
+686,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,9155.17,,Deposits
+687,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+688,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx6784,credit,3079,TRANSFERS,Transfers
+689,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+690,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+691,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx7335,credit,9493,TRANSFERS,Transfers
+692,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+693,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1940,debit,1847.1,CHECKS,Check Payment
+694,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+695,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+696,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+697,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+698,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx1545,credit,1453,TRANSFERS,Transfers
+699,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+700,2369,Health Care and Social Assistance,Dag Site - Bank,IRS USATAXPYMT xxxxxxxxxxx4326 CCD ID: xxxxxx2000,debit,1339.72,TAXES,Taxes
+701,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1937,debit,1901.49,CHECKS,Check Payment
+702,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx5574,credit,1726,TRANSFERS,Transfers
+703,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+704,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4466,credit,2043,TRANSFERS,Transfers
+705,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+706,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,5998.5,,Deposits
+707,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1948,debit,63.39,CHECKS,Check Payment
+708,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,10000,TRANSFERS,Transfers
+709,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4985,credit,2411,TRANSFERS,Transfers
+710,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx0251,credit,2566,TRANSFERS,Transfers
+711,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+712,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1950,debit,209.54,CHECKS,Check Payment
+713,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1952,debit,462.5,CHECKS,Check Payment
+714,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+715,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+716,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1949,debit,228,CHECKS,Check Payment
+717,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx3175,credit,1739,TRANSFERS,Transfers
+718,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+719,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx8913,credit,1142,TRANSFERS,Transfers
+720,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1947,debit,427.47,CHECKS,Check Payment
+721,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+722,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE CHARGES FOR THE MONTH OF APRIL,debit,100,SERVICE CHARGES/FEES,Uncategorized
+723,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1946,debit,244.47,CHECKS,Check Payment
+724,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1951,debit,200,CHECKS,Check Payment
+725,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1943,debit,554.1,CHECKS,Check Payment
+726,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx7077,credit,2731,TRANSFERS,Transfers
+727,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,5000,TRANSFERS,Transfers
+728,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+729,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+730,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT M1120 WEB ID: xxxxxx2111,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+731,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+732,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,10.3,POSTAGE AND SHIPPING,Postage/Shipping
+733,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,31.86,POSTAGE AND SHIPPING,Postage/Shipping
+734,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx1409,credit,4322,TRANSFERS,Transfers
+735,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+736,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,44.65,POSTAGE AND SHIPPING,Postage/Shipping
+737,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,47.98,POSTAGE AND SHIPPING,Postage/Shipping
+738,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,32.97,POSTAGE AND SHIPPING,Postage/Shipping
+739,2369,Health Care and Social Assistance,Dag Site - Bank,NYS TAX    FINANC UI PYMT Uxxxxxxx3013 CCD ID: xxxxxx9984,debit,415.8,TAXES,Taxes
+740,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,50.22,POSTAGE AND SHIPPING,Postage/Shipping
+741,2369,Health Care and Social Assistance,Dag Site - Bank,NYS TAX    FINANC WT PYMT Wxxxxxxx3013 CCD ID: xxxxxx8475,debit,659.61,TAXES,Taxes
+742,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1939,debit,1847.1,CHECKS,Check Payment
+743,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+744,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1942,debit,200,CHECKS,Check Payment
+745,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,5000,TRANSFERS,Transfers
+746,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1941,debit,22769.31,CHECKS,Check Payment
+747,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+748,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx5032,credit,2526,TRANSFERS,Transfers
+749,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,5135.55,,Deposits
+750,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+751,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx3966,credit,1943,TRANSFERS,Transfers
+752,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx2372,credit,15687,TRANSFERS,Transfers
+753,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+754,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+755,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+756,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+757,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+758,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT M3804 WEB ID: xxxxxx2111,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+759,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,1996.25,,Deposits
+760,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+761,2369,Health Care and Social Assistance,Dag Site - Bank,IRS USATAXPYMT xxxxxxxxxxx2254 CCD ID: xxxxxx2000,debit,1339.72,TAXES,Taxes
+762,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+763,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+764,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+765,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+766,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JE JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+767,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,6000,TRANSFERS,Transfers
+768,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+769,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx9669,credit,6583,TRANSFERS,Transfers
+770,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,4613.5,,Deposits
+771,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+772,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1936,debit,126.78,CHECKS,Check Payment
+773,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1935,debit,102,CHECKS,Check Payment
+774,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+775,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1933,debit,109.92,CHECKS,Check Payment
+776,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+777,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+778,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1934,debit,1057.82,CHECKS,Check Payment
+779,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE CHARGES FOR THE MONTH OF MARCH,debit,168,SERVICE CHARGES/FEES,Uncategorized
+780,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx0108,credit,6016,TRANSFERS,Transfers
+781,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1932,debit,554.1,CHECKS,Check Payment
+782,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+783,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1927,debit,1901.49,CHECKS,Check Payment
+784,2369,Health Care and Social Assistance,Dag Site - Bank,ETSY INC DEPOSITPPD ID: xxxxxx8921,credit,0.01,DEPOSITS,Deposits
+785,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT M7700 WEB ID: xxxxxx2111,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+786,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+787,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+788,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+789,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,2084.25,,Deposits
+790,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+791,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx6319,credit,1928,TRANSFERS,Transfers
+792,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+793,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,8000,TRANSFERS,Transfers
+794,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1931,debit,18000,CHECKS,Check Payment
+795,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+796,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx5891,credit,1032,TRANSFERS,Transfers
+797,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx2925,credit,11405,TRANSFERS,Transfers
+798,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1930,debit,22769.31,CHECKS,Check Payment
+799,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+800,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+801,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT M8628 WEB ID: xxxxxx2111,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+802,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+803,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+804,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+805,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+806,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+807,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+808,2369,Health Care and Social Assistance,Dag Site - Bank,PRIME MERIDIAN JINDELI JE JINDELI JEWELRY CCD ID: xxxxxx4623,debit,230.16,LOANS,Personal/Family
+809,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,300,CREDIT CARD PAYMENTS,Credit Card Payments
+810,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,15000,TRANSFERS,Transfers
+811,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT M4874 WEB ID: xxxxxx2111,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+812,2369,Health Care and Social Assistance,Dag Site - Bank,FEDWIRE CREDIT VIA: SILICON VALLEY BANK/xxxxx0399 B/O: ITRIA VEN,credit,49750,LOANS,Other Income
+813,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1920,debit,1901.49,CHECKS,Check Payment
+814,2369,Health Care and Social Assistance,Dag Site - Bank,IRS USATAXPYMT xxxxxxxxxxx1890 CCD ID: xxxxxx2000,debit,1339.72,TAXES,Taxes
+815,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,7375.25,,Deposits
+816,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx2814,credit,1310,TRANSFERS,Transfers
+817,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,31.04,POSTAGE AND SHIPPING,Postage/Shipping
+818,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,19.41,POSTAGE AND SHIPPING,Postage/Shipping
+819,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,56.56,POSTAGE AND SHIPPING,Postage/Shipping
+820,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1903,debit,1242.72,CHECKS,Check Payment
+821,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4128,credit,851,TRANSFERS,Transfers
+822,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,70.53,POSTAGE AND SHIPPING,Postage/Shipping
+823,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,69.75,POSTAGE AND SHIPPING,Postage/Shipping
+824,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,92.8,POSTAGE AND SHIPPING,Postage/Shipping
+825,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,64.78,POSTAGE AND SHIPPING,Postage/Shipping
+826,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,64.79,POSTAGE AND SHIPPING,Postage/Shipping
+827,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx9669,credit,1530,TRANSFERS,Transfers
+828,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE CHARGES FOR THE MONTH OF FEBRUARY,debit,224,SERVICE CHARGES/FEES,Uncategorized
+829,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx1310,credit,1249,TRANSFERS,Transfers
+830,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1924,debit,1847.1,CHECKS,Check Payment
+831,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1925,debit,1847.1,CHECKS,Check Payment
+832,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1910,debit,22769.31,CHECKS,Check Payment
+833,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,5084,,Deposits
+834,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx8574,credit,9800,TRANSFERS,Transfers
+835,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1926,debit,554.1,CHECKS,Check Payment
+836,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT M6844 WEB ID: xxxxxx2111,debit,100,CREDIT CARD PAYMENTS,Credit Card Payments
+837,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,400,CREDIT CARD PAYMENTS,Credit Card Payments
+838,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,857.25,,Deposits
+839,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT M4164 WEB ID: xxxxxx2111,debit,500,CREDIT CARD PAYMENTS,Credit Card Payments
+840,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4330,credit,6474,TRANSFERS,Transfers
+841,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,250,CREDIT CARD PAYMENTS,Credit Card Payments
+842,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1922,debit,1127.27,CHECKS,Check Payment
+843,2369,Health Care and Social Assistance,Dag Site - Bank,BIGCOMMERCE.COM xxx-xxx1350 TX02/16,debit,149.95,ONLINE SERVICES,Services/Supplies
+844,2369,Health Care and Social Assistance,Dag Site - Bank,IRS USATAXPYMT xxxxxxxxxxx2009 CCD ID: xxxxxx2000,debit,1339.72,TAXES,Taxes
+845,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1923,debit,54.4,CHECKS,Check Payment
+846,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1898,debit,1242.72,CHECKS,Check Payment
+847,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1885,debit,1242.72,CHECKS,Check Payment
+848,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx6238,credit,7212,TRANSFERS,Transfers
+849,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1917,debit,63.39,CHECKS,Check Payment
+850,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4989,credit,1009,TRANSFERS,Transfers
+851,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx3075,credit,2011,TRANSFERS,Transfers
+852,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1912,debit,86.96,CHECKS,Check Payment
+853,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1913,debit,299.2,CHECKS,Check Payment
+854,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT M7930 WEB ID: xxxxxx2111,debit,100,CREDIT CARD PAYMENTS,Credit Card Payments
+855,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,100,CREDIT CARD PAYMENTS,Credit Card Payments
+856,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx7990,credit,2518,TRANSFERS,Transfers
+857,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx9956,credit,804,TRANSFERS,Transfers
+858,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE CHARGES FOR THE MONTH OF JANUARY,debit,94,SERVICE CHARGES/FEES,Uncategorized
+859,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1914,debit,526.69,CHECKS,Check Payment
+860,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1915,debit,462,CHECKS,Check Payment
+861,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1916,debit,110.87,CHECKS,Check Payment
+862,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1919,debit,554.1,CHECKS,Check Payment
+863,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,7000,,Deposits
+864,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1918,debit,22769.31,CHECKS,Check Payment
+865,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4089,credit,2979,TRANSFERS,Transfers
+866,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx0620,credit,652,TRANSFERS,Transfers
+867,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1911,debit,200,CHECKS,Check Payment
+868,2369,Health Care and Social Assistance,Dag Site - Bank,NYS TAX    FINANC UI PYMT Uxxxxxxx5236 CCD ID: xxxxxx9984,debit,37.8,TAXES,Taxes
+869,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,8059,,Deposits
+870,2369,Health Care and Social Assistance,Dag Site - Bank,NYS TAX    FINANC WT PYMT Wxxxxxxx5236 CCD ID: xxxxxx8475,debit,659.61,TAXES,Taxes
+871,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,3000,TRANSFERS,Transfers
+872,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1902,debit,1901.49,CHECKS,Check Payment
+873,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx6336,credit,5991,TRANSFERS,Transfers
+874,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,759,,Deposits
+875,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT M0506 WEB ID: xxxxxx2111,debit,300,CREDIT CARD PAYMENTS,Credit Card Payments
+876,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4636,credit,2136,TRANSFERS,Transfers
+877,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx6899,credit,174,TRANSFERS,Transfers
+878,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx6730,credit,881,TRANSFERS,Transfers
+879,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1909,debit,22769.31,CHECKS,Check Payment
+880,2369,Health Care and Social Assistance,Dag Site - Bank,IRS USATAXPYMT xxxxxxxxxxx1153 CCD ID: xxxxxx2000,debit,504,TAXES,Taxes
+881,2369,Health Care and Social Assistance,Dag Site - Bank,BIGCOMMERCE.COM xxx-xxx1350 TX01/14,debit,149.95,ONLINE SERVICES,Services/Supplies
+882,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx8594,credit,877,TRANSFERS,Transfers
+883,2369,Health Care and Social Assistance,Dag Site - Bank,IRS USATAXPYMT xxxxxxxxxxx9416 CCD ID: xxxxxx2000,debit,1339.72,TAXES,Taxes
+884,2369,Health Care and Social Assistance,Dag Site - Bank,ATM CHECK DEPOSIT 01/14 1260 BROADWAY NEW YORK NY,credit,157,DEPOSITS,Deposits
+885,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4705,credit,4231,TRANSFERS,Transfers
+886,2369,Health Care and Social Assistance,Dag Site - Bank,ATM CASH DEPOSIT 01/14 1260 BROADWAY NEW YORK NY,credit,160,DEPOSITS,Deposits
+887,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+888,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4598,credit,4657,TRANSFERS,Transfers
+889,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1908,debit,1847.1,CHECKS,Check Payment
+890,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1907,debit,1847.1,CHECKS,Check Payment
+891,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,5.91,POSTAGE AND SHIPPING,Postage/Shipping
+892,2369,Health Care and Social Assistance,Dag Site - Bank,SERVICE CHARGES FOR THE MONTH OF DECEMBER,debit,60,SERVICE CHARGES/FEES,Uncategorized
+893,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,151.63,POSTAGE AND SHIPPING,Postage/Shipping
+894,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,197.07,POSTAGE AND SHIPPING,Postage/Shipping
+895,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1905,debit,136.62,CHECKS,Check Payment
+896,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,117,POSTAGE AND SHIPPING,Postage/Shipping
+897,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,43.19,POSTAGE AND SHIPPING,Postage/Shipping
+898,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,49.15,POSTAGE AND SHIPPING,Postage/Shipping
+899,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,42.18,POSTAGE AND SHIPPING,Postage/Shipping
+900,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,65.71,POSTAGE AND SHIPPING,Postage/Shipping
+901,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,62.22,POSTAGE AND SHIPPING,Postage/Shipping
+902,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,37.4,POSTAGE AND SHIPPING,Postage/Shipping
+903,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,41.78,POSTAGE AND SHIPPING,Postage/Shipping
+904,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,7.02,POSTAGE AND SHIPPING,Postage/Shipping
+905,2369,Health Care and Social Assistance,Dag Site - Bank,U. P. S. UPS BILL xxxxx0000F586Y7 CCD ID: xxxxxx0436,debit,34.19,POSTAGE AND SHIPPING,Postage/Shipping
+906,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1904,debit,1049.98,CHECKS,Check Payment
+907,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1906,debit,251.6,CHECKS,Check Payment
+908,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,8000,,Deposits
+909,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx2109,credit,2254,TRANSFERS,Transfers
+910,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1901,debit,554.1,CHECKS,Check Payment
+911,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1897,debit,1901.49,CHECKS,Check Payment
+912,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx7778,credit,6357,TRANSFERS,Transfers
+913,2369,Health Care and Social Assistance,Dag Site - Bank,POLAND SPRING WATER xxx-xxx-9395CA 12/19,debit,30.19,UTILITIES,Utilities
+914,2369,Health Care and Social Assistance,Dag Site - Bank,Payment to Chase card ending in4333,debit,200,CREDIT CARD PAYMENTS,Credit Card Payments
+915,2369,Health Care and Social Assistance,Dag Site - Bank,DEPOSIT,credit,383.25,,Deposits
+916,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx0856,credit,4412,TRANSFERS,Transfers
+917,2369,Health Care and Social Assistance,Dag Site - Bank,BIGCOMMERCE.COM xxx-xxx1350 TX12/15,debit,149.95,ONLINE SERVICES,Services/Supplies
+918,2369,Health Care and Social Assistance,Dag Site - Bank,American Express ACH PMT M7250 WEB ID: xxxxxx2111,debit,811,CREDIT CARD PAYMENTS,Credit Card Payments
+919,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx4419,credit,1637,TRANSFERS,Transfers
+920,2369,Health Care and Social Assistance,Dag Site - Bank,IRS USATAXPYMT xxxxxxxxxxx3279 CCD ID: xxxxxx2000,debit,1339.72,TAXES,Taxes
+921,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx8337,credit,1565,TRANSFERS,Transfers
+922,2369,Health Care and Social Assistance,Dag Site - Bank,USCIS CHICAGO PAYMENT 1895CCD ID: xxxxxx0301,debit,420,CREDIT CARD PAYMENTS,Uncategorized
+923,2369,Health Care and Social Assistance,Dag Site - Bank,CHECK 1872,debit,1242.72,CHECKS,Check Payment
+924,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx6867,credit,1807,TRANSFERS,Transfers
+925,2369,Health Care and Social Assistance,Dag Site - Bank,ONLINE INTERNATIONAL WIRE TRANSFER A/C: BANK OF CHINA LIMITED HE,debit,10000,TRANSFERS,Transfers
+926,2369,Health Care and Social Assistance,Dag Site - Bank,Online Transfer from CHK ...4310transaction#: xxxxxx6355,credit,7377,TRANSFERS,Transfers

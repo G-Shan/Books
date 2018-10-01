@@ -1,0 +1,292 @@
+
+
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Jul 14 15:25:29 2018
+
+@author: TheJuniorLebowski
+"""
+
+import pandas as pd
+
+titanic = pd.read_csv('train.csv')
+titanic_test = pd.read_csv('test.csv')
+titanic.head()
+titanic_test.head().T # T is for transpose
+
+titanic.describe()
+
+titanic.info() # Info about data types
+
+#Making an object of null values
+null_columns=titanic.columns[titanic.isnull().any()]
+
+titanic.isnull().sum()
+
+#Visualizing the variables
+titanic.hist(bins=10,figsize=(9,7),grid=False)
+
+
+#correlation of features with target variable
+titanic.corr()["Survived"]
+
+
+#############    Missing Value Imputation
+null_columns
+
+#Lets check which rows have null Embarked column
+titanic[titanic['Embarked'].isnull()]
+
+freq_port = titanic.Embarked.dropna().mode()[0]
+freq_port
+titanic["Embarked"] = titanic["Embarked"].fillna(freq_port)
+
+# Missing Fare row has Pclass=3 and EMbarked = S
+titanic_test[titanic_test['Fare'].isnull()]
+
+#we can replace missing value in fare by taking median of all fares of those passengers 
+#who share 3rd Passenger class and Embarked from 'S' 
+def fill_missing_fare(df):
+    median_fare=df[(df['Pclass'] == 3) & (df['Embarked'] == 'S')]['Fare'].median()
+       #print(median_fare)
+    df["Fare"] = df["Fare"].fillna(median_fare)
+    return df
+
+titanic_test=fill_missing_fare(titanic_test)
+
+
+
+# Create a family size variable including the passenger themselves
+titanic["FamilySize"] = titanic["SibSp"] + titanic["Parch"]+1
+titanic_test["FamilySize"] = titanic_test["SibSp"] + titanic_test["Parch"]+1
+print(titanic["FamilySize"].value_counts())
+
+
+
+
+# Discretize family size
+titanic.loc[titanic["FamilySize"] == 1, "FsizeD"] = 'singleton'
+titanic.loc[(titanic["FamilySize"] > 1)  &  (titanic["FamilySize"] < 5) , "FsizeD"] = 'small'
+titanic.loc[titanic["FamilySize"] >4, "FsizeD"] = 'large'
+
+titanic_test.loc[titanic_test["FamilySize"] == 1, "FsizeD"] = 'singleton'
+titanic_test.loc[(titanic_test["FamilySize"] >1) & (titanic_test["FamilySize"] <5) , "FsizeD"] = 'small'
+titanic_test.loc[titanic_test["FamilySize"] >4, "FsizeD"] = 'large'
+print(titanic["FsizeD"].unique())
+print(titanic["FsizeD"].value_counts())
+
+
+
+#Create feture for length of name 
+# The .apply method generates a new series
+titanic["NameLength"] = titanic["Name"].apply(lambda x: len(x))
+
+titanic_test["NameLength"] = titanic_test["Name"].apply(lambda x: len(x))
+#print(titanic["NameLength"].value_counts())
+
+bins = [0, 20, 40, 57, 85]
+group_names = ['short', 'okay', 'good', 'long']
+titanic['NlengthD'] = pd.cut(titanic['NameLength'], bins, labels=group_names)
+titanic_test['NlengthD'] = pd.cut(titanic_test['NameLength'], bins, labels=group_names)
+
+
+
+
+########   Getting Title from Names
+import re
+
+#A function to get the title from a name.
+def get_title(name):
+    # Use a regular expression to search for a title.  Titles always consist of capital and lowercase letters, and end with a period.
+    title_search = re.search(' ([A-Za-z]+)\.', name)
+    #If the title exists, extract and return it.
+    if title_search:
+        return title_search.group(1)
+    return ""
+
+#Get all the titles and print how often each one occurs.
+titles = titanic["Name"].apply(get_title)
+print(pd.value_counts(titles))
+
+
+#Add in the title column.
+titanic["Title"] = titles
+
+# Titles with very low cell counts to be combined to "rare" level
+rare_title = ['Dona', 'Lady', 'Countess','Capt', 'Col', 'Don', 
+                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer']
+
+# Also reassign mlle, ms, and mme accordingly
+titanic.loc[titanic["Title"] == "Mlle", "Title"] = 'Miss'
+titanic.loc[titanic["Title"] == "Ms", "Title"] = 'Miss'
+titanic.loc[titanic["Title"] == "Mme", "Title"] = 'Mrs'
+titanic.loc[titanic["Title"] == "Dona", "Title"] = 'Rare Title'
+titanic.loc[titanic["Title"] == "Lady", "Title"] = 'Rare Title'
+titanic.loc[titanic["Title"] == "Countess", "Title"] = 'Rare Title'
+titanic.loc[titanic["Title"] == "Capt", "Title"] = 'Rare Title'
+titanic.loc[titanic["Title"] == "Col", "Title"] = 'Rare Title'
+titanic.loc[titanic["Title"] == "Don", "Title"] = 'Rare Title'
+titanic.loc[titanic["Title"] == "Major", "Title"] = 'Rare Title'
+titanic.loc[titanic["Title"] == "Rev", "Title"] = 'Rare Title'
+titanic.loc[titanic["Title"] == "Sir", "Title"] = 'Rare Title'
+titanic.loc[titanic["Title"] == "Jonkheer", "Title"] = 'Rare Title'
+titanic.loc[titanic["Title"] == "Dr", "Title"] = 'Rare Title'
+
+titanic["Title"].value_counts()
+
+titles = titanic_test["Name"].apply(get_title)
+print(pd.value_counts(titles))
+
+#Add in the title column.
+titanic_test["Title"] = titles
+
+# Titles with very low cell counts to be combined to "rare" level
+rare_title = ['Dona', 'Lady', 'Countess','Capt', 'Col', 'Don', 
+                'Dr', 'Major', 'Rev', 'Sir', 'Jonkheer']
+
+# Also reassign mlle, ms, and mme accordingly
+titanic_test.loc[titanic_test["Title"] == "Mlle", "Title"] = 'Miss'
+titanic_test.loc[titanic_test["Title"] == "Ms", "Title"] = 'Miss'
+titanic_test.loc[titanic_test["Title"] == "Mme", "Title"] = 'Mrs'
+titanic_test.loc[titanic_test["Title"] == "Dona", "Title"] = 'Rare Title'
+titanic_test.loc[titanic_test["Title"] == "Lady", "Title"] = 'Rare Title'
+titanic_test.loc[titanic_test["Title"] == "Countess", "Title"] = 'Rare Title'
+titanic_test.loc[titanic_test["Title"] == "Capt", "Title"] = 'Rare Title'
+titanic_test.loc[titanic_test["Title"] == "Col", "Title"] = 'Rare Title'
+titanic_test.loc[titanic_test["Title"] == "Don", "Title"] = 'Rare Title'
+titanic_test.loc[titanic_test["Title"] == "Major", "Title"] = 'Rare Title'
+titanic_test.loc[titanic_test["Title"] == "Rev", "Title"] = 'Rare Title'
+titanic_test.loc[titanic_test["Title"] == "Sir", "Title"] = 'Rare Title'
+titanic_test.loc[titanic_test["Title"] == "Jonkheer", "Title"] = 'Rare Title'
+titanic_test.loc[titanic_test["Title"] == "Dr", "Title"] = 'Rare Title'
+
+titanic_test["Title"].value_counts()
+
+
+
+
+
+
+# Tickent Numer last digits from ticket
+titanic["TicketNumber"] = titanic["Ticket"].str.extract('(\d{2,})', expand=True)
+titanic["TicketNumber"] = titanic["TicketNumber"].apply(pd.to_numeric)
+
+
+titanic_test["TicketNumber"] = titanic_test["Ticket"].str.extract('(\d{2,})', expand=True)
+titanic_test["TicketNumber"] = titanic_test["TicketNumber"].apply(pd.to_numeric)
+
+#some rows in ticket column dont have numeric value so we got NaN there
+titanic[titanic["TicketNumber"].isnull()]
+
+titanic.TicketNumber.fillna(titanic["TicketNumber"].median(), inplace=True)
+titanic_test.TicketNumber.fillna(titanic_test["TicketNumber"].median(), inplace=True)
+
+
+
+# Convert Categorical Vars into numeric
+from sklearn.preprocessing import LabelEncoder,OneHotEncoder
+labelEnc=LabelEncoder()
+
+cat_vars=['Embarked','Sex',"Title","FsizeD","NlengthD"]
+for col in cat_vars:
+    titanic[col]=labelEnc.fit_transform(titanic[col])
+    titanic_test[col]=labelEnc.fit_transform(titanic_test[col])
+titanic.head()
+
+
+
+
+###  We'll use random forest to fill missing values in Age
+from sklearn.ensemble import RandomForestRegressor
+#predicting missing values in age using Random Forest
+def fill_missing_age(df):
+    
+    #Feature set
+    age_df = df[['Age','Embarked','Fare', 'Parch', 'SibSp',
+                 'TicketNumber', 'Title','Pclass','FamilySize',
+                 'FsizeD','NameLength',"NlengthD"]]
+    # Split sets into train and test
+    train  = age_df.loc[ (df.Age.notnull()) ]# known Age values
+    test = age_df.loc[ (df.Age.isnull()) ]# null Ages
+    
+    # All age values are stored in a target array
+    y = train.values[:, 0]
+    
+    # All the other values are stored in the feature array
+    X = train.values[:, 1::]
+    
+    # Create and fit a model
+    rtr = RandomForestRegressor(n_estimators=2000, n_jobs=-1)
+    rtr.fit(X, y)
+    
+    # Use the fitted model to predict the missing values
+    predictedAges = rtr.predict(test.values[:, 1::])
+    
+    # Assign those predictions to the full data set
+    df.loc[ (df.Age.isnull()), 'Age' ] = predictedAges 
+    
+    return df
+
+titanic=fill_missing_age(titanic)
+titanic_test=fill_missing_age(titanic_test)
+
+
+
+
+
+# We can see that Age, Fare are measured on different scales, so we need to do Feature Scaling first before we proceed with predictions.
+from sklearn import preprocessing
+
+std_scale = preprocessing.StandardScaler().fit(titanic[['Age', 'Fare']])
+titanic[['Age', 'Fare']] = std_scale.transform(titanic[['Age', 'Fare']])
+
+std_scale = preprocessing.StandardScaler().fit(titanic_test[['Age', 'Fare']])
+titanic_test[['Age', 'Fare']] = std_scale.transform(titanic_test[['Age', 'Fare']])
+
+# Correlation of Features with Target 
+titanic.corr()["Survived"]
+
+
+
+
+
+from sklearn.model_selection import ShuffleSplit
+from sklearn import cross_validation
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.cross_validation import KFold
+from sklearn.model_selection import cross_val_predict
+
+import numpy as np
+predictors = ["Pclass", "Sex", "Age",
+              "Fare","NlengthD","NameLength", "FsizeD", "Title"]
+
+# Initialize our algorithm with the default paramters
+# n_estimators is the number of trees we want to make
+# min_samples_split is the minimum number of rows we need to make a split
+# min_samples_leaf is the minimum number of samples we can have at the place where a tree branch ends (the bottom points of the tree)
+rf = RandomForestClassifier(random_state=1, n_estimators=10, min_samples_split=2, 
+                            min_samples_leaf=1)
+kf = KFold(titanic.shape[0], n_folds=5, random_state=1)
+cv = ShuffleSplit(n_splits=10, test_size=0.3, random_state=50)
+
+predictions = cross_validation.cross_val_predict(rf, titanic[predictors],titanic["Survived"],cv=kf)
+predictions = pd.Series(predictions)
+scores = cross_val_score(rf, titanic[predictors], titanic["Survived"], scoring='f1', cv=kf)
+# Take the mean of the scores (because we have one for each fold)
+print(scores.mean())
+
+
+
+
+predictors = ["Pclass", "Sex", "Age",
+              "Fare","NlengthD","NameLength", "FsizeD", "Title","TicketNumber"]
+rf = RandomForestClassifier(random_state=1, n_estimators=50, max_depth=9,min_samples_split=6, min_samples_leaf=4)
+rf.fit(titanic[predictors],titanic["Survived"])
+kf = KFold(titanic.shape[0], n_folds=5, random_state=1)
+predictions = cross_validation.cross_val_predict(rf, titanic[predictors],titanic["Survived"],cv=kf)
+predictions = pd.Series(predictions)
+scores = cross_val_score(rf, titanic[predictors], titanic["Survived"],scoring='f1', cv=kf)
+# Take the mean of the scores (because we have one for each fold)
+print(scores.mean())
+

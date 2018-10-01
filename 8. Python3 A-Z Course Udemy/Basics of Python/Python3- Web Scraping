@@ -1,0 +1,36 @@
+from bs4 import BeautifulSoup as soup
+from urllib.request import urlopen as uReq
+
+myurl = 'http://www.hindustantimes.com/india-news/yogi-adityanath-in-agra-on-thursday-visit-to-taj-mahal-not-yet-confirmed/story-Bgb826wyZQyKdaex6kvNQK.html'
+
+
+#Opening Connection, getting the page
+uClient = uReq(myurl)
+pg_html = uClient.read()
+uClient.close()
+
+
+#html parsing
+pg_soup = soup(pg_html, "html.parser")
+
+#getting the content
+for div in pg_soup.findAll("div", {"itemprop":"articlebody"}):
+    print(div.text)
+
+
+
+#getting the content and saving it in a result object
+result = []
+for div in pg_soup.findAll("div", {"itemprop":"articlebody"}):
+    result.append(div.text)
+
+
+# Result type is list. Converting it into str
+result1 = ''.join(result)
+type(result1)
+
+# Installing textblob, importing it and getting the sentiment analysis
+!pip install --trusted-host pypi.python.org textblob
+from textblob import TextBlob
+sent = TextBlob(result1)
+sent.sentiment

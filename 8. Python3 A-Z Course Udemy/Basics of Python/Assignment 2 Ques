@@ -1,0 +1,236 @@
+
+
+1. Write a program that counts up the number of vowels contained in the string s. s is already defined. Valid vowels are: 'a', 'e', 'i',
+'o', and 'u'. For example, if s = 'azcbobobegghakl', your program should print:
+Number of vowels: 5
+
+Solution:
+total = 0
+for i in s:
+    if i in 'aeiou':
+        total += 1
+print 'Number of vowels:', total
+
+Alternative solution:::::
+total = 0
+for c in s:
+    if c == 'a' or c == 'e' or c == 'i' or c == 'o' or c == 'u':
+        total += 1
+print "Number of vowels: " + str(total)
+
+
+2. Write a program that prints the number of times the string 'bob' occurs in s. For example, if s = 'azcbobobegghakl', then your 
+program should print
+Number of times bob occurs is: 2
+
+Solution:
+cnt = 0 
+for i in range(len(s)): 
+   if s[i:i+3] == 'bob': 
+      cnt += 1 
+print 'Number of times bob occurs is: ' + str(cnt)
+
+ALTERNATE SOLUTION::
+numBobs = 0
+for i in range(1, len(s)-1):
+    if s[i-1:i+2] == 'bob':
+        numBobs += 1
+print 'Number of times bob occurs is:', numBobs
+
+
+
+3.  A catering company has hired you to help with organizing and preparing customer's orders. You are given a list of each customer's
+desired items, and must write a program that will count the number of each items needed for the chefs to prepare. The items that a
+customer can order are: salad, hamburger, and water.
+Write a function called item_order that takes as input a string named order. The string contains only words for the items the customer
+can order separated by one space. The function returns a string that counts the number of each item and consolidates them in the 
+following order: salad:[# salad] hamburger:[# hambruger] water:[# water]
+FOr example:
+If order = "salad water hamburger salad hamburger" then the function returns "salad:2 hamburger:2 water:1"
+
+Solution:
+
+def item_order(order):
+     salad = 0
+     hamburger = 0
+     water = 0
+     for i in range(len(order)):
+        if order[i:i+len('salad')] == "salad":  #Here i loops from i to i and add the length of salad in each i and check if it;s salad
+          salad += 1       #If yes, then it adds 1 in salad.
+        if order[i:i+len('hamburger')] == "hamburger":
+          hamburger += 1
+        if order[i:i+len('water')] == "water":
+          water += 1
+        
+     return "salad:" + str(salad) + " hamburger:" + str(hamburger) + " water:" + str(water)
+
+ALTERNATE SOLUTION:::
+
+def item_order(order):
+    salad = 0
+    hamburger = 0
+    water = 0
+    
+    startspace = 0    
+    space = 0
+    while space > -1:
+        space = order.find(' ', startspace)
+        if space == -1:
+            word = order[startspace:]
+        else:
+            word = order[startspace:space]
+        if word == "salad":
+            salad += 1
+        if word == "hamburger":
+            hamburger += 1
+        if word == "water":
+            water += 1
+        startspace = space+1
+    neworder = "salad:"+str(salad)+" hamburger:"+str(hamburger)+" water:"+str(water)
+    return neworder
+
+
+####################################       ASSIGNMENT 2        #########################################################
+
+1. Write a program to calculate the credit card balance after one year if a person only pays the minimum monthly payment required by
+the credit card company each month.
+The following variables contain values as described below:
+balance - the outstanding balance on the credit card
+annualInterestRate - annual interest rate as a decimal
+monthlyPaymentRate - minimum monthly payment rate as a decimal
+
+A summary of the required math is found below:
+Monthly interest rate= (Annual interest rate) / 12.0
+Minimum monthly payment = (Minimum monthly payment rate) x (Previous balance)
+Monthly unpaid balance = (Previous balance) - (Minimum monthly payment)
+Updated balance each month = (Monthly unpaid balance) + (Monthly interest rate x Monthly unpaid balance)
+
+Solution:
+
+MonthlyInterestRate = annualInterestRate/12
+sum1 = 0
+for i in range(1,13):
+      MMP = monthlyPaymentRate * balance #MMP is minimum monthly payment
+      MI = (balance-MMP)*MonthlyInterestRate
+      UB = balance - MMP + MI  #MI is monthly interest. UB is unpaid/remaining balance
+      print "Month: " + str(i)
+      print "Minimum monthly payment is: " + str("%.2f" % MMP) #"%.2f" % will give values upto two decimals only
+      print "Remaining balance is: " + str("%.2f" % UB)
+      balance = balance - MMP + MI
+      sum1 = sum1 + MMP  #It will give sum of all the MMP
+
+print "Total paid: " + str("%.2f" % sum1) #"%.2f" % makes sure only 2 digits after decimal displayed
+print "Remaining balance: " + str("%.2f" % UB)
+
+e.g.
+Test Case 1:
+	      balance = 4213
+	      annualInterestRate = 0.2
+	      monthlyPaymentRate = 0.04
+	      
+	      Result Your Code Should Generate:
+	      -------------------
+	      Month: 1
+	      Minimum monthly payment: 168.52
+	      Remaining balance: 4111.89
+	      Month: 2
+	      Minimum monthly payment: 164.48
+	      Remaining balance: 4013.2
+	      Month: 3
+	      Minimum monthly payment: 160.53
+	      Remaining balance: 3916.89
+	      ......etc
+	      
+	      
+2. Now write a program that calculates the minimum fixed monthly payment needed in order pay off a credit card balance within 12
+months. By a fixed monthly payment, we mean a single number which does not change each month, but instead is a constant amount that
+will be paid each month. In this problem, we will not be dealing with a minimum monthly payment rate.
+The following variables contain values as described below:
+balance - the outstanding balance on the credit card
+annualInterestRate - annual interest rate as a decimal
+
+The program should print out one line: the lowest monthly payment that will pay off all debt in under 1 year, for example:
+Lowest Payment: 180 
+
+Assume that the interest is compounded monthly according to the balance at the end of the month (after the payment for that month is
+made). The monthly payment must be a multiple of $10 and is the same for all months. Notice that it is possible for the balance to
+become negative using this payment scheme, which is okay. 
+A summary of the required math is found below:
+Monthly interest rate = (Annual interest rate) / 12.0
+Monthly unpaid balance = (Previous balance) - (Minimum fixed monthly payment)
+Updated balance each month = (Monthly unpaid balance) + (Monthly interest rate x Monthly unpaid balance)
+
+
+Solution:
+MonthlyInterestRate = annualInterestRate/12.0
+fixed = 10
+
+while True:
+    remain = balance
+    for i in range(1, 13):
+        remain = (remain - fixed) * (1 + MonthlyInterestRate)
+    if remain > 0:
+        fixed += 10 #If remain > 0, then increase remain by 10
+    else:
+        break
+    
+print 'Lowest Payment:', fixed
+
+e.g.
+Test Case 1:
+	      balance = 3329
+	      annualInterestRate = 0.2
+
+	      Result Your Code Should Generate:
+	      -------------------
+	      Lowest Payment: 310
+	      
+	      
+3.Now we are searching for the smallest monthly payment such that we can pay off the entire balance within a year- using bisection 
+search method. 
+What is a reasonable lower bound for this payment value? $0 is the obvious anwer, but you can do better than that. If there was no
+interest, the debt can be paid off by monthly payments of one-twelfth of the original balance, so we must pay at least this much
+every month. One-twelfth of the original balance is a good lower bound.
+
+What is a good upper bound? Imagine that instead of paying monthly, we paid off the entire balance at the end of the year. What we
+ultimately pay must be greater than what we would've paid in monthly installments, because the interest was compounded on the balance
+we didn't pay off each month. So a good upper bound for the monthly payment would be one-twelfth of the balance, after having its
+interest compounded monthly for an entire year.
+
+The following variables contain values as described below:
+balance - the outstanding balance on the credit card
+annualInterestRate - annual interest rate as a decimal
+
+In short:
+Monthly interest rate = (Annual interest rate) / 12.0
+Monthly payment lower bound = Balance / 12
+Monthly payment upper bound = (Balance x (1 + Monthly interest rate)12) / 12.0
+
+Solution: 
+MIR = (annualInterestRate)/12.0
+lower = balance/12.0
+upper = (balance*(1 + MIR)**12)/12.0 #In case he pays all the amount in the end of 12th monht. Interest rate would be accrued too.
+fixed = (upper+lower)/2.0
+
+while True:
+    remain = balance
+    for i in range(1, 13):
+        remain = (remain - fixed) * (1 + MIR)
+    if remain > 0:
+        lower = fixed
+    elif remain <= 0 and remain >= -0.01:
+        break
+    else:
+        upper = fixed
+    fixed = (lower + upper) / 2.0
+    
+print 'Lowest Payment:', round(fixed, 2)
+
+e.g.
+Test Case 1:
+	      balance = 320000
+	      annualInterestRate = 0.2
+
+	      Result Your Code Should Generate:
+	      -------------------
+	      Lowest Payment: 29157.09

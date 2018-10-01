@@ -1,0 +1,79 @@
+
+# TO run one or few lines in Spyder, select the lines, and press CTRL+ENTER
+# To get help in jupyter,select the function, presses, CTRL+i
+
+# Always remember, a class is always in capital letter and function is small letter and often underscore. For eg. in 
+ #from sklearn.preprocessing import LabelEncoder; here LabelEncoder is a class. from sklearn.metrics import confusion_matrix; here
+ confusion_matrix is a function and not a class
+
+del X 
+del datatset
+del y
+
+1)  Importing libraries and dataset
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+datatset = pd.read_csv("data.csv")
+
+# CHecking the missing values column-wise. 2nd and 3rd (1,2) columns have misisng values
+dataset.isnull().sum()
+
+# We are gonna create matrix of indepedent variablea and vector of dependent variable
+# Here we have to make sure that X is always a matrix (even if one variable) and y is always a vector
+X = datatset.iloc[:,:-1].values
+y = datatset.iloc[:,3].values
+y = y.reshape(-1,1)
+
+2)  Taking care of missing values
+
+# axis=0 means impute along columns (take mean value from column)
+from sklearn.preprocessing import Imputer
+imputed = Imputer(missing_values="NaN", strategy="mean", axis=0)  # Creating imputed object
+imputed = imputed.fit(X[:,1:3])  #imputed object is fitted to matrix X
+X[:,1:3] = imputed.transform(X[:,1:3]) #Replace the missing values of columns by the mean of their respective columns
+
+
+
+3)  Encode categorical variables
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+#These two lines would change cateorical variables into ordered factor which we dont want
+labelenc_X = LabelEncoder()
+X[:,0] = labelenc_X.fit_transform(X[:,0])
+
+# zero means we wanna select only the 1st column in the matrix
+onehotenc = OneHotEncoder(categorical_features=[0])
+X = onehotenc.fit_transform(X).toarray()
+
+# Encoding the binary variable
+labelenc_y = LabelEncoder()
+y = labelenc_y.fit_transform(y)
+
+
+
+4)  Splitting data into training and testing set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+
+
+5) Scaling the numerical data. Scaling can be done either by Standardization (minus mean and divide by SD) or normalizaion
+# standardization = (x -mean(x)/SD) and Normalization = (x-min(x))/(max(x)-min(x))
+
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test) # For test, we dont need to make it fitted as its already fitted fro train
+
+
+
+
+
+
+
+
+
+
+
+

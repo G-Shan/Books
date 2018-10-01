@@ -1,0 +1,122 @@
+Variable and their type:- 
+
+Identifier
+LeadID
+Industry - Categorical (9 Categories)
+Bank_Name - Categorical (32 Categories)
+description - Categorical (text sentences; we do bag of words on this)
+transaction_type - Categorical (debit/credit)
+amount - numeric
+B2C_KW_Category - Categorical (Response variable, 40 labels)
+Yodlee_Category- Categorical (57 Categories)
+
+
+
+
+import pickle
+import pandas as pd
+import numpy as np
+import re
+import nltk
+from nltk.corpus import stopwords
+
+from nltk.stem.porter import PorterStemmer
+
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
+
+##########################################
+
+
+filename = "F:/Yodlee/NLP Python/AL/Classifier.sav"
+classifier = pickle.load(open(filename,'rb'))
+print("Model loaded from disk !!!")
+
+filename = "F:/Yodlee/NLP Python/AL/LabelEncoder.sav"
+labelenc_y = pickle.load(open(filename,'rb'))
+print("Model loaded from disk !!!")
+
+filename = "F:/Yodlee/NLP Python/AL/CountVetorizer.sav"
+cv = pickle.load(open(filename,'rb'))
+print("Model loaded from disk !!!")
+
+
+###############################################
+
+
+
+test_data = pd.read_csv("F:/Yodlee/NLP Python/AL/data6.csv",encoding = "ISO-8859-1")
+
+temp_df = test_data
+
+print(test_data.columns)
+
+test_corpus = []
+
+print("Test Corpus processing begins .....")
+
+for i in range(0, test_data.shape[0]):
+    description = re.sub('[^a-zA-Z]', ' ',str( test_data['description'][i]))
+    description = description.lower()
+    description = description.split()
+    ps = PorterStemmer()
+    description = [ps.stem(word) for word in description if not word in set(stopwords.words('english'))]
+    description = ' '.join(description)
+    test_corpus.append(description)
+    
+print("processing done !!")
+
+
+###############################################
+
+cv_test = CountVectorizer(vocabulary=cv.get_feature_names(),min_df=.0025, stop_words='english')
+
+test_mat = cv_test.fit_transform(test_corpus).toarray()
+
+print(len(cv_test.get_feature_names()))
+
+test_df = pd.DataFrame(test_mat)
+
+test_data = pd.get_dummies(data=test_data, columns=['Bank_Name','Industry', 'transaction_type', 'Yodlee_Category'])
+
+data = pd.read_csv("F:/Yodlee/NLP Python/AL/ColumnOrder.csv")
+
+missing_cols = set( data.columns ) - set( test_data.columns )
+
+for c in missing_cols:
+    test_data[c] = 0
+
+test_data = test_data[data.columns]
+
+print(len(test_data.columns))
+
+
+
+test_data = test_data.drop(['Identifier','LeadID','description','B2C_KW_Category'],axis=1)
+# test_data = test_data.drop(['Identifier','LeadID','description','B2C_KW_Category','Unnamed: 0'],axis=1)
+
+
+###############################################
+
+final_df = pd.concat([test_df, test_data], axis=1)
+
+matrix = final_df.iloc[:].values
+
+y_predicted = classifier.predict(matrix)
+
+
+################################################
+values = labelenc_y.inverse_transform(y_predicted)
+
+print(values)
+
+
+##################################################
+
+temp_df['Predicted'] = values
+
+temp_df.to_csv("F:/Yodlee/NLP Python/AL/Picklepred66.csv")
+

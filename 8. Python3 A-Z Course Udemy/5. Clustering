@@ -1,0 +1,114 @@
+
+
+WCSS = summation[distance(Pi, C1)^2] + summation[distance(Pi, C2)^2] +.... nth cluster
+
+Pi is every point within a particular cluster. C1 is centroid distance of cluster one and so on
+basically tells us to take squared distance between each point in cluster 1 and centroid distance in cluster 1 and then sum them all.
+Same for cluster 2 and 3. Here we try to minimize WCSS (Within-Cluster Sum of Square). WCSS is nothing but variance. Centroid is
+arithmetic mean.
+TSS (Total Sum of Squares) = WCSS + BCSS (Between Cluster SS). So, if WCSS would be minimum, distance between clusters (BCSS) would
+be maximum, so our clusters would be robust.
+
+Deciding How Many Clusters to Make:-
+One method to validate the number of clusters is the elbow method. The idea of the elbow method is to run k-means clustering on the
+dataset for a range of values of k (say, k from 1 to 10 in the examples above), and for each value of k calculate the sum of squared
+errors (SSE).
+However, the elbow method doesn't always work well; especially if the data is not very clustered. In cases like this, we might try a
+different method for determining the optimal k, such as computing silhouette scores, or we might reevaluate whether clustering is the
+right thing to do on our data.
+
+
+
+
+1) K-Means Clustering
+2) Hierarchical Clustering
+
+########################        1. K-Means Clustering                ##################################
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# We need to ignore the double quotes in dataset using quoting=3
+df = pd.read_csv('Mall_Customers.csv')
+X = df.iloc[:, [3,4]].values
+
+#USing elbow method to find the optimal number of clusters
+from sklearn.cluster import KMeans
+wcss = []
+for i in range(1,11):
+    kmeans = KMeans(n_clusters=i, init='k-means++', max_iter=300, n_init=10, random_state=0)
+    # init is initialization method. n_init is no. of times kmeans algorithm would be run with diff centroid seeds.
+    #max_iter is no. of iterations, 
+    kmeans.fit(X)
+    wcss.append(kmeans.inertia_) #Calculate wcss which is also called interia
+
+plt.plot(range(1,11), wcss)
+plt.title('The Elbow Method')
+plt.xlabel('Number of Clusters')
+plt.ylabel('wcss')
+plt.show()
+
+# On the basis of elbow method, we would use 5 clusters
+
+kmeans1 = KMeans(n_clusters=5, init='k-means++', max_iter=300, n_init=10, random_state=0)
+y_kmeans = kmeans1.fit_predict(X) # Clusters are assigned here. 1st cluster is zero and so on
+
+
+#Visualizing the clusters. It's applicable only if there are two variables
+
+plt.scatter(X[y_kmeans==0,0], X[y_kmeans==0,1], s=100, c='red', label='Cluster 1')
+plt.scatter(X[y_kmeans==1,0], X[y_kmeans==1,1], s=100, c='blue', label='Cluster 2')
+plt.scatter(X[y_kmeans==2,0], X[y_kmeans==2,1], s=100, c='green', label='Cluster 3')
+plt.scatter(X[y_kmeans==3,0], X[y_kmeans==3,1], s=100, c='yellow', label='Cluster 4')
+plt.scatter(X[y_kmeans==4,0], X[y_kmeans==4,1], s=100, c='magenta', label='Cluster 5')
+plt.scatter(kmeans1.cluster_centers_[:,0], kmeans1.cluster_centers_[:,1], s=300, c='yellow', label='Cluster 1')
+plt.title('Clusters of Clients')
+plt.xlabel('Annual Income')
+plt.ylabel('Spending Score (1-100)')
+plt.legend()
+plt.show()
+
+
+
+
+
+########################        1. K-Means Clustering                ##################################
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('Mall_Customers.csv')
+X = df.iloc[:,[3,4]].values
+
+# Using dendogram to find optimal number of Clusters
+# ward method minimizes variance within each cluster
+import scipy.cluster.hierarchy as sch
+dendogram = sch.dendrogram(sch.linkage(X, method='ward'))
+plt.title('Dendogram')
+plt.xlabel('Customers')
+plt.ylabel('Euclidean distances')
+plt.show
+
+# Fitting hierarchical clustering to the mall dataset. 5 clusters
+from sklearn.cluster import AgglomerativeClustering
+hc = AgglomerativeClustering(n_clusters=5, affinity='euclidean', linkage='ward')
+y_hc = hc.fit_predict(X)
+
+# Visualizing the clusters. It's applicable only if there are two variables
+plt.scatter(X[y_hc==0,0], X[y_hc==0,1], s=100, c='red', label='Cluster 1')
+plt.scatter(X[y_hc==1,0], X[y_hc==1,1], s=100, c='blue', label='Cluster 2')
+plt.scatter(X[y_hc==2,0], X[y_hc==2,1], s=100, c='green', label='Cluster 3')
+plt.scatter(X[y_hc==3,0], X[y_hc==3,1], s=100, c='yellow', label='Cluster 4')
+plt.scatter(X[y_hc==4,0], X[y_hc==4,1], s=100, c='magenta', label='Cluster 5')
+plt.title('Clusters of Clients')
+plt.xlabel('Annual Income')
+plt.ylabel('Spending Score (1-100)')
+plt.legend()
+plt.show()
+
+
+
+

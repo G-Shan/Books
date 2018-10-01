@@ -1,0 +1,117 @@
+
+
+str1 = 'hello'
+str2 = ','
+str3 = 'world'
+str4 = str1 + str3
+
+Indexing               0  1  2  3  4  5  6  7  8   9
+String                 h  e  l  l  o  w  o  r  l   d
+Negative Indexing    -10 -9 -8 -7 -6 -5 -4 -3 -2  -1
+
+1) str1[0]
+"h"
+
+2) str1[1]
+"e"
+
+3) str1[-1]
+"o"
+
+4) len(str1)
+5
+
+6) str1 + str2 + str3
+"hello,world"
+
+7)str1 + str2 + "" + str3
+"hello, world"
+
+8)str3*3
+"worldworldworld"
+
+9) "a" in str3  #When we use "in" argument for a string, it always gives boolean values
+False
+
+10)'low' in str4 
+True
+
+11) str3[1:3]
+"or"
+12) str3[:-1] #It will give all indexes except the last one
+"worl"
+
+13) str1[1:]
+"ello"
+
+14) str4[1:9]
+"elloworl"
+
+15) str4[1:9:2] #Here 2 is stride. It ensures every alternate letter b/w 1:9 is skipped. If stride=3, two letters after each is skipped
+"elwr"
+
+16) str4[::-1]
+"dlrowolleh"
+
+17) str4[:]  #It will just create a copy of the original string
+"helloworld"
+
+###################################################################################################################################
+
+
+> str1 = 'exterminate!' 
+> str2 = 'number one - the larch'
+
+1. str1.upper
+function
+
+2. str1.upper()
+"EXTERMINATE!"
+
+3. str1.isupper()  #CHecks if the variable is in upper letters
+  False
+
+4. str2 = str2.capitalize(); str2
+ "Number one - the larch"
+
+5. str2.swapcase()  #HEre it will swap the case. 1st n was capitalized in last arguement hence its lower here
+ "nUMBER ONE - THE LARCH"
+
+
+6. str1.index('e')
+   0
+
+7.str2.index('n')
+   8
+
+8. str2.find('n')
+   8
+
+9. str2.index('!')
+   error
+
+
+10. str2.find('!')  #Find gives -1 in case letter is not there; unlike index.
+   -1
+
+11. str1.count('e')
+    3
+
+12. str1.replace('e', '*') 
+    "*xt*rminat*!"
+
+13.  str2.replace('one', 'seven')
+    "Number seven - the larch"
+
+#####################################################################################################################################
+Comma(,) in print function will produce a space between the object
+>>> x = 5
+>>> print("my fav num is", x)  #If we use comma, it gives as space in output and we dont need to change x to str
+my fav num is 5
+
+>>> print("my fav num is" + str(x)) #If we use + sign, we need to change x to str to print. There is space in output cuz no space in input
+my fav num is5
+
+>>> print("my fav num is " + str(x))
+my fav num is 5
+

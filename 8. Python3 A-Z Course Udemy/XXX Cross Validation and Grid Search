@@ -1,0 +1,84 @@
+
+
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jul 16 13:46:21 2018
+
+@author: sohail.ahmad
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('Social_Network_Ads.csv')
+X = df.iloc[:,[2,3]].values
+y = df.iloc[:,4].values
+#y = y.reshape(-1,1)
+#X[:,0:2] = X[:,0:2].astype(float) # X is into integer, it would give warning when spilling into test train hence conversion
+
+
+# Splitting the dataset into training and test set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+
+
+# Feature Scaling
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test)
+
+# Model training and prediction on test set
+from sklearn.svm import SVC
+classifier = SVC(kernel='rbf', random_state=0)
+classifier.fit(X_train, y_train)
+y_pred = classifier.predict(X_test)
+
+
+# Making the Confusion Matrix
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+
+# Applying K-Fold Cross Validation. Classifier is our model here
+from sklearn.model_selection import cross_val_score
+accuracies = cross_val_score(estimator=classifier, X=X_train, y=y_train, cv=10, n_jobs=-1)
+accuracies.mean()
+accuracies.std()
+
+# Applying Grid searxh to find the best model and its parametes (here for SVC model)
+from sklearn.model_selection import GridSearchCV
+
+# Selecting parameters for SVC. rbf kernel has gamma values hence taking diff values of gamma as well
+parameters = [{'C': [1, 10, 100, 1000],'kernel' : ['linear']},
+             {'C': [1, 10, 100, 1000],'kernel' : ['rbf'], 'gamma': [0.5, 0.1, 0.01, 0.001, 0.0001]}
+             ]
+
+
+# n_jobs=-1 tells the model to take all rams for model training
+grid_search = GridSearchCV(estimator=classifier,
+                           param_grid=parameters,
+                           scoring = 'accuracy',
+                           cv = 10,
+                           n_jobs = -1
+                           )
+
+# Training the model across diff value of parameters
+grid_search = grid_search.fit(X_train, y_train)
+
+# Here we select the model which has best accuracy amongs all models with diff paramets
+best_accuracy = grid_search.best_score_
+
+# Here we save the values of best parametes in a variable
+best_parameters = grid_search.best_params_
+# Now we can change the values of C to diff values and check whether best_accuracy improves further. We can use these parameters
+# to retrain our model now
+
+
+# Visulazation
+from mlxtend.plotting import plot_decision_regions
+plot_decision_regions(X_test, y_test, clf=classifier, legend=2, colors=('red,green'))
+plt.title('Logistic Regression (Test Set)')
+plt.xlabel('Age')
+plt.ylabel('Estimated Salary')
+plt.show()

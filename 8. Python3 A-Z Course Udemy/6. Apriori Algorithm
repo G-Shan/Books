@@ -1,0 +1,88 @@
+
+
+Apriori algorithm is used to find the frequent features/ items that occur together.
+An association rule is a pattern that states when X occurs, Y occurs with certain probability.
+
+This process is done iteratively i.e. frequent item-sets with 1 item are found first, then 2 items, then 3 and so on…
+Before we move on to the algorithm it is important to understand some important terms:
+
+    Support: The rule holds with support sup in T (the transaction data set) if sup% of transactions contain X U Y.
+    sup = Pr(X U Y) = count( X U Y) / total transaction count
+
+    Confidence: The rule holds in T with confidence conf if conf% of transactions that contain X also contain Y.
+    conf = Pr(Y | X) = count( X U Y) / count(X)
+
+Algorithm:
+
+1) First we find the single items that have the required count/support.
+2) Then we combine this single item with all the other items to shortlist the 2-item data sets that satisfy the required support.
+3) Then, we generate all the possible rules that are contained in these 2-item datasets and obtain the rules that satisfy the minimum confidence.
+4) Then, we move on to calculate the frequent 3-item data sets instead of 2-item data sets using 2 and 3 recursively and so on…
+
+
+Support: Support is the basic probability of an event to occur. If we have an event to buy product A, Support(A) is the number of 
+transactions which includes A divided by total number of transactions.
+
+Confidence: The confidence of an event is the conditional probability of the occurrence; the chances of A happening given B has
+already happened.
+
+Lift: This is the ratio of confidence to expected confidence.The probability of all of the items in a rule occurring together
+(otherwise known as the support) divided by the product of the probabilities of the items on the left and right side occurring as 
+if there was no association between them.
+
+The lift value tells us how much better a rule is at predicting something than randomly guessing. The higher the lift, the stronger
+the association.
+
+
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv('Market_Basket_optimisation.csv', header=None)
+
+
+# Apriori expects list of items and each transaction would be list itself. So list of lists
+transactions = []
+for i in range(0,7501):
+    transactions.append([str(df.values[i,j]) for j in range(0,20)])
+    
+
+
+# Training Apriori on the dataset. We need to make sure we have python file apyori in working directory
+# min_length is the min no. of products we want to have in our association rule
+
+# Here we wanna take products for association which are sold at least thrice a day,so in a week it would 27. Total rows
+# or transaction is 7500. min_support=21/7500=0.0028=0.003. All products being sold thrice or more would be part of association rule
+    
+
+# We can change the values and try diff values to get good association rule
+
+from apyori import apriori
+rules = apriori(transactions, min_support=0.003, min_confidence=0.2, min_lift=3, min_length=2)
+
+
+# Visualizing the result
+# CLick on results_list, then click on value column
+results = list(rules)
+
+
+results_list = []
+for i in range(0, len(results)):
+        results_list.append('RULE:\t' + str(results[i][0]) + 
+                            '\nSUPPORT:\t' + str(results[i][1]) +
+                            '\nCONF:\t' + str(results[i][2][0][2]) +
+                            '\nLIFT:\t' + str(results[i][2][0][3]))
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,301 @@
+
+
+1) Linear Regression- One Variable
+2) Multipe Lin Reg with Backward Elimination
+3) AUTOMATIC BACKWARD ELIMINATION WITH P-VALUES ONLY
+4) AUTOMATIC BACKWARD ELIMINATION WITH P-VALUES & ADJUSTRED R SQUARED
+5) POLYNOMIAL REGRESSION
+
+Note- Visualization is applicable if there are two indepdent variables only
+
+#################   1.   Linear Regression- One Variable      ################################
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv("Salary_Data.csv")
+
+X = df.iloc[:,:-1].values
+y = df.iloc[:,1].values
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1/3, random_state=0)
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+
+y_pred = regressor.predict(X_test)
+
+# Visualizing the the training set
+plt.scatter(X_train, y_train, color="red")
+plt.plot(X_train, regressor.predict(X_train), color="blue")
+plt.title("Salary vs Experience (Training Set)")
+plt.xlabel("Years of Exprience")
+plt.ylabel("Salary")
+plt.show()
+
+# Visualizing the the test set
+plt.scatter(X_test, y_test, color="red")
+plt.plot(X_train, regressor.predict(X_train), color="blue") # We dont need to chnage this as its trained model
+plt.title("Salary vs Experience (Test Set)")
+plt.xlabel("Years of Exprience")
+plt.ylabel("Salary")
+plt.show()
+
+
+
+
+##################   2.   Multiple Linear Regression with Backward Elimination Method           ################################
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dataset = pd.read_csv("50_Startups.csv")
+dataset.isnull().sum()
+
+# We are gonna create matrix of indepedent variablea and vector of dependent variable
+X = dataset.iloc[:,:-1].values
+y = dataset.iloc[:,4].values
+
+# Encoding categorical indepdent variable
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelenc_X = LabelEncoder()
+X[:,3] = labelenc_X.fit_transform(X[:,3])
+onehotenc = OneHotEncoder(categorical_features=[3])
+X = onehotenc.fit_transform(X).toarray()
+
+# Avoiding the dummy variable trap. We remove the 1st dummy variable as it is unnecessary
+X = X[:, 1:] #Take all the columns starting 1. We did not take column zero index
+
+# Taking care of missing values
+'''
+# axis=0 means impute along means (take mean value from column)
+from sklearn.preprocessing import Imputer
+imputed = Imputer(missing_values="NaN", strategy="mean", axis=0)  # Creating imputed object
+imputed = imputed.fit(X[:,1:3])  #imputed object is fitted to matrix X
+X[:,1:3] = imputed.transform(X[:,1:3]) #Replace the missing values of columns by the mean of their respective columns
+'''
+
+# Splitting data into training and testing set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+# Scaling the numerical data. Scaling can be done either by Standardization (minus mean and divide by SD) or normalizaion
+# standardization = (x -mean(x)/SD) and Normalization = (x-min(x))/(max(x)-min(x))
+'''
+
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test) # For test, we dont need to make it fitted as its already fitted fro train
+'''
+
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+
+y_pred = regressor.predict(X_test)
+
+
+######  Building the optimal model using Backward Elimination. We'd remove variable with highest p-value and retrain model
+
+# Here we're adding matrix of 50*1 which has 1 as values in the X matrix. This 50*1 is constant value a in equation Y= a+bX 
+import statsmodels.formula.api as sm
+X = np.append(arr=np.ones((50,1)).astype(int), values=X, axis=1)
+X_opt = X[:, [0,1,2,3,4,5]] #We are taking index of all variables
+# Optimal model consists of a model where all 6 variables are present and we remove em one by one
+regressor_OLS = sm.OLS(endog=y, exog=X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:,[0,1,3,4,5]] # We remove variable with index 2 which has highest p-value and retrain model
+regressor_OLS1 = sm.OLS(endog=y, exog=X_opt).fit()
+regressor_OLS1.summary()
+
+# We would keep following this iterative process untill and unless p-value for remaining vars would be 0.05 or less
+
+
+
+#######################  3.  AUTOMATIC BACKWARD ELIMINATION WITH P-VALUES ONLY     #######################
+
+## BackwarElimination function which would automatically gives us imp vars for modelling
+import statsmodels.formula.api as sm
+def backwardElimination(x, sl):
+            numVars = len(x[0])
+            for i in range(0, numVars):
+                regressor_OLS = sm.OLS(y, x).fit()
+                maxVar = max(regressor_OLS.pvalues).astype(float)
+                if maxVar > sl:
+                    for j in range(0, numVars - i):
+                        if (regressor_OLS.pvalues[j].astype(float) == maxVar):
+                            x = np.delete(x, j, 1)
+            regressor_OLS.summary()
+            return x
+         
+SL = 0.05
+X = np.append(arr=np.ones((50,1)).astype(int), values=X, axis=1)
+X_opt = X[:, [0, 1, 2, 3, 4, 5]]
+X_Modeled = backwardElimination(X_opt, SL)
+
+
+
+###############################
+#### Exampple using this automatic function
+#################################
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+dataset = pd.read_csv("50_Startups.csv")
+dataset.isnull().sum()
+
+# We are gonna create matrix of indepedent variablea and vector of dependent variable
+X = dataset.iloc[:,:-1].values
+y = dataset.iloc[:,4].values
+
+# Encoding categorical indepdent variable
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelenc_X = LabelEncoder()
+X[:,3] = labelenc_X.fit_transform(X[:,3])
+onehotenc = OneHotEncoder(categorical_features=[3])
+X = onehotenc.fit_transform(X).toarray()
+
+# Avoiding the dummy variable trap. We remove the 1st dummy variable as it is unnecessary
+X = X[:, 1:] #Take all the columns starting 1. We did not take column zero index
+
+import statsmodels.formula.api as sm
+def backwardElimination(x, sl):
+            numVars = len(x[0])
+            for i in range(0, numVars):
+                regressor_OLS = sm.OLS(y, x).fit()
+                maxVar = max(regressor_OLS.pvalues).astype(float)
+                if maxVar > sl:
+                    for j in range(0, numVars - i):
+                        if (regressor_OLS.pvalues[j].astype(float) == maxVar):
+                            x = np.delete(x, j, 1)
+            regressor_OLS.summary()
+            return x
+         
+SL = 0.05
+X = np.append(arr=np.ones((50,1)).astype(int), values=X, axis=1)
+X_opt = X[:, [0, 1, 2, 3, 4, 5]]
+X_Modeled = backwardElimination(X_opt, SL)
+
+# Splitting the dataset into the Training set and Test set
+from sklearn.cross_validation import train_test_split
+X_Modeled_train, X_Modeled_test, y_train, y_test = train_test_split(X_Modeled, y, test_size = 0.2, random_state = 0)
+
+
+regressor_OLS1 = sm.OLS(endog=y_train, exog=X_Modeled_train).fit()
+regressor_OLS1.summary()
+
+
+
+
+#######################  4.  AUTOMATIC BACKWARD ELIMINATION WITH P-VALUES & ADJUSTRED R SQUARED     #######################
+import statsmodels.formula.api as sm
+def backwardElimination(x, SL):
+            numVars = len(x[0])
+            temp = np.zeros((50,6)).astype(int)
+            for i in range(0, numVars):
+                regressor_OLS = sm.OLS(y, x).fit()
+                maxVar = max(regressor_OLS.pvalues).astype(float)
+                adjR_before = regressor_OLS.rsquared_adj.astype(float)
+                if maxVar > SL:
+                    for j in range(0, numVars - i):
+                        if (regressor_OLS.pvalues[j].astype(float) == maxVar):
+                            temp[:,j] = x[:, j]
+                            x = np.delete(x, j, 1)
+                            tmp_regressor = sm.OLS(y, x).fit()
+                            adjR_after = tmp_regressor.rsquared_adj.astype(float)
+                            if (adjR_before >= adjR_after):
+                                x_rollback = np.hstack((x, temp[:,[0,j]]))
+                                x_rollback = np.delete(x_rollback, j, 1)
+                                print (regressor_OLS.summary())
+                                return x_rollback
+                            else:
+                                continue
+            regressor_OLS.summary()
+            return x
+         
+SL = 0.05
+X_opt = X[:, [0, 1, 2, 3, 4, 5]]
+X_Modeled = backwardElimination(X_opt, SL)
+
+
+
+
+
+##############################      5.     POLYNOMIAL REGRESSION       ##########################################
+
+# Here we train model on all the data, draw regression prediction graph and predict salaries (y) on a new experience (X)
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df = pd.read_csv("Position_Salaries.csv")
+
+# Here [:,1] would do as well for X but then X wont be a matrxi but a vector. We used [:1:2] to make sure 
+# it's a vector although [:,1] & [:,1:2] would only select the index 1 but latter would make it a matrix
+# Always make sure X is a matrix and y is a vector
+X = df.iloc[:,1:2].values
+y = df.iloc[:,2].values
+
+'''
+#Splitting data into train and testing set
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+'''
+
+# No need to do feature scaling as well. polynomial reg has inbuilt feature to take care of scaling
+
+
+# We'll make linear and polynomial regression and compare their result
+
+
+#Linear Regression
+from sklearn.linear_model import LinearRegression
+lin_reg = LinearRegression()
+lin_reg.fit(X, y)
+
+# Polynomial Regression
+from sklearn.preprocessing import PolynomialFeatures
+poly_reg = PolynomialFeatures(degree=2)
+X_poly = poly_reg.fit_transform(X)
+lin_reg2 = LinearRegression()
+lin_reg2.fit(X_poly, y)
+# Here X_poly have three variables now, 1st one is intercept of ones, 2nd is actual X values. 3rd var is square of X
+
+#Visualizing the linear regression results
+plt.scatter(X, y, color="red")
+plt.plot(X, lin_reg.predict(X), color='blue')
+plt.title('Truth or Bluff (Linear Regression)')
+plt.xlabel('Position Level')
+plt.ylabel('Salary')
+plt.show()
+# Here straight line is the graph of linear model prediction. Not a good model as predicted points are way off from actual values
+
+
+#Visualizing the polynomial regression results
+plt.scatter(X, y, color="red")
+plt.plot(X, lin_reg2.predict(poly_reg.fit_transform(X)), color='blue')
+plt.title('Truth or Bluff (Polynomial Regression)')
+plt.xlabel('Position Level')
+plt.ylabel('Salary')
+plt.show()
+
+
+# Predict a new result with linear regression. Predicting salary for an experience of 6.5 
+lin_reg.predict(6.5)
+
+# Predict a new result with Polynomial regression
+lin_reg2.predict(poly_reg.fit_transform(6.5))
+
+
+
