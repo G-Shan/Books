@@ -1,0 +1,213 @@
+
+########################       PCA- Unsupervised Learning     ###################################
+
+
+attach(USArrests)
+states = USArrests
+
+names(states)
+head(states)
+tail(states)
+max(states$Assault)
+which.max(states$Assault)
+states$Assault[33]
+states[33,]
+
+# apply() func allows us to apply a function, mean() to each row or column of the data set. The second input here denotes whether we 
+# wish to compute the mean of the rows, 1,or the columns, 2.# Here we see that all 4 variables have vastly diff mean values
+apply(states , 2, mean)
+
+#Checking the variance of all the 4 columns. Variables have vastly diff variances
+apply(states , 2, var)
+
+# UrbanPop is the percentage of population that lives in urban areas.
+
+#Performing PCA. We're also scaling all variables because diff variables are measured on diff scales. It will make all variables having
+# SD of 1.For eg. UrbanPop is %ge while Rape is rape cases for 100k population. prcomp is used for Principal component analysis
+PCA1 = prcomp(states , scale =TRUE)
+
+# prcomp has a number of useful quantities
+names(PCA1)
+
+# The center and scale components correspond to the means and standard deviations of the variables that were used for scaling prior
+# to implementing PCA.
+PCA1$center
+PCA1$scale
+
+# The rotation matrix provides the principal component loadings; each column of PCA1$rotation contains the corresponding principal 
+# component loading vector.
+PCA1$rotation
+
+# X has principal component score corresponding to each column and row
+edit(PCA1$x)
+dim(PCA1$x)
+
+#We can plot the 1st two component loadings as follows. The scale=0 argument to biplot() ensures that the arrows are scaled to 
+# represent the loadings;
+biplot(PCA1 , scale =0)
+
+#Standard deviation for all the variables
+PCA1$sdev
+
+# Variance for the variables. It would be square of SD
+var1 = PCA1$sdev^2
+var1
+
+# To compute the proportion of variance explained by each principal component, we simply divide the variance explained by each principal
+# component by the total variance explained by all four principal components:
+pve = var1/sum(var1)
+pve
+
+# We see that the first principal component explains 62.0% of the variance in the data,
+# the next principal component explains 24.7% of the variance, and so forth.
+
+#We can plot the PVE explained by each component, as well as the cumulative PVE, as follows
+plot(pve , xlab="Principal Comp", ylab= "Proport of Variance Explained", ylim = c(0,1) ,type="b")
+
+plot(cumsum (pve ), xlab=" Principal Component ", ylab ="Cumulative Proportion of Variance Explained ", ylim=c(0,1) ,type="b")
+
+#Here cumsum() gives the cumulative sum of numerical vectors
+a=c(1,2,8,-3)
+cumsum(a)  #Ans would be 1, 3, 11, 8
+
+##############################         K Means and H Clustering         ########################################
+
+set.seed (2)
+x=matrix(rnorm (50*2) , ncol =2)
+x[1:25 ,1]= x[1:25 ,1]+3
+x[1:25 ,2]= x[1:25 ,2]-4
+edit(x)
+KM = kmeans(x,2, nstart =20)
+KM$cluster
+
+plot(x, col =(KM$cluster +1) , main="K-Means Clustering
+Results with K=2", xlab ="", ylab="", pch =20, cex =2)
+
+# Note that km.out$tot.withinss is the total within-cluster sum of squares, which we seek to minimize by performing K-means clustering. 
+# nstart option that attempts multiple initial configurations and reports on the best one. For example, adding nstart=20 will generate
+# 25 initial configurations.
+set.seed(3)
+KM = kmeans(x,3, nstart =1)
+KM$tot.withinss
+KM = kmeans(x,3, nstart =20)
+KM$tot.withinss
+
+############################           Heirarchical Clustering        #####################################
+
+# The dist() function is used to compute the 50 × 50 inter-observation Euclidean distance matrix.
+HCcomplete = hclust(dist(x), method = "complete")
+HCaverage = hclust(dist(x), method = "average")
+HCsingle = hclust(dist(x), method = "single")
+
+par(mfrow =c(1,3))
+plot(HCcomplete ,main =" Complete Linkage ", xlab="", sub ="", cex =.9)
+
+plot(HCaverage , main =" Average Linkage ", xlab="", sub ="", cex =.9)
+
+plot(HCsingle , main=" Single Linkage ", xlab="", sub ="", cex =.9)
+
+# To determine the cluster labels for each observation associated with a
+# given cut of the dendrogram, we can use the cutree() function:
+cutree(HCcomplete , 2)
+cutree(HCaverage , 2)
+cutree(HCsingle , 2)
+
+#For this data, complete and average linkage generally separate the observationsinto their correct groups. However, single linkage 
+identifies one point as belonging to its own cluster. A more sensible answer is obtained when four clusters are selected, although
+there are still two singletons.
+cutree (HCsingle , 4)
+
+# To scale the variables before performing hierarchical clustering of the observations, we use the scale() function:
+xsc= scale(x)
+plot(hclust (dist(xsc), method = "complete"), main ="Hierarchical
+       Clustering with Scaled Features")
+
+# Correlation-based distance can be computed using the as.dist() function, which converts an arbitrary square symmetric matrix into 
+#  a form thatthe hclust() function recognizes as a distance matrix.
+x = matrix(rnorm (30*3) , ncol =3)
+dd = as.dist(1- cor(t(x)))
+plot(hclust (dd, method = "complete"), main= "Complete Linkage
+       with Correlation -Based Distance", xlab="", sub ="")
+
+
+############################################# Unsupervised Clustering on Genes Data        ##########################################
+
+library(ISLR)
+nci.labs = NCI60$labs
+nci.data = NCI60$data
+
+dim(nci.data) #The df has 64 columns with 6830 observations
+
+nci.labs[1:10]
+table(nci.labs)
+
+
+##################   PCA ON the NCI60 Data    #######################
+
+# perform PCA on the data after scaling the variables (genes) to have standard deviation one,
+pca2 =prcomp(nci.data , scale=TRUE)
+
+
+# plot the first few principal component score vectors, in order to visualize the data.
+# We first create a simple function that assigns a distinct color to each element
+# of a numeric vector. The function will be used to assign a color to each of
+# the 64 cell lines, based on the cancer type to which it corresponds.
+
+#Note that the rainbow() function takes as its argument a positive integer, and returns a vector containing that number of distinct colors.
+
+Cols=function (vec ){
+  cols=rainbow (length (unique (vec )))
+  return (cols[as.numeric (as.factor (vec))])
+  }
+
+
+#plot the principal component score vectors.
+par(mfrow =c(1,2))
+plot(pca2$x [,1:2], col = Cols(nci.labs), pch =19, xlab ="Z1",ylab="Z2")
+plot(pca2$x[,c(1,3) ], col = Cols(nci.labs), pch =19, xlab ="Z1",ylab="Z3")
+
+summary(pca2)
+
+plot(pca2)
+
+# Plotting the scree plot. 7 components explain 40% variance. There is elbow after 7 components
+# We can also get the pve from summary using   summary(pca2)$importance[2,]
+pve =100* pca2$sdev ^2/ sum(pca2$sdev ^2)
+par(mfrow =c(1,2))
+plot(pve , type ="o", ylab="PVE ", xlab=" Principal Component ",
+       col =" blue")
+plot(cumsum (pve ), type="o", ylab =" Cumulative PVE", xlab="
+       Principal Component ", col =" brown3 ")
+
+
+# We can also check how many components to take using eign values on the dataset
+
+
+#################   CLustering on the NCI60 Dataset    ######################
+
+# we standardize the variables to have mean zero and standard deviation one.
+sd.data = scale(nci.data)
+
+par(mfrow =c(1,3))
+
+data.dist=dist(sd.data)
+
+#We now perform hierarchical clustering of the observations using complete, single, and average linkage.
+# Typically, single linkage will tend to yield trailing clusters: very large clusters onto which individual observations
+# attach one-by-one. On the other hand, complete and average linkagetend to yield more balanced, attractive clusters.
+
+plot(hclust(data.dist), labels =nci.labs , main= "Complete
+       Linkage", xlab ="", sub ="", ylab ="")
+plot(hclust(data.dist , method ="average"), labels =nci.labs ,
+       main="Average Linkage", xlab ="", sub ="", ylab ="")
+plot(hclust(data.dist , method ="single"), labels =nci.labs ,
+       main="Single Linkage", xlab="", sub ="", ylab ="")
+
+# Complete and average linkage tend to yield evenly sized clusters whereas single linkage tends to yield extended clusters to which
+#  single leaves are fused one by one.
+
+#CLustering with 4 clusters
+hc.out = hclust(dist(sd.data))
+hc.clusters = cutree(hc.out ,4)
+table(hc.clusters, nci.labs)
+#There are some clear pattern here. e.g. all Lukemia cases lie in the 3rd cluster. Melonama is in 1st custer only

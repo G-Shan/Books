@@ -1,0 +1,81 @@
+
+## ISRL Chapter4
+
+library(ISLR)
+attach(Smarket)
+summary(Smarket)
+head(Smarket)
+
+#Correlation of all the variables except 9th which is categorical
+cor(Smarket[,-9])  #ONly Year & Volume are highly correlated with corr value of 0.539
+
+plot(Volume) #We see that volume goes up witht the time
+names(Smarket)
+LogReg = glm(Direction ~ Lag1+Lag2+Lag3+Lag4+Lag5+Volume, data=Smarket, family = binomial)
+summary(LogReg)
+
+#Checking only the coefficients of the model
+coef(LogReg)
+
+#Checking the prediction. Here type="response" means P(Y = 1|X) 
+LogPred = predict(LogReg, type="response") 
+
+contrasts(Direction) #Checking what model has choosen for Up & Down values. Up is chosen as 1.
+
+#Checking the 1st 10 prediction of Direction
+LogPred[1:10]
+
+#Accuracy rate is (507+145)/(507+145+457+141) = 52.16%
+table(Smarket$Direction, LogPred > 0.5)
+
+
+####We've tested the model on training set itself which might not give the right picture of model
+#Now Lets make the model on part of the data and predict it on the unseen data
+rm(list=ls())
+library(ISLR)
+attach(Smarket)
+class(Smarket$Direction)
+str(Smarket)
+fix(Smarket)
+
+
+#Changing the levels of Direction from Up, DOwn to 1 & 0.
+levels(Smarket$Direction)[levels(Smarket$Direction)=="Up"] = 1
+levels(Smarket$Direction)[levels(Smarket$Direction)=="Down"] = 0
+
+
+train = subset(Smarket, Year < 2005)
+test = subset(Smarket, Year == 2005)
+class(train$Direction)
+
+LogReg1 = glm(Direction ~ Lag1+Lag2+Lag3+Lag4+Lag5+Volume, data=train, family = binomial)
+summary(LogReg1)
+
+LogPred1 = predict(LogReg1, newdata=test, type="response") 
+
+table(test$Direction, LogPred1 > 0.5)
+
+
+
+
+##########  LINEAR DISCRIMINANT ANALYSIS   ########################################
+
+library(ISLR)
+attach(Smarket)
+library(MASS) #lda is under MASS library
+
+
+train = subset(Smarket, Year < 2005)
+test = subset(Smarket, Year == 2005)
+
+
+LDAFit = lda(Direction ~ Lag1+Lag2, data=train, family = binomial)
+LDAFit
+plot(LDAFit)
+
+
+LDAPred = predict(LDAFit, newdata=test)
+names(LDAPred)
+table(test$Direction, LDAPred$class)
+mean(LDAPred$class == test$Direction)
+tapply(LDAPred$posterior, test$Direction, mean)

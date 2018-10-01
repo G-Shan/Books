@@ -1,0 +1,236 @@
+
+       ## LEAVE ONE-OUT CROSS VALIDATION
+       ## K-FOLD CROSS VALIDATION
+       ## THE BOOTSTRAP
+       
+
+
+######### CHapter 5 Resampling Techniques
+### LOOCV
+
+library(ISLR)
+set.seed(1)
+attach(Auto)
+plot(mpg~horsepower, data=Auto)
+#glm makes the model LINEAR if we dont pass the family=binomial in formula
+LogReg1 = glm(mpg~horsepower, data=Auto)
+coef(LogReg1)
+#And 
+Reg1 = lm(mpg~horsepower, data=Auto)
+coef(Reg1)
+
+######   LEAVE ONE-OUT CROSS VALIDATION or LOOCV     ################
+
+# We us cv.glm() for loocv which is part of the boot library
+library(ISLR)
+set.seed(1)
+attach(Auto)
+library(boot)
+LogReg2 = glm(mpg~horsepower, data=Auto)
+cv.err = cv.glm(Auto, LogReg2)
+
+#Delta is estimate of prediction error. ithas two values. 1st is raw leave-one-out or leiu CV result. 2nd one is biased corrected 
+#version of it. Biased corrected version is designed to compensate for the bias introduced by not using leave-one-out cross-validation.
+#Both delta values are identical so cv for test error is 24.23
+cv.err$delta 
+
+#We can repeat the process of getting LOOCV values using for() function for polynomials for i=1 to i=5, compute the associated 
+#cross-validation error, and stores it in the ith element of the vector cv.error. We begin by initializing the vector.
+
+cv.error = rep(0,5)
+for(i in 1:5) {
+  LogReg3 = glm(mpg~poly(horsepower, i), data=Auto)  
+  cv.error[i] = cv.glm(Auto, LogReg3)$delta[1]
+  }
+
+#MSE for all the polynomials
+print(cv.error)
+
+plot(cv.error, type="b")
+#As we can see in the plot, sharp drop in MSE from linear to quadratic but no clear improvments using higher order polynomials
+
+
+#################    K-FOLD CROSS VALIDATION   ############
+
+#cv.glm() can also be used to compute K-fold cross validation. If we choose 10 fold, it will train the model on 9 folds and
+#test the model on 1 excluded set. this process will be iterated 10 times and MSE will be calcualated
+library(boot)
+library(ISLR)
+attach(Auto)
+set.seed(17)
+cv.K= rep(0 ,5)
+for (i in 1:5) {
+   LogReg4=glm(mpg∼poly(horsepower ,i),data=Auto)
+   cv.K[i]=cv.glm (Auto ,LogReg4 ,K=10)$delta [1]
+   }
+print(cv.K) #print MSE values for 5 models
+plot(cv.K, type="b", col="red") #Drawing this k-fold MSE graph
+
+
+###########     THE BOOTSRAP METHOD OF RESAMPLING     ################################
+library(ISLR)
+attach(Portfolio)
+library(boot)
+set.seed(1)
+str(Portfolio) #It has two variables X & Y with 100 observations
+
+#Here we create a function, alpha.fn(), which takes as input the (X, Y) data as well as a vector indicating which observations
+#should be used to estimate α. The function then outputs the estimate for α (coefficient)based on the selected observations. Here
+# i (index) basically tells which observations get represented and which not.
+alpha.fn=function (data ,i){
+   X=data$X[i]
+   Y=data$Y[i]
+   return ((var(Y)-cov (X,Y))/(var(X)+var(Y) -2* cov(X,Y))) #This formula is basically variance of X & Y
+   }
+
+alpha.fn(Portfolio, 1:100) #This command tells R to estimate α using all 100 observations.
+
+#This command uses the sample() function to randomly select 100 observations from the range 1 to 100, with replacement.
+set.seed(1)
+alpha.fn(Portfolio, sample(100,100, replace = T))
+#We can implement a bootstrap analysis by performing this command many times, recording all of the corresponding estimates
+#for α, and computing the resulting standard deviation. However, the boot() function automates boot() this approach. 
+
+#Below we produce R = 1, 000 bootstrap estimates for α. R is  number of bootstrap estimates
+library(boot)
+boot(Portfolio ,alpha.fn,R=1000)
+#The final output shows that using the original data, ˆα = 0.5758, and that the bootstrap estimate for SE(ˆα) is 0.0886.
+
+
+#####     ESTIMATING THE ACCURACY OF LINEAR REGRESSION MODEL WITH BOOTSTRAP     ###########
+
+#Here we use the bootstrap approach in order to assess the variability of the estimates for β0 and β1, the intercept
+#and slope terms for the linear regression model that uses horsepower to predict mpg in the Auto data set.
+
+#Creating a static function
+boot.fn=function (data ,i )
+   return (coef(lm(mpg∼horsepower ,data=data ,subset =i)))
+
+library(ISLR)
+attach(Auto)
+boot(Auto ,boot.fn ,1000) #Here SE(β0ˆ)=0.871 and  SE(β1ˆ)=0.0075 where SE=Std error
+#use the boot() function to compute the standard errors of 1,000 bootstrap estimates for the intercept and slope terms.
+
+#Here we see that E(β0ˆ)=0.717 and  SE(β1ˆ)=0.0064 is with linear regression
+summary (lm(mpg∼horsepower ,data=Auto))$coef
+
+#THere is diff of SE from bootstrap & linear regression cuz LR assumes variability comes from irreduciable error
+#Bootstrap doesnt rely on any such assumption
+
+
+#########################################################
+#############    LAB QUESTIONS     ######################
+#########################################################
+
+#QUes 5
+#Make a LogReg and estimate the test error of this logistic regression model using the validation set approach.
+
+library(ISLR)
+attach(Default)
+str(Default) #Response variable is factor with YES/NO values
+table(Default$default)
+
+(set.seed(1))
+library(caTools)  #package to split the data
+Bifur = sample.split(Default$default, SplitRatio=0.5) #Making a list of TRUE & FALSE list
+train = subset(Default, Bifur==TRUE) #Training set
+test = subset(Default, Bifur==FALSE)  #Test set
+LogReg1 = glm(default~income+balance, data=train, family=binomial)  #Logistic regression
+PredLog = rep("No", dim(Default)[1]/2)       #Creating a list with values as "No"
+PredTest = predict(LogReg1, newdata=test, type="response") #Model Prediction
+PredLog[PredTest>0.5] = "Yes"  #Converting all the values of PredLog as "Yes" which are greater than t-value of 0.5
+mean(test$default != PredLog) #Getting the mean of misclassified predictions
+
+
+
+##Ques 6
+#MAke a logistic Regression and compare the SE of its coefficients with Bootstrap of 50 boostrap estimates
+
+library(ISLR)
+attach(Default)
+set.seed(5)
+LogReg2 = glm(default~income+balance, data=Default, family=binomial)
+summary(LogReg2) #Std Error. SE(B0)=0.434, SE(B1)=0.0000049, SE(B2)=0.00023
+
+#Creating a static function for bootstrap
+boot.fn=function (data ,i )
+  return (coef(glm(default~income+balance, data=data, family=binomial, subset =i)))
+
+library(boot)
+boot(Default, boot.fn, R=50) #Std Error with boot. SE(B0)=0.434, SE(B1)=0.0000049, SE(B2)=0.00023
+#So ,we see that both standard error from both the methods are same
+
+
+   #######   Ques 7#####
+#Making a LogReg on all but one observation and comparing if it made the right prediction.It's basically LOOCV with prediction on just
+# one obervation
+library(ISLR)
+attach(Weekly)
+str(Weekly)
+set.seed(2)
+
+# Making a LogReg model using all but one (1st) observations
+LogReg4 = glm(Direction~Lag1+Lag2, data=Weekly[-1,], family = binomial)
+
+Pred1 = predict(LogReg4, newdata=Weekly[1,], type="response")    #Pred1 is 0.57 means it is UP using Prediction
+Weekly$Direction[1]  #In reality, 1st observation is down. So prediction is misclassified
+
+
+#NOw making LOOCV for whole dataset by making n models and determine whether or not an error was made in predicting
+#the direction for the ith observation. If an error was made,then indicate this as a 1, and otherwise indicate it as a 0.
+count = rep(0, dim(Weekly)[1])
+for (i in 1:(dim(Weekly)[1])) {
+  glm.fit = glm(Direction ~ Lag1 + Lag2, data = Weekly[-i, ], family = binomial)
+  is_up = predict.glm(glm.fit, Weekly[i, ], type = "response") > 0.5
+  is_true_up = Weekly[i, ]$Direction == "Up"
+  if (is_up != is_true_up) 
+    count[i] = 1
+}
+sum(count) #Sum total of predicted erros
+mean(count)  #Mean of predicted errors
+
+
+
+######## Ques 8   Cross validatiom
+
+#Creating a dataframe with simulation
+set.seed(1)
+y=rnorm(100)
+x=rnorm(100)
+y=x-2*x^2+rnorm (100) 
+plot(x,y)
+
+
+Data= data.frame(x,y)     #Here the dataframe has variables p=2 namely x & y, n=100
+set.seed(1)
+
+#compute the LOOCV errors that result from fitting the following four models using least squares:
+# i. Y = β0 + β1X + e
+# ii. Y = β0 + β1X + β2X2 + e 
+# iii. Y = β0 + β1X + β2X2 + β3X3 + e
+# iv. Y = β0 + β1X + β2X2 + β3X3 + β4X4 + e
+  
+#i. Y = β0 + β1X + e
+Reg1 = glm(y~x, data=Data)
+library(boot)
+cv.err1 = cv.glm(Data, Reg1)
+cv.err1$delta
+
+# ii. Y = β0 + β1X + β2X2 + e 
+Reg2 = glm(y~poly(x, 2), data=Data)
+cv.err2= cv.glm(Data, Reg2)
+cv.err2$delta
+
+# iii. Y = β0 + β1X + β2X2 + β3X3 + e
+Reg3 = glm(y~poly(x, 3), data=Data)
+cv.err3= cv.glm(Data, Reg3)
+cv.err3$delta
+
+# iv. Y = β0 + β1X + β2X2 + β3X3 + β4X4 + e
+Reg4 = glm(y~poly(x, 4), data=Data)
+cv.err4= cv.glm(Data, Reg4)
+cv.err4$delta
+
+#Qudratic form has the lowest error rate
+
+

@@ -1,0 +1,217 @@
+
+# 9. In the lab, we applied random forests to the Boston data using mtry=6and using ntree=25 and ntree=500. Create a plot displaying the 
+test error resulting from random forests on this data set for a more comprehensive range of values for mtry and ntree.
+
+
+library(MASS)
+library(randomForest)
+attach(Boston)
+boston = Boston
+
+set.seed(1101)
+spl=sample(nrow(boston),0.5*nrow(boston)) 
+train = boston[spl,] 
+test = boston[-spl,]
+
+p = 13
+p.2 = p/2
+p.sq = sqrt(p)
+
+RF.p = randomForest(train, train$medv, xtest = test, ytest = test$medv, mtry=p, ntree=500)
+names(RF.p)
+plot(RF.p$test$mse)
+
+RF.p2 = randomForest(train, train$medv, xtest = test, ytest = test$medv, mtry=p.2, ntree=500)
+RF.p3 = randomForest(train, train$medv, xtest = test, ytest = test$medv, mtry=p.sq, ntree=500)
+
+plot(1:500, RF.p$test$mse, col="green",type ="l",xlab="Number of Trees", ylab="Test MSE",ylim=c(10, 19))
+lines(1:500, RF.p2$test$mse, col = "red", type = "l")
+lines(1:500, RF.p3$test$mse, col = "blue", type = "l")
+legend("topright", c("m=p", "m=p/2", "m=sqrt(p)"), col=c("green", "red", "blue"), cex = 1, lty = 1)
+
+
+
+##############################       QUESTION 8       ###################################################
+(a) Split the Carseats into a training set and a test set.
+(b) Fit a regression tree to the training set. Plot the tree, and interpret the results. What test MSE do you obtain?
+(c) Use cross-validation in order to determine the optimal level of tree complexity. Does pruning the tree improve the test MSE?
+(d) Use the bagging approach in order to analyze this data. What test MSE do you obtain? Use the importance() function to determine
+    which variables are most important.
+(e) Use random forests to analyze this data. What test MSE do you obtain? Use the importance() function to determine which variables
+    are most important. Describe the effect of m, the number of variables considered at each split, on the error rate obtained.
+
+
+library(tree)
+library(ISLR)
+attach(Carseats)
+carseats = Carseats
+
+spl=sample(nrow(carseats),0.5*nrow(carseats)) 
+train = carseats[spl,] 
+test = carseats[-spl,]
+
+car.tree = tree(Sales ~ ., data=train)
+plot(car.tree)
+text(car.tree, pretty=0)
+
+car.pred = predict(car.tree, newdata=test)
+mean((car.pred- test$Sales)^2)
+#TEst MSE is 4.24
+
+
+set.seed(3)
+cv.car = cv.tree(car.tree, FUN = prune.tree)
+names(cv.car)
+cv.car
+
+par(mfrow =c(1,2))
+plot(cv.car$size ,cv.car$dev ,type="b")
+plot(cv.car$k ,cv.car$dev ,type="b")
+
+#Minimum deviance is at 19-node tree but we'll take 9 since 19-node would be too complex
+#We now apply the prune.tree() function in order to prune the tree to obtain the 9-node tree.
+prune.car =prune.tree(car.tree ,best =9)
+plot(prune.car)
+text(prune.car ,pretty =0)
+
+prune.pred = predict(prune.car, newdata = test)
+mean((prune.pred - test$Sales)^2)
+#Pruning the tree in this case increase the test MSE to 4.431
+
+
+###Bagging
+library(randomForest)
+bag.car = randomForest(Sales ~., data=train, mtry=10, importance=TRUE, ntree=500)
+bag.pred = predict(bag.car, newdata = test)
+mean((bag.pred- test$Sales)^2)
+#Test MSE with bagging is now just 2.7. It improved the result
+names(bag.car)
+importance(bag.car)
+varImpPlot(bag.car)
+# Shelveloc, Price & CompPrice are most important predictors for Sales
+
+
+###Random Forest
+RF.car = randomForest(Sales ~., data=train, mtry=5, importance=TRUE, ntree=500)
+RF.pred = predict(RF.car, newdata=train)
+mean((RF.pred - test$Sales)^2)
+#Here test MSE is 12,52 which means Random Forest worsens the prediction
+
+importance(RF.car)
+#Again Shelveloc, Price & CompPrice are most important predictors for Sales
+
+
+
+###################################        QUESTION 10.          ##########################################
+(a) Remove the observations for whom the salary information is unknown, and then log-transform the salaries.
+(b) Create a training set consisting of the first 200 observations, and a test set consisting of the remaining observations.
+(c) Perform boosting on the training set with 1,000 trees for a range of values of the shrinkage parameter λ. Produce a plot with
+different shrinkage values on the x-axis and the corresponding training set MSE on the y-axis.
+(d) Produce a plot with different shrinkage values on the x-axis and the corresponding test set MSE on the y-axis.
+(e) Compare the test MSE of boosting to the test MSE that results from applying Linear & Lasso regression.
+(f) Which variables appear to be the most important predictors in the boosted model?
+(g) Now apply bagging to the training set. What is the test set MSE for this approach?
+
+
+library(ISLR)
+attach(Hitters)
+sum(is.na(Hitters))
+Hitters = na.omit(Hitters)
+library(gbm)
+Hitters$Salary = log(Hitters$Salary) #Taking log of salary
+train = Hitters[1:200,]
+test = Hitters[201:263,]
+
+
+set.seed(103)
+pows = seq(-10, -0.2, by = 0.1)
+lambdas = 10^pows
+length.lambdas = length(lambdas)
+train.errors = rep(NA, length.lambdas)
+test.errors = rep(NA, length.lambdas)
+
+for (i in 1:length.lambdas) {
+  boost.hitters = gbm(Salary ~ ., data = train, distribution = "gaussian", 
+                      n.trees = 1000, shrinkage = lambdas[i])
+  train.pred = predict(boost.hitters, train, n.trees = 1000)
+  test.pred = predict(boost.hitters, test, n.trees = 1000)
+  train.errors[i] = mean((train$Salary - train.pred)^2)
+  test.errors[i] = mean((test$Salary - test.pred)^2)
+}
+
+plot(lambdas, train.errors, type = "b", xlab = "Shrinkage", ylab = "Train MSE",col = "blue", pch = 20)
+#PLotting the training erros
+
+plot(lambdas, test.errors, type = "b", xlab = "Shrinkage", ylab = "Test MSE", col = "red", pch = 20) #PLotting test errors
+
+min(test.errors)  #Minimum test error o.251
+lambdas[which.min(test.errors)] #with lambda=0.05011872, test error is minimum
+
+
+#### Applying linear regression & Lasso on the data set
+lm.fit = lm(Salary ~ ., data = train)
+lm.pred = predict(lm.fit, test)
+mean((test$Salary - lm.pred)^2)
+# TEST MSE FOR Linear regression is 0.491
+
+library(glmnet)
+set.seed(134)
+x = model.matrix(Salary ~ ., data = train)
+y = train$Salary
+x.test = model.matrix(Salary ~ ., data = test)
+lasso.fit = glmnet(x, y, alpha = 1)
+lasso.pred = predict(lasso.fit, s = 0.01, newx = x.test)
+mean((test$Salary - lasso.pred)^2)
+#TEST MSE for Lass os 0.47 which is a bit lower than linear regression
+
+
+#Applying boosting to find out the most important variables
+boost.best = gbm(Salary ~ ., data = train, distribution = "gaussian", n.trees = 1000, shrinkage = lambdas[which.min(test.errors)])
+summary(boost.best)
+#CAtBat, CWalks & CHits are top 3 most important variables
+
+
+#Applying Bagging on the dataset
+library(randomForest)
+Bag.Hit = randomForest(Salary ~ ., data=train, mtry=19, ntree=500, importance=T)
+Bag.pred = predict(Bag.Hit, newdata = test)
+mean((Bag.pred - test$Salary)^2)
+#TESt MSE with bagging is just o.231 which is better than boosting
+
+
+
+
+###############################     Question 11    Caravan Data set     #########################################
+
+(a) Create a training set consisting of the first 1,000 observations,and a test set consisting of the remaining observations.
+(b) Fit a boosting model to the training set with Purchase as the response and the other variables as predictors. Use 1,000 trees,
+    and a shrinkage value of 0.01. Which predictors appear to be the most important?
+(c) Use the boosting model to predict the response on the test data. Predict that a person will make a purchase if the estimated 
+    probability of purchase is greater than 20 %. Form a confusion matrix. What fraction of the people predicted to make a purchase
+    do in fact make one? How does this compare with the results obtained from applying logistic regression to this data set?
+
+library(ISLR)
+attach(Caravan)
+
+caravan = Caravan
+caravan$Purchase = ifelse(caravan$Purchase=="Yes", 1,0)
+train = caravan[1:1000,]
+test = caravan[1001:5822,]
+
+library(gbm)
+caravan.boost = gbm(Purchase ~., data=train, n.trees=1000, shrinkage = 0.01, distribution = "bernoulli")
+summary(caravan.boost)
+
+pred.boost = predict(caravan.boost, newdata = test, n.trees=1000, type = "response")
+pred.boost = ifelse(pred.boost > 0.2, 1, 0)
+table(pred.boost, test$Purchase)
+# 37/(37+252)= 13% of people predicted to make purchase actually purchase
+
+
+#GLM
+LR = glm(Purchase ~ ., data=train, family = binomial)
+LR.pred = predict(LR, newdata=test, type="response")
+LR.pred = ifelse(LR.pred >0.2, 1, 0)
+table(LR.pred, test$Purchase)
+# 58/(58+231) = 20% of people predicted to make purchase using logistic regression actually end up making one. This is higher than boosting.
+

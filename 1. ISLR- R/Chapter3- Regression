@@ -1,0 +1,220 @@
+
+https://github.com/asadoughi/stat-learning
+
+library(MASS)
+attach(Boston)
+
+
+str(Boston)
+lm.fit = lm(medv ~ lstat, data=Boston)
+summary(lm.fit)
+names(lm.fit)
+
+#Getting confidence interval for the coefficients
+confint(lm.fit)
+
+#the 95% confidence interval associated with a lstat value of 10 is (24.47, 25.63),
+predict (lm.fit ,data.frame(lstat =(c(5 ,10 ,15) )), interval = "confidence")
+
+#95% prediction interval with lstat value of 10 is (12.828, 37.28
+predict (lm.fit ,data.frame(lstat =(c(5 ,10 ,15) )), interval = "prediction")
+
+
+plot(lstat ,medv)
+abline (lm.fit)
+
+#We  can change the color of graph. lwd increases the width of Reg line
+abline (lm.fit ,lwd =3)
+abline (lm.fit ,lwd =3, col ="red ")
+plot(lstat ,medv ,col ="red ")
+plot(lstat ,medv ,pch =20)
+plot(lstat ,medv ,pch ="+")
+plot (1:20 ,1:20, pch =1:20)
+
+
+# Here par(mfrow=c(2,2)) divides the plotting region into a 2 × 2 grid of panels
+par(mfrow =c(2,2))
+plot(lm.fit)
+
+
+#Plotting the residuals. On the basis of residual plots, there is evidence of non-linearity
+plot(predict (lm.fit), residuals (lm.fit))
+plot(predict (lm.fit), rstudent (lm.fit))
+
+#Leverage statistics can be computed for any number of predictors using the hatvalues() function.
+plot(hatvalues (lm.fit ))
+#The which.max() function identifies the index of the largest element of a vector.
+which.max (hatvalues (lm.fit))
+
+
+
+###Multiple Linear Regression
+lm.fit =lm(medv ~ ., data=Boston )
+summary (lm.fit)
+
+
+#The vif()function, part of the car package, can be used to compute variance inflation factors(VIF).
+install.packages("car")
+library (car)
+vif(lm.fit)
+
+#Perform regression using all but one variable age
+lm.fit1=lm(medv∼.-age ,data=Boston )
+summary (lm.fit1)
+
+
+
+####INTERACTION TERMS###############
+
+#The syntax lstat:black tells R to include an interaction term between lstat and black. The syntax lstat*age simultaneously
+#includes lstat, age and the interaction term lstat*age as predictors; it is a shorthand for lstat+age+lstat:age.
+summary (lm(medv ~ lstat*age ,data=Boston ))
+
+
+###Non-LINEAR TRANSFORMATION OF PREDICTORS
+
+#given a predictor X, we can create a quadratic predictor X2 using poly(X, 2). we can create polynomial of n degree with it
+#here we perform a regression of medv onto lstat and lstat2.
+lm.fit2=lm(medv ~ lstat +poly(lstat, 2))
+summary(lm.fit2)
+
+
+#We can create squared input by using I() which is used to raise X to the power 2.
+lm.fit2=lm(medv∼lstat +I(lstat ^2))
+summary (lm.fit2)
+
+
+#The anova() function performs a hypothesis test comparing the two models. The null hypothesis is that the two models
+#fit the data equally well, and the alternative hypothesis is that the full model is superior. Here the F-statistic is 135 and the associated p-value is
+#virtually zero. This provides very clear evidence that the model containing the predictors lstat and lstat2 is far superior to the model that only
+#contains the predictor lstat.
+lm.fit =lm(medv ~ lstat)
+anova(lm.fit ,lm.fit2)
+
+par(mfrow=c(2,2))
+plot(lm.fit2)
+
+#We can also take the log of rm input
+summary (lm(medv∼log(rm),data=Boston ))
+
+
+
+
+
+#################ANALYZING CARSEATS DATSET##################
+
+library(ISLR)
+attach(Carseats)
+#It's clear Shelveloc is categorical variable
+fix(Carseats)
+
+#We're taking all the variables and two interaction terms as well. Shelveloc automatically generates dummy varibales
+#for the categries using 0, 1 values
+lm.fit =lm(Sales∼.+ Income :Advertising +Price :Age ,data=Carseats )
+summary(lm.fit)
+
+#The contrasts() function returns the coding that R uses for the dummy variables.
+contrasts (ShelveLoc )
+
+
+
+####Analayzing Auto Datsets######################
+library(ISLR)
+attach(Auto)
+str(Auto)
+
+lm1 = lm(mpg ~ horsepower, data=Auto)
+summary(lm1)
+
+#Plotting the input & output with regression line
+plot(horsepower, mpg, col="red")
+abline(lm1)
+
+#Plotting the scatterplot matrix for all the variables
+pairs(Auto)
+
+#Making the correlation of all but one (name) variables
+cor(subset(Auto, select=-name))
+
+#Taking all the varibales for model except NAME which is categorical variable
+lm.fit = lm(mpg ~ . -name, data=Auto)
+summary(lm.fit)
+
+#Creating digonostic regression plot
+par(mfrow=c(2,2))
+plot(lm.fit)
+
+plot(predict(lm.fit), rstudent(lm.fit))
+
+
+#From the correlation matrix, I obtained the two highest correlated pairs and used them in picking my interaction effects.
+lm.fit2 = lm(mpg~cylinders*displacement+displacement*weight)
+summary(lm.fit2)
+
+#Taking the tranformation of variables; root of HP, and square of accelaration
+lm.fit3 = lm(mpg~log(weight)+sqrt(horsepower)+acceleration+I(acceleration^2))
+summary(lm.fit3)
+
+
+
+
+library(ISLR)
+attach(Auto)
+str(Auto)
+Reg1 =lm(mpg ~ horsepower, data=Auto) 
+summary(Reg1)   #Residual std error is 4.906 for this model. Mupliple R-Squared is 0.6059 which means
+# 60.59% of the variance in mpg is explained by horsepower.
+
+
+mean(Auto$mpg) #Mean is 23.44592. So the percentage error is 4.906/23.44592 is 20%
+
+# 95% confidence interval of the coefficients
+confint(Reg1)
+
+
+
+# 95% Confidence & Prediction Intervals for horsepower=98
+predict(Reg1, data.frame(horsepower=c(98)), interval="confidence")
+predict(Reg1, data.frame(horsepower=c(98)), interval="prediction")
+
+
+#PLotting response & predictor. Drawing regression line on this
+plot(mpg, horsepower, pch=20)
+abline(Reg1, lwd =3, col ="red ")
+
+#Use the plot() function to produce diagnostic plots of the least squares regression fit.
+par(mfrow=c(2,2))
+plot(Reg1)
+
+
+#################  9th question   #####################
+
+library(ISLR)
+attach(Auto)
+pairs(Auto)
+
+#Checking classes of all the variables in Auto dataset
+sapply(Auto, function (x) class(x))
+
+#Taking correlation of all the variables except categorical variable
+cor(subset(Auto, select=-name))
+
+
+Reg2 = lm(mpg ~ .-name, data = Auto)
+summary(Reg2)
+
+
+#Use the plot() function to produce diagnostic plots of the least squares regression fit.
+par(mfrow=c(2,2))
+plot(Reg2)
+
+
+
+#Now lets pick interaction terms and make linear model
+#we can choose interaction terms using varaibles with highest correlation
+
+cor(subset(Auto, select=-name)) #highest correlation pairs are displacement cylinders and displacement weight 
+
+Reg3 = lm(mpg ~ displacement*cylinders + displacement*weight, data=Auto)
+summary(Reg3)
+

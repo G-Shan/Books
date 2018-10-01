@@ -1,0 +1,307 @@
+
+###CHapter 6
+1. Best Subset
+2. Forward Selection & Backward Selection
+3. Choosing Models using CV & Validation Approach
+4. Ridge & Lasso Regression
+5. Principal Components Regression & Partial Least Square Regression
+
+################ 1.  BEST SUBSET SELECTION        ###################
+
+library(ISLR)
+attach(Hitters)
+str(Hitters)
+
+dim(Hitters) # 20 variables; 19 independent and one dependent
+
+#THere are 59 missing values in salary variable
+sum(is.na(Hitters$Salary))
+
+#Removing all the rows which have missing values
+Hitters = na.omit(Hitters)
+
+#regsubsets fn does the subset selection which is part of leaps library. Summary shows the results
+library(leaps)
+RegSub = regsubsets(Salary ~., data = Hitters)
+
+#regsubsets identifies the best model using RSS. An asterisk indicates that a given variable is included in the corresponding
+#model.By default, regsubsets only reports results up to the best eight-variable model.
+summary(RegSub)
+
+#But the nvmax() option can be used in order to return as many variables as are desired. Here we fit up to a 19-variable model.
+RegSub1 = regsubsets(Salary ~., data=Hitters, nvmax=19)
+
+RegSub1.Summ = summary(RegSub1)
+names(RegSub1.Summ) #As we see, summary gives rss, adjsuted r-squared, Cp, BUC etc. We can examine these to select best model
+
+#We see that r-Squared for including only one var is 32.14% while for all variables, it is 54.6%
+RegSub1.Summ$rsq
+
+#Drawig the graph of RSS and Adjusted R-squared
+
+#Clik on the brush in plot bar of RStudio if plot is showing error
+#regsubsets() function has a built-in plot() command which can be used to display the selected
+#variables for the best model with given no. of predictors, on the basis of various error parameters
+plot(RegSub1, scale="r2") #Here each black square shows that the particular variable is selected in model
+plot(RegSub1, scale="adjr2")
+plot(RegSub1, scale="Cp")
+plot(RegSub1, scale="bic")
+
+#Several models in BIC plot have BIC values of -150. it has six variables. We can check the coeffiecints 
+# 0f this model. This is sixth model out of the 19 we made.
+coef(RegSub1, 6)
+
+#################################################################################
+###############  2.  FORWARD AND BACKWARD STEPWISE SELECTION    #################
+#################################################################################
+
+#We can also do forward & backward stepwise using regsubsets() fn by giving method="forward/backward"
+
+#FOrward stepwise selection methods. 1st six model of this method are same as best subset
+Reg.fwd = regsubsets(Salary ~ ., data=Hitters, nvmax = 19, method = "forward")
+summary(Reg.fwd)
+
+#Backward Stepwise Selection Method
+Reg.bwd = regsubsets(Salary ~ ., data=Hitters, nvmax = 19, method = "backward")
+summary(Reg.bwd)
+
+#However 7th model for each are quite different
+coef(RegSub1, 7)
+coef(Reg.fwd, 7)
+coef(Reg.bwd, 7)
+
+
+
+##############################################################################################
+#####  3. CHOOSING AMONGST MODELS USING VALIDATION APPROACH & CROSS-VALIDATION      ##########
+##############################################################################################
+
+library(ISLR)
+attach(Hitters)
+sum(is.na(Hitters$Salary))
+Hitters = na.omit(Hitters) #Removing all the rows which have missing values
+
+train=sample (c(TRUE ,FALSE), nrow(Hitters ),rep=TRUE)
+test =(! train ) #Dividing data randomly into training & test set
+library(leaps)
+regfit.best = regsubsets (Salary∼.,data=Hitters [train ,], nvmax =19) #Making model on training set
+names(regfit.best)
+
+test.mat = model.matrix(Salary∼.,data=Hitters [test ,]) #Making matrix of test data
+
+#Now we run a loop, and for each size i, we matrix() extract the coefficients from regfit.best for the best model of that size,
+#multiply them into the appropriate columns of the test model matrix to form the predictions, and compute the test MSE.
+val.errors =rep(NA ,19)
+ for(i in 1:19){
+  coefi = coef(regfit.best ,id=i)
+  pred=test.mat[,names(coefi)]%*% coefi
+  val.errors [i]= mean(( Hitters$Salary[test]-pred)^2)
+}
+
+val.errors #Printing the MSE error tersms of all the 19 models
+
+which.min(val.errors) #model that has 10 variable has minimum MSE ; hence it;s the best modek
+coef(regfit.best, 10) #Coefficient of the model that has lowest MSE. it has 10 variables
+
+#Now that we know 10-variable model is the best one on training set, we need to perform best 
+#subset selection on full data and figure out the 10-variblae model
+regfit.best1= regsubsets(Salary∼.,data=Hitters ,nvmax =19)
+coef(regfit .best1 ,10)
+
+#In fact, we see that the best ten-variable model on the full data set has a different set of 
+#variables than the best ten-variable model on the training set.
+
+
+
+##############################################################################
+###############   4. RIDGE & LASSO REGRESSION          #######################
+##############################################################################
+
+library(ISLR)
+attach(Hitters)
+sum(is.na(Hitters$Salary))
+Hitters = na.omit(Hitters)
+
+#glmnet() is used for ridge & lasso. glmnet only takes numerical qunatitative vraibles hence model.matrix is used
+x = model.matrix(Salary~., data=Hitters)[,-1] #Last argument removes 1st column which is intercept
+y = Hitters$Salary
+
+# glmnet() fn has an alpha argument that determines whether ridge or Lasso to fit. If alpha=0 then a ridge regression 
+# model is fit, and if alpha=1 then a lasso model is fit
+library (glmnet)
+grid =10^seq (10,-2, length =100) #Taking values ranging from 10^-2 to 10^10
+ridge.mod = glmnet(x,y, alpha =0, lambda =grid)
+plot(ridge.mod, xvar="lambda", label=T)
+
+#By default glmnet() function performs ridge regression for an automatically selected range of λ (lambda) values. However, here we have 
+# chosen to implement the function over a grid of values ranging from λ = 10^10 to λ = 10^−2, essentiallycovering the full range of
+# scenarios from the null model containing only the intercept, to the least squares fit. As we will see, we can also compute model fits
+# for a particular value of λ that is not one of the original #grid values. 
+
+#Note that by default, the glmnet() function standardizes the variables so that they are on the same scale. To turn off this default
+#  setting, use the argument standardize=FALSE.
+
+
+#Associated with each value of λ is a vector of ridge regression coefficients, stored in a matrix that can be accessed by coef().
+#  In this case, it is a 20×100 matrix, with 20 rows (one for each predictor,plus an intercept) and 100 columns (one for each value of λ).
+dim(coef(ridge.mod ))
+
+
+# We expect the coefficient estimates to be much smaller, in terms of L2 norm, when a large value of λ is used and vice-versa.
+#These are the coefficients when λ = 11,498, along with their L2 norm
+ridge.mod$lambda[50]
+coef(ridge.mod)[,50]
+sqrt(sum(coef(ridge.mod)[ -1 ,50]^2) )
+
+#In contrast, here are the coefficients when λ = 705, along with their L2 norm. Note the much larger L2 norm of the coefficients
+# associated with this smaller value of λ.
+ridge.mod$lambda[60]
+coef(ridge.mod)[,60]
+sqrt(sum(coef(ridge.mod)[ -1 ,60]^2))
+
+
+#We can use the predict() function for a number of purposes. For instance, we can obtain the ridge regression coefficients
+#for a new value of λ, say 50 for all the variables:
+predict(ridge.mod, s=50, type = "coefficients")
+
+
+#glmnet has also cross validation function cv.glmnet() which automatically does 10-fold cross validation
+cv.ridge = cv.glmnet(x, y, alpha = 0)
+plot(cv.ridge)
+
+###########      ERROR PREDICTION FROM RIDGE REGRESSION        #########################
+
+#Let's 1st split the data into training and test set
+set.seed(1)
+library(caTools)
+Bifur = sample.split(Hitters$Salary, SplitRatio = 0.5)
+train = subset(Hitters, Bifur==TRUE)
+test = subset(Hitters, Bifur==TRUE)
+trainx = model.matrix(Salary ~., data=train)[,-1]
+testx = model.matrix(Salary ~., data=test)[,-1]
+
+ridge.mod1 = glmnet(trainx, train$Salary, alpha =0, lambda =grid, thresh = 1e-12)
+ridge.pred1 = predict(ridge.mod ,s=4, newx=testx) #Choosing lambda=4 here
+mean(( ridge.pred1 -test$Salary)^2) 
+##TEst MSE is 74953.74 with lambda = 4
+
+#Instead of arbitrarily choosimg lambda, we can choose it using cross validation
+set.seed (1)
+cv.out =cv.glmnet(trainx,train$Salary,alpha =0)
+plot(cv.out)
+bestlam =cv.out$lambda.min
+bestlam   #Value of lambda is 49.39279 using cross validation
+
+#Now test MSE is 80539.83 using the value of lambda through cross validation. It should even be even
+#beter than lambda=4. Seems data is not properly  sliced into train & test
+ridge.pred= predict (ridge.mod ,s=bestlam, newx=testx)
+mean(( ridge.pred -test$Salary)^2)
+
+#NOw finally we refit our ridge regression on full dataset using the value of λ chosen by cross-validation
+# and examine the coefficient estimates. None of coefficients are zero here in Ridge
+out= glmnet(x,y,alpha =0)
+predict(out, type= "coefficients",s=bestlam)
+
+
+##################     LASSO         #######################
+
+lasso.mod =glmnet(trainx,train$Salary,alpha =1, lambda =grid)
+plot(lasso.mod) #As we can see in the plot some of variables will be equal to zero
+
+set.seed (1)
+cv.out = cv.glmnet(trainx, train$Salary,alpha =1)
+plot(cv.out)
+bestlam =cv.out$lambda.min         # Lambda here is 11.95369
+
+lasso.pred=predict (lasso.mod ,s=bestlam ,newx=testx)
+mean(( lasso.pred - test$Salary)^2)
+#Test MSE here is 69292.38 which is better than Ridge's & OLS
+
+
+#Performing Lasso on full dataset using lambda value from cross validation. As we can see, 12 variables
+# including HMRUn, CWalks etc have coefficients zero. So Lasso does variables selection
+out= glmnet(x,y,alpha =1, lambda =grid)
+lasso.coef = predict (out ,type = "coefficients",s=bestlam)
+lasso.coef
+
+#USing ridge or Lasso, we can also get OLS (ordinary least square) prediction when we set s=zero
+# and exact=T in the prediction of LAsso/Ridge
+
+
+
+
+####################################################################################################
+#####   5. PRINCIPAL COMPONENT REGRESSION & PARTIAL LEAST SQUARES (PCR/PCA & PLS)  #################
+####################################################################################################
+
+#PCR & PLS are very well explained in chapter 10. Here they're used as an alternative to OLS for linear regression
+library(ISLR)
+attach(Hitters)
+sum(is.na(Hitters$Salary))
+Hitters = na.omit(Hitters)
+
+# PCR or PCA can be performed using the pcr() function, which is part of the pls library.
+library(pls)
+set.seed (2)
+pcr.fit=pcr(Salary∼., data=Hitters, scale=TRUE, validation ="CV")
+
+#Setting scale=TRUE standardizes each predictor prior to generating the principal components, so that the scale on which each variable
+#  is measured will not have an effect. Setting validation="CV" causes pcr() to compute the ten-fold cross-validation error for each
+#  possible value of M, the number of principal components used. The resulting fit can be examined using summary().
+
+summary(pcr.fit)    #Minimum cross-validation occurs when M = 16. This is barely fewer than M = 19, which
+# amounts to simply performing least squares, because when all of the components are used in PCR no dimension reduction occurs.
+#  Also, summmary() gives RMSE values as well for each components. We can square it to get MSE
+
+# The summary() function also provides the percentage of variance explained in the predictors and in the response using different
+#  numbers of components. For example, setting M = 1 only captures 38.31% of all the variance, or information, in the predictors.
+#  In contrast, using M = 6 increases the value to 88.63%. If we were to use all M = p = 19 components, this would increase to 100%.
+
+validationplot(pcr.fit ,val.type= "MSEP")
+# However, from the plot we also see that the cross-validation error is roughly the same when only onecomponent is included in the
+#  model. This suggests that a model that uses just a small number of components might suffice.
+
+
+# We now perform PCR on the training data and evaluate its test set performance.
+set.seed(1)
+library(caTools)
+Bifur = sample.split(Hitters$Salary, SplitRatio = 0.5)
+train = subset(Hitters, Bifur==TRUE)
+test = subset(Hitters, Bifur==TRUE)
+pcr.train = pcr(Salary∼., data=train, scale =TRUE, validation ="CV")
+
+#LOwest CV error occurs when M=7
+validationplot(pcr.train, val.type = "MSEP")
+
+#Prediction and test MSE using 7 principal components
+pcr.pred = predict(pcr.train ,test, ncomp =7)
+mean((pcr.pred - test$Salary)^2) #test MSE is 81754.55. This competitive with Ridge & Lasso
+
+#Finally we refit the PCR using 7 principal components obtained from cross validation
+pcr.fit1 = pcr(Salary∼.,data=Hitters, scale =TRUE ,ncomp =7)
+summary(pcr.fit1)
+
+
+
+##########     PARTIAL LEAST SQUARES     #################
+
+#PLS is done using plsr functio which is part of pls() package
+set.seed (1)
+pls.fit=plsr(Salary∼., data=train, scale=TRUE, validation ="CV")
+summary (pls.fit)
+
+#The lowest cv test occurs when 10 partial least sqaure directions are used
+validationplot(pls.fit, val.type="MSEP")
+
+pls.pred = predict(pls.fit, test, ncomp =10)
+mean((pls.pred -test$Salary)^2) #TEst MSE with 10 PLS directions is only 60856.24
+# TEst MSE of PLS is better than OLS, Ridge, Lasso & PCR
+
+pls.fit1 = plsr(Salary∼., data=Hitters, scale=TRUE, ncomp =10)
+summary(pls.fit1)
+# HEre just two partial least square direction of PLS explains the 41.58% salary varinace; while final 7-model components of PCR only
+#  explain 46.69% variance in the salary. This is because PCR only attempts to maximize the amount of variance explained in the
+#  predictors, while PLS searches for directions that explain variance in both the predictors and the response
+
+
+

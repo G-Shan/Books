@@ -1,0 +1,253 @@
+
+###############################################################################
+###############         Applied Questions-8          ##########################
+###############################################################################
+1. Use the rnorm() function to generate a predictor X of length n = 100, as well as a noise vector  of length n = 100.
+2. Generate a response vector Y of length n=100 a/c to the model Y = β0 + β1X + β2X^2 + β3X^3 + eps, choose beta coefficient on ur own
+3. Use the regsubsets() function to perform best subset selection in order to choose the best model containing the predictorsX,X2, . 
+   . .,X10. What is the best model obtained according to Cp, BIC, and adjusted R2?
+4. Repeat (3) using forward stepwise selection and also using backwards stepwise selection. How does your answer compare to the
+    results in (3)?
+5. Now fit a lasso model to the simulated data, again using X,X2, . . . , X10 as predictors. Use cross-validation to select the optimal
+  value of λ. Create plots of the cross-validation error as a function of λ. Report the resulting coefficient estimates, and discuss
+  the results obtained.
+
+#1. Creating a dataframe with simulation
+set.seed(1)
+X = rnorm(100)
+eps = rnorm(100)
+
+#2. Generate a response vector Y of length n = 100 according to the model Y = β0 + β1X + β2X^2 + β3X^3 + eps,
+#where β0, β1, β2, and β3 are constants of your choice. We are selecting β0=3, β1=2, β2=−3 and β3=0.3.
+beta0 = 3
+beta1 = 2
+beta2 = -3
+beta3 = 0.3
+Y = beta0 + beta1*X + beta2*X^2 + beta3*X^3 + eps
+
+data1 = data.frame(y=Y, x=X) #Creating the data frame of X & Y
+
+#best subset selection method
+#Use regsubsets to select best model having polynomial of X of degree 10
+library(leaps)
+Data.Sub = regsubsets(y ~ poly(x,10, raw=T), data=data1, nvmax=10)
+
+#What is the best model obtained according to cp, adjusted R squared & BIC
+summary(Data.Sub)
+Sub.Summary = summary(Data.Sub)
+which.min(Sub.Summary$cp)  #3 variable model has minimum cp
+which.max(Sub.Summary$adjr2)  # 3 variable model has maxmimum adsjuted R squared
+which.min(Sub.Summary$bic)   #3 variable model has mnimum bic
+Sub.Summary$cp #Values of CP for different variables
+Sub.Summary$adjr2
+
+
+#Clik on the brush in plot bar of RStudio if plot is showing error
+#regsubsets() function has a built-in plot() command which can be used to display the selected
+#variables for the best model with given no. of predictors, on the basis of various error parameters
+plot(Data.Sub, scale="r2") #Here each black square shows that the particular variable is selected in model
+plot(Data.Sub, scale = "Cp")
+plot(Data.Sub, scale = "adjr2")
+
+
+########## Forward & Backward Model Selection        #############
+
+#forward selection method
+for.Sub = regsubsets(y ~ poly(x,10, raw=T), data=data1, nvmax=10, method = "forward")
+for.Summary = summary(for.Sub)
+which.min(for.Summary$cp)     # 3 variable model has minimum cp
+which.max(for.Summary$adjr2)  # 3 variable model has maxm adjusted R-squared
+which.min(for.Summary$bic)  # 3 variable model has minimum bic
+
+
+#backward selection method
+back.Sub = regsubsets(y ~ poly(x,10, raw=T), data=data1, nvmax=10, method = "backward")
+back.Summary = summary(back.Sub)
+which.min(back.Summary$cp)     #3 variable model has minimum cp
+which.max(back.Summary$adjr2)  #4 variable model has maxm adjusted R-squared
+which.min(back.Summary$bic)  #3 variable model has minimum bic
+
+#We see that both bic & cp choose 3-variable model while adjsuted R^2 chooses 7-var model using three techniques
+coefficients(Data.Sub, id =3) #cofficients of optimal model in best subset selection
+coefficients(for.Sub, id =3)  #cofficients of optimal model in forward selection
+coefficients(back.Sub, id =3)  #cofficients of optimal model in backward selection
+coefficients(back.Sub, id =4) #cofficients of optimal model in backward selection using adjusted R-sqaured
+
+###    CREATING A LASSO REGRESSION ON THE SAME DATASET       #############
+
+library(glmnet)
+xmat = model.matrix(y ~ poly(x, 10, raw = T), data = data1)[,-1] #[,-1] will remove the intercept
+Reg.lasso = cv.glmnet(xmat, Y, alpha = 1)
+names(Reg.lasso)
+best.lambda = Reg.lasso$lambda.min
+best.lambda  #Value of best lamda is 0.03636829
+plot(Reg.lasso)
+
+
+# Next fit the model on entire data using best lambda
+best.model = glmnet(xmat, Y, alpha = 1)
+predict(best.model, s = best.lambda, type = "coefficients")
+#So lasso pics x, x^2, x^5 & x^7. It chooses four variables where as backward & forward chooses 3 variable model with BIC & cp and 
+4 variable model for adjusted R- squared
+
+
+
+###############################################################################
+###############         Applied Questions-9          ##########################
+###############################################################################
+In this exercise, we will predict the number of applications received using the other variables in the College data set.
+1.    Split the data set into a training set and a test set.
+2.    Fit a linear model using least squares on the training set, and report the test error obtained.
+3.    Fit a ridge regression model on the training set, with λ chosen by cross-validation. Report the test error obtained.
+4.    Fit a lasso model on the training set, with λ chosen by crossvalidation. Report the test error obtained, along with the number
+      of non-zero coefficient estimates.
+5.    Fit a PCR model on the training set, with M chosen by crossvalidation. Report the test error obtained, along with the value
+      of M selected by cross-validation.
+6.    Fit a PLS model on the training set, with M chosen by crossvalidation. Report the test error obtained, along with the value
+      of M selected by cross-validation.
+
+
+library(ISLR)
+attach(College)
+str(College)
+
+set.seed(1)
+train = College[1:388,]
+test = College[389:777,]
+
+LinReg = lm(Apps ~., data=train)
+RegPred = predict(LinReg, data=test)
+mean((test$Apps-RegPred)^2) #test RSS is  29622857
+
+
+# Fit a ridge regression model on the training set, with λ chosen by cross-validation. Report the test error obtained.
+library(glmnet)
+train.mat = model.matrix(Apps~., data=train)[,-1]
+test.mat = model.matrix(Apps~., data=test)[,-1]
+grid = 10^seq(4, -2, length=100)
+mod.ridge = cv.glmnet(train.mat, train$Apps, alpha=0, lambda=grid, thresh=1e-12)
+lambda.best = mod.ridge$lambda.min
+lambda.best # best lambda fro ridge is  18.73817
+
+#Using the cross-validated lambda fort he prediction and test MSE
+ridge.pred = predict(mod.ridge, newx=test.mat, s=lambda.best)
+mean((test$Apps - ridge.pred)^2) #test MSE of ridge is 1828035 which is lesser than OLS MSE
+
+
+# Fit a Lasso regression model on the training set, with λ chosen by cross-validation. Report the test error obtained.
+mod.lasso = cv.glmnet(train.mat, train$Apps, alpha=1, lambda=grid, thresh=1e-12)
+lambda.best1 = mod.lasso$lambda.min
+lambda.best1    # best lambda for lasso is 7.054802
+
+# Using the cross-validated lambda fort he prediction and test MSE
+lasso.pred = predict(mod.lasso, newx=test.mat, s=lambda.best1)
+mean((test$Apps - lasso.pred)^2) # TEst MSE for Lasso is 1733473 which is less than Ridge & OLS MSE
+
+#COefficients of Lasso look like this
+mod.lasso1 = glmnet(model.matrix(Apps~., data=College), College$Apps, alpha=1)
+predict(mod.lasso1, s=lambda.best1, type="coefficients")
+
+predict(mod.lasso1, s=lambda.best, type="coefficients") #Checking variables in lasso for diff value of lambda
+
+
+############      PCR & PLS            ####################################
+
+# Fit a PCR model on the training set, with M chosen by crossvalidation. Report the test error obtained, along
+# with the value of M selected by cross-validation
+
+library(pls)
+pcr.fit = pcr(Apps~., data=train, scale=T, validation="CV")
+validationplot(pcr.fit, val.type="MSEP") #10-principal components has minum MSE. 
+summary(pcr.fit)
+
+#Choosing obtained 10-principal components  for prediction
+pcr.pred = predict(pcr.fit, test, ncomp=10)
+mean((test$Apps - data.frame(pcr.pred))^2) #test MSE for PCR is 3410356
+
+
+#Partial Least Square using crosss validation
+pls.fit = plsr(Apps~., data=train, scale=T, validation="CV")
+validationplot(pls.fit, val.type="MSEP")
+
+pls.pred = predict(pls.fit, test, ncomp=10)
+mean((test$Apps - data.frame(pls.pred))^2)   #test MSE for PCR is 1742436
+
+
+# Obtaining test- R squared values for all the models
+test.avg = mean(test$Apps)
+lm.test.r2 = 1 - mean((test$Apps - RegPred)^2) /mean((test$Apps - test.avg)^2)
+ridge.test.r2 = 1 - mean((test$Apps - ridge.pred)^2) /mean((test$Apps - test.avg)^2)
+lasso.test.r2 = 1 - mean((test$Apps - lasso.pred)^2) /mean((test$Apps - test.avg)^2)
+pcr.test.r2 = 1 - mean((test$Apps - data.frame(pcr.pred))^2) /mean((test$Apps - test.avg)^2)
+pls.test.r2 = 1 - mean((test$Apps - data.frame(pls.pred))^2) /mean((test$Apps - test.avg)^2)
+
+
+barplot(c(lm.test.r2, ridge.test.r2, lasso.test.r2, pcr.test.r2, pls.test.r2), col="red", names.arg=c("OLS", "Ridge", "Lasso", "PCR", "PLS"), main="Test R-squared")
+
+
+
+###############################################################################
+###############         Applied Questions-11         ##########################
+###############################################################################
+
+Use Boston dataset to try out some of the regression methods explored in this chapter, such as best subset selection, the lasso, 
+ridge regression, and PCR. Present and discuss results for the approaches that you consider.
+
+library(MASS)
+attach(Boston)
+str(Boston)
+library(leaps)
+library(glmnet)
+
+predict.regsubsets = function(object, newdata, id, ...) {
+  form = as.formula(object$call[[2]])
+  mat = model.matrix(form, newdata)
+  coefi = coef(object, id = id)
+  mat[, names(coefi)] %*% coefi
+}
+
+k = 10
+p = ncol(Boston) - 1
+folds = sample(rep(1:k, length = nrow(Boston)))
+cv.errors = matrix(NA, k, p)
+for (i in 1:k) {
+  best.fit = regsubsets(crim ~ ., data = Boston[folds != i, ], nvmax = p)
+  for (j in 1:p) {
+    pred = predict(best.fit, Boston[folds == i, ], id = j)
+    cv.errors[i, j] = mean((Boston$crim[folds == i] - pred)^2)
+  }
+}
+
+rmse.cv = sqrt(apply(cv.errors, 2, mean))
+plot(rmse.cv, pch = 19, type = "b")
+
+which.min(rmse.cv)  #12-variable model has least RMSE
+rmse.cv[which.min(rmse.cv)]  # RMSE is 6.623981 for 12-variable model
+
+
+#LASSO
+x = model.matrix(crim ~ . - 1, data = Boston)
+y = Boston$crim
+cv.lasso = cv.glmnet(x, y, type.measure = "mse")
+plot(cv.lasso) 
+coef(cv.lasso) #Lasso use only one variable "rad"
+
+sqrt(cv.lasso$cvm[cv.lasso$lambda == cv.lasso$lambda.1se]) #RMSE is 7.564511
+
+
+
+#RIDGE
+x = model.matrix(crim ~ . - 1, data = Boston)
+y = Boston$crim
+cv.ridge = cv.glmnet(x, y, type.measure = "mse", alpha = 0)
+plot(cv.ridge)
+coef(cv.ridge)
+sqrt(cv.ridge$cvm[cv.ridge$lambda == cv.ridge$lambda.1se]) #RMSE is  7.404857
+
+
+##### PCR
+library(pls)
+pcr.fit = pcr(crim ~ ., data = Boston, scale = TRUE, validation = "CV")
+summary(pcr.fit)
+# 13-component PCR has lowest RMSE 
+
