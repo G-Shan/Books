@@ -1,0 +1,46 @@
+
+Stationary and Non-Stationary Time Series:
+A stationary time series is one whose statistical properties such as mean, variance, autocorrelation, etc. are all constant over time.
+
+
+
+Decompose into more times series
+A time series decomposition is a mathematical procedure which transform a time series into multiple different time series. The original
+time series is often computed (decompose) into 3 sub-time series:
+    Seasonal: patterns that repeat with fixed period of time. A website might receive more visit during weekends. This is a seasonality of
+               7 days.
+    Trend: the underlying trend of the metrics. A website who gain in popularity should have a general trend who go up.
+    Random: (also call “noise”, “Irregular” or “Remainder”) Is the residuals of the time series after allocation into the seasonal and
+            trends time series.
+
+
+
+Additive or multiplicative decomposition?
+   To get a successful decomposition, it is important to choose between the additive or multiplicative model. To choose the right model
+   we need to look at the time series. Does the magnitude of the seasonality increase when the time series increase too?
+  
+ Additive Model: The seasonal variation looks constant. It doesn’t change when the time series increase. We should use the additive model. 
+  Additive Time series = Seasonal + Trend + Random
+
+  When the time series increase the seasonal variation increase more and more. We should use the multiplicative model.
+    Multiplicative Time series = Trend * Seasonal *Random
+
+https://anomaly.io/seasonal-trend-decomposition-in-r/
+
+ok = c(788,790,791,799,790,757,759,759,760,760,760,762)
+
+
+ts_ok = ts(ok, frequency = 2)
+dec_ok = decompose(ts_ok, "additive")
+dec_ok$trend
+
+plot(as.ts(dec_ok$seasonal))
+plot(as.ts(dec_ok$trend))
+plot(as.ts(dec_ok$random))
+plot(dec_ok)
+
+
+
+
+
+
