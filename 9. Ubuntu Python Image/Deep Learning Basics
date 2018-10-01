@@ -1,0 +1,16 @@
+#We can use tensorflow or Theano for Keras. If theano is by default, we can change it using:
+sudo vm ~/.keras/keras.json     # It will open a file. Now put the code below. if vm doesnt work, use gedit
+
+{
+    "image_dim_ordering": "tf",    # To change back, change tf to th
+    "epsilon": 1e-07,
+    "floatx": "float32",
+    "backend": "tensorflow"        # To change back to theano, change tensorflow to theano
+}
+
+
+
+
+
+
+

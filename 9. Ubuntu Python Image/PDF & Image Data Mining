@@ -1,0 +1,61 @@
+
+
+
+#############################################################################################################################
+#############################        Converting uneditable pdf files         ################################################ 
+
+#####  Read text from scanned pdf files. These pdf files are unsearchable. We'll convert it into searchable and then convert 
+# ihese codes will be run in terminal window of linux machine
+
+cd ocrdir             #We want to use the folder ocrdir. Files fax are there only
+pypdfocr fax.pdf      #This line will convert the uneditable fax.pdf file into searchable and automically name it as 
+                      # fax_ocr.pdf. The original file fax.pdf will stay there intact
+
+pdf2txt.py -o output.html fax_ocr.pdf      # This line will convert fax_ocr.pdf file to html file
+pdf2txt.py -o test.txt -t text fax_ocr.pdf    # This line will convert fax_ocr.pdf file to html file
+
+
+Links
+https://timothymonteath.com/bulk-pdf-ocr-on-os-x/
+https://github.com/virantha/pypdfocr
+https://paulsolin.com/2014/06/27/scraping-pdfs-with-python/
+http://pybrary.net/pyPdf/
+
+
+
+#############################################################################################################################
+##################################        READING TEXT FROM IMAGES       ####################################################
+#############################################################################################################################
+
+#We'll read this in ipython. Image pkg reads the png, jpg, tiff etc imags. pytesseract performs the ocr the images
+# Need to install tesseract ocr 1st using
+sudo apt install tesseract-ocr
+
+
+import Image  
+import pytesseract
+print pytesseract.image_to_string(Image.open('/home/lebowski/Desktop/image processing/Rodeo WD/image1.jpg'), lang="eng") 
+
+print pytesseract.image_to_string(Image.open('/home/lebowski/Desktop/image processing/Rodeo WD/image2.png'), lang="eng") 
+
+# If the above code doesn't work use this
+try:
+    import Image
+except ImportError:
+    from PIL import Image
+import pytesseract
+
+img = Image.open('/home/lebowski/Desktop/image processing/Rodeo WD/image1.jpg')
+img.load()
+img.split()
+i = pytesseract.image_to_string(img)
+print i
+
+
+
+
+# We can read text from editable pdf files using textract package in ipython
+from textract import process
+print process('/home/lebowski/Desktop/image processing/Rodeo WD/june3.pdf')
+
+

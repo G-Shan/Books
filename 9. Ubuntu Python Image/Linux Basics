@@ -1,0 +1,36 @@
+
+1)  # Kill a program in python
+    Suppose a program is frozen/hanged in ubuntu, Type "top" in the terminal, then look at the PID of the program that is hanged,
+    then write "kill PID No." and it will kill that program.
+
+2)  # Uninstall a program, install a program and download a software from a site in command line. 
+    rm -rf ~/anaconda2
+    bash ~/Downloads/Anaconda3.sh  # Here Anaconda is located in Downloads folder
+    wget https://repo.continuum.io/archive/Anaconda2-4.2.0-Linux-x86_64.sh   #It will directly download from the site
+    
+3)  # adjust the screen brightness of the laptop from command line
+     sudo apt-get install -y xbacklight
+     xbacklight -set 50      #Set display backlight to 50%
+
+4)  # shut down or reboot Ubuntu using terminal commands
+     sudo poweroff   #FOr shutting down
+     sudo reboot     # For restarting
+
+5) # Launch facebook in chrome from terminal without depedency on the terminal itself
+     google-chrome & exit
+
+6) # To open my computer from terminal
+     nautilus
+
+7) # To Change the drive ##
+   cd /the drive name /goes on....   #If the folder has more spaces then use the TAB after writting few words of the folder name
+
+8) # Open your bashrc file to add a path to the directory. Here gedit is a text editor. We can use any text editor we want
+     gedit .bashrc
+
+
+
+
+
+
+

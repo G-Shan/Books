@@ -1,0 +1,132 @@
+
+from PIL import Image
+pil_im = Image.open('C:\Users\sohail.ahmad\Desktop\Image Recognition\data/srk.jpg')
+
+  # Color conversions are done using the convert() method. To read an image and convert
+  # it to grayscale, just add convert('L') like this:
+pil_im = Image.open(C:\Users\sohail.ahmad\Desktop\Image Recognition\data/srk.jpg').convert('L')
+
+  #creating the thumbnail of the image with 128 pixels
+pil_im.thumbnail((128,128))
+
+  # Cropping a region from an image is done using the crop() method
+box = (100,100,400,400)
+region = pil_im.crop(box)
+
+  # The region is defined by a 4-tuple, where coordinates are (left, upper, right, lower). PIL
+  # uses a coordinate system with (0, 0) in the upper left corner. The extracted region can,
+  # for example, be rotated and then put back using the paste() method like this
+region = region.transpose(Image.ROTATE_180)
+pil_im.paste(region,box)
+
+
+
+  # To resize an image, call resize() with a tuple giving the new size:
+out = pil_im.resize((128,128))
+
+  # To rotate an image, use counterclockwise angles and rotate() like this:
+out = pil_im.rotate(45)
+
+  ################################   MATPLOTLIB Examples      ############################################
+from PIL import Image
+from pylab import *
+
+    # read image to array
+im = array(Image.open('C:\Users\sohail.ahmad\Desktop\Image Recognition\data/srk.jpg'))
+
+   # plot the image
+imshow(im)
+show()
+
+   # some points
+x = [100,100,400,400]
+y = [200,500,200,500]
+
+   # plot the points with red star-markers in the image
+plot(x,y,'r*')
+
+   # line plot connecting the first two points
+plot(x[:2],y[:2])
+   
+   # add title and show the plot
+title('Plotting: "SRK.jpg"')
+show()
+
+   #There are many options for formatting color and styles when plotting. The most useful
+   # are the short commands shown in Tables 1-1, 1-2 and 1-3. Use them like this:
+plot(x,y) # default blue solid line
+plot(x,y,'r*') # red star-markers
+plot(x,y,'go-') # green line with circle-markers
+plot(x,y,'ks:') # black dotted line with square-markers
+
+
+   # Let’s look at two examples of special plots: image contours and image histograms.This needs grayscale images, 
+   # because the contours need to be taken on a single value for every coordinate [x , y]. Here’s how to do it:
+
+   #Image contours example
+from PIL import Image
+from pylab import *
+
+    # read image to array
+im = array(Image.open('C:\Users\sohail.ahmad\Desktop\Image Recognition\data/srk.jpg').convert('L'))
+
+   # create a new figure
+figure()
+
+   # don't use colors
+gray()
+
+   # show contours with origin upper left corner
+contour(im, origin='image')
+axis('equal')
+axis('off')
+show()
+
+    # An image histogram is a plot showing the distribution of pixel values. A number of bins is specified for the span
+    # of values and each bin gets a count of how many pixels have values in the bin’s range. The visualization of the
+    # (graylevel) image histogram is done using the hist() function:
+
+figure()
+hist(im.flatten(),128)  #The 2nd argument tells the number of bins to use
+show()
+
+   ## Interactive Annotation
+   # Sometimes users need to interact with an application, for example by marking points in an image, or you need to
+   # annotate some training data. PyLab comes with a simple function, ginput() , that lets you do just that.
+   # This plots an image and waits for the user to click three times in the image region of
+   # the figure window. The coordinates [x , y] of the clicks are saved in a list x.
+from PIL import Image
+from pylab import *
+im = array(Image.open('C:\Users\sohail.ahmad\Desktop\Image Recognition\data/srk.jpg'))
+imshow(im)
+print 'Please click 3 points'
+x = ginput(3)
+print 'you clicked:',x
+show()
+
+#######################     USING NUMPY FOR IMAGES     ###################################
+     # Arrays in NumPy are multi-dimensional and can represent vectors, matrices, and images. An array is much
+     # like a list (or list of lists) but is restricted to having all elements of the same type. Unless
+     # specified on creation, the type will automatically be set depending on the data.
+im = array(Image.open('C:\Users\sohail.ahmad\Desktop\Image Recognition\data/srk.jpg'))
+print im.shape, im.dtype
+
+#The first tuple on each line is the shape of the image array (rows, columns, color
+#channels), and the following string is the data type of the array elements.
+
+    #Here "L" will convert to grayscale. "f" ensures that the images is converted to floating point numbers
+im = array(Image.open('C:\Users\sohail.ahmad\Desktop\Image Recognition\data/srk.jpg').convert('L'),'f')
+print im.shape, im.dtype
+
+#Elements in the array are accessed with indexes. The value at coordinates i , j and color
+#channel k are accessed like this:
+value = im[i,j,k]
+im[i,:] = im[j,:]  # set the values of row i with values from row j
+im[:,i] = 100      # set all values in column i to 100
+im[:100,:50].sum() # the sum of the values of the first 100 rows and 50 columns
+im[50:100,50:100]  # rows 50-100, columns 50-100 (100th not included)
+im[i].mean()       # average of row i
+im[:,-1]           # last column
+
+# More on PROGRAMMING COMPUTER VISION WITH PYTHON OREILLY JAN ERIK SOLEM
+
