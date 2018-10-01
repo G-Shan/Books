@@ -1,0 +1,798 @@
+
+CHAPTER PLAN
+1) Combining and Merging Data Sets
+2) Reshaping and Pivoting
+3) Data Transformation
+4) String Manipulation
+5) Example: USDA Food Database
+
+
+#######################           Combining and Merging Data Sets        ########################################
+import numpy as np
+import pandas as pd
+from pandas import DataFrame, Series
+from numpy.random import randn
+
+# The merge function in pandas is the main entry point for using these algorithms on wer data
+df1 = DataFrame({'key': ['b', 'b', 'a', 'c', 'a', 'a', 'b'], 'data1': range(7)})
+df2 = DataFrame({'key': ['a', 'b', 'd'], 'data2': range(3)})
+df1
+df2
+
+# This is an example of a many-to-one merge situation; the data in df1 has multiple rows  labeled a and b, whereas df2
+# has only one row for each value in the key column. c & d will be removed since merge does inner join by default
+pd.merge(df1, df2)
+
+
+# Note that we didn’t specify which column to join on. If not specified, merge uses the
+# overlapping column names as the keys. So, let's specify it now
+pd.merge(df1, df2, on='key')
+
+# If the column names are different in each object, we can specify them separately
+df3 = DataFrame({'lkey': ['b', 'b', 'a', 'c', 'a', 'a', 'b'], 'data1': range(7)})
+df4 = DataFrame({'rkey': ['a', 'b', 'd'], 'data2': range(3)})
+df3
+df4
+pd.merge(df3, df4, left_on='lkey', right_on='rkey')
+
+# By default merge does an 'inner' join; the keys in the result are the intersection. Other possible options are 'left', 'right', and
+# 'outer'. The outer join takes the union of the keys, combining the effect of applying both left and right joins
+pd.merge(df1, df2, how='outer')
+
+# Many-to-many merges have well-defined though not necessarily intuitive behavior.
+df1 = DataFrame({'key': ['b', 'b', 'a', 'c', 'a', 'b'], 'data1': range(6)})
+df2 = DataFrame({'key': ['a', 'b', 'a', 'b', 'd'], 'data2': range(5)})
+df1
+df2
+pd.merge(df1, df2, on='key', how='left')
+
+# Many-to-many joins form the Cartesian product of the rows. Since there were 3 'b' rows in the left DataFrame and 2 in the right one, 
+# there are 6 'b' rows in the result. The join method only affects the distinct key values appearing in the result
+
+
+
+pd.merge(df1, df2, how='inner')
+
+# To merge with multiple keys, pass a list of column names:
+left = DataFrame({'key1': ['foo', 'foo', 'bar'], 'key2': ['one', 'two', 'one'],'lval': [1, 2, 3]})
+right = DataFrame({'key1': ['foo', 'foo', 'bar', 'bar'], 'key2': ['one', 'one', 'one', 'two'], 'rval': [4, 5, 6, 7]})
+left
+right
+pd.merge(left, right, on=['key1', 'key2'], how='outer')
+
+
+# A last issue to consider in merge operations is the treatment of overlapping column names. While we can address the overlap
+# manually, merge has a suffixes option for specifying strings to append to overlapping names in the left and right DataFrame objects
+pd.merge(left, right, on='key1')
+pd.merge(left, right, on='key1', suffixes=('_left', '_right'))
+
+
+
+
+#########    Merging on Index      ##############
+
+# In some cases, the merge key or keys in a DataFrame will be found in its index. In this
+# case, we can pass left_index=True or right_index=True (or both) to indicate that the index should be used as the merge key
+left1 = DataFrame({'key': ['a', 'b', 'a', 'a', 'b', 'c'], 'value': range(6)})
+right1 = DataFrame({'group_val': [3.5, 7]}, index=['a', 'b'])
+left1
+right1
+pd.merge(left1, right1, left_on='key', right_index=True)
+
+# Since the default merge method is to intersect the join keys, we can instead form the union of them with an outer join:
+pd.merge(left1, right1, left_on='key', right_index=True, how='outer')
+
+# With hierarchically-indexed data, things are a bit more complicated:
+lefth = DataFrame({'key1': ['Ohio', 'Ohio', 'Ohio', 'Nevada', 'Nevada'],'key2': [2000, 2001, 2002, 2001, 2002],
+                                                                                        'data': np.arange(5.)})
+righth = DataFrame(np.arange(12).reshape((6, 2)), index=[['Nevada', 'Nevada', 'Ohio', 'Ohio', 'Ohio', 'Ohio'],
+                                                         [2001, 2000, 2000, 2000, 2001, 2002]], columns=['event1', 'event2'])
+
+
+lefth
+righth
+
+# In this case, we have to indicate multiple columns to merge on as a list (pay attention to the handling of duplicate index values)
+pd.merge(lefth, righth, left_on=['key1', 'key2'], right_index=True)
+
+pd.merge(lefth, righth, left_on=['key1', 'key2'], right_index=True, how='outer')
+
+# Using the indexes of both sides of the merge is also not an issue:
+left2 = DataFrame([[1., 2.], [3., 4.], [5., 6.]], index=['a', 'c', 'e'], columns=['Ohio', 'Nevada'])
+right2 = DataFrame([[7., 8.], [9., 10.], [11., 12.], [13, 14]], index=['b', 'c', 'd', 'e'], columns=['Missouri', 'Alabama'])
+left2
+right2
+pd.merge(left2, right2, how='outer', left_index=True, right_index=True)
+
+# DataFrame has a more convenient join instance for merging by index. It can also be
+# used to combine together many DataFrame objects having the same or similar indexes but non-overlapping columns.
+left2.join(right2, how='outer')
+
+# DataFrame’s join method performs a left join on the join keys. It also supports joining the index of the passed
+# DataFrame on one of the columns of the calling DataFrame
+left1.join(right1, on='key')
+
+# Lastly, for simple index-on-index merges, we can pass a list of DataFrames to join as
+# an alternative to using the more general concat function described below
+another = DataFrame([[7., 8.], [9., 10.], [11., 12.], [16., 17.]], index=['a', 'c', 'e', 'f'], columns=['New York', 'Oregon'])
+left2.join([right2, another])
+left2.join([right2, another], how='outer')
+
+
+#########    Concatenating Along an Axis      ##############
+
+# Another kind of data combination operation is alternatively referred to as concatenation,
+# binding, or stacking. NumPy has a concatenate function for doing this with raw NumPy arrays
+arr = np.arange(12).reshape((3, 4))
+arr
+np.concatenate([arr, arr], axis=1)
+
+# Suppose we have three Series with no index overlap
+s1 = Series([0, 1], index=['a', 'b'])
+s2 = Series([2, 3, 4], index=['c', 'd', 'e'])
+s3 = Series([5, 6], index=['f', 'g'])
+
+# Calling concat with these object in a list glues together the values and indexes
+pd.concat([s1, s2, s3])
+
+# By default concat works along axis=0, producing another Series. If we pass axis=1, the
+# result will instead be a DataFrame (axis=1 is the columns)
+pd.concat([s1, s2, s3], axis=1)
+
+
+# In this case there is no overlap on the other axis, which as we can see is the sorted
+# union (the 'outer' join) of the indexes. we can instead intersect them by passing join='inner'
+s4 = pd.concat([s1 * 5, s3])
+pd.concat([s1, s4], axis=1)
+pd.concat([s1, s4], axis=1, join='inner')
+
+# we can even specify the axes to be used on the other axes with join_axes
+pd.concat([s1, s4], axis=1, join_axes=[['a', 'c', 'b', 'e']])
+
+# One issue is that the concatenated pieces are not identifiable in the result. Suppose
+# instead we wanted to create a hierarchical index on the concatenation axis. To do this,use the keys argument
+result = pd.concat([s1, s1, s3], keys=['one', 'two', 'three'])
+result
+
+# Much more on the unstack function later
+result.unstack()
+
+# In the case of combining Series along axis=1, the keys become the DataFrame column headers
+pd.concat([s1, s2, s3], axis=1, keys=['one', 'two', 'three'])
+
+
+# The same logic extends to DataFrame objects
+df1 = DataFrame(np.arange(6).reshape(3, 2), index=['a', 'b', 'c'], columns=['one', 'two'])
+df2 = DataFrame(5 + np.arange(4).reshape(2, 2), index=['a', 'c'], columns=['three', 'four'])
+pd.concat([df1, df2], axis=1, keys=['level1', 'level2'])
+
+# If we pass a dict of objects instead of a list, the dict’s keys will be used for the keys option
+pd.concat({'level1': df1, 'level2': df2}, axis=1)
+
+# There are a couple of additional arguments governing how the hierarchical index is created
+pd.concat([df1, df2], axis=1, keys=['level1', 'level2'], names=['upper', 'lower'])
+
+
+# A last consideration concerns DataFrames in which the row index is not meaningful in the context of the analysis
+df1 = DataFrame(np.random.randn(3, 4), columns=['a', 'b', 'c', 'd'])
+df2 = DataFrame(np.random.randn(2, 3), columns=['b', 'd', 'a'])
+
+# In this case, we can pass ignore_index=True:
+pd.concat([df1, df2], ignore_index=True)
+
+
+
+#########    Combining Data with Overlap      ##############
+
+a = Series([np.nan, 2.5, np.nan, 3.5, 4.5, np.nan], index=['f', 'e', 'd', 'c', 'b', 'a'])
+b = Series(np.arange(len(a), dtype=np.float64), index=['f', 'e', 'd', 'c', 'b', 'a'])
+b[-1] = np.nan  #Converting the last element to NaN
+a
+b
+np.where(pd.isnull(a), b, a)
+
+# Series has a combine_first method, which performs the equivalent of this above operation plus data alignment
+b[:-2].combine_first(a[2:])
+
+
+# With DataFrames, combine_first naturally does the same thing column by column, so
+# we can think of it as “patching” missing data in the calling object with data from the object we pass
+df1 = DataFrame({'a': [1., np.nan, 5., np.nan], 'b': [np.nan, 2., np.nan, 6.], 'c': range(2, 18, 4)})
+df2 = DataFrame({'a': [5., 4., np.nan, 3., 7.], 'b': [np.nan, 3., 4., 6., 8.]})
+df1.combine_first(df2)
+
+
+
+
+#######################           Reshaping and Pivoting                 ########################################
+
+import numpy as np
+import pandas as pd
+from pandas import DataFrame, Series
+
+# There are a number of fundamental operations for rearranging tabular data. These are
+# alternatingly referred to as reshape or pivot operations.
+
+
+
+#########    Reshaping with Hierarchical Indexing      ##############
+
+#Hierarchical indexing provides a consistent way to rearrange data in a DataFrame.
+# There are two primary actions:
+# • stack: this “rotates” or pivots from the columns in the data to the rows
+# • unstack: this pivots from the rows into the columns
+
+data = DataFrame(np.arange(6).reshape((2, 3)), index=pd.Index(['Ohio', 'Colorado'], name='state'),
+                                               columns=pd.Index(['one', 'two', 'three'], name='number'))
+data
+
+# Using the stack method on this data pivots the columns into the rows, producing a Series
+result = data.stack()
+result
+
+# From a hierarchically-indexed Series, we can rearrange the data back into a DataFrame with unstack
+result.unstack()
+
+# By default the innermost level is unstacked (same with stack). we can unstack a different level by passing a level number or name:
+result.unstack(0)
+result.unstack('state')
+
+
+# Unstacking might introduce missing data if all of the values in the level aren’t found in each of the subgroups
+s1 = Series([0, 1, 2, 3], index=['a', 'b', 'c', 'd'])
+s2 = Series([4, 5, 6], index=['c', 'd', 'e'])
+data2 = pd.concat([s1, s2], keys=['one', 'two'])
+data2
+data2.unstack()
+
+
+# Stacking filters out missing data by default, so the operation is easily invertible
+data2.unstack().stack()
+data2.unstack().stack(dropna=False)
+
+# When unstacking in a DataFrame, the level unstacked becomes the lowest level in the result
+df = DataFrame({'left': result, 'right': result + 5}, columns=pd.Index(['left', 'right'], name='side'))
+df
+df.unstack('state')
+df.unstack('state').stack('side')
+
+
+
+#########    Pivoting “long” to “wide” Format      ##############
+
+# A common way to store multiple time series in databases and CSV is in so-called long or stacked format
+ldata[:10]
+
+# DataFrame’s pivot method performs exactly this transformation. The first two values passed are the columns to be used as the row and 
+# column index, and finally an optional value column to fill the DataFrame.
+pivoted = ldata.pivot('date', 'item', 'value')
+pivoted.head()
+
+# Suppose we had two value columns that we wanted to reshape simultaneously
+ldata['value2'] = np.random.randn(len(ldata))
+ldata[:10]
+
+# By omitting the last argument, we obtain a DataFrame with hierarchical columns
+pivoted = ldata.pivot('date', 'item')
+pivoted[:5]
+pivoted['value'][:5]
+
+# Note that pivot is just a shortcut for creating a hierarchical index using set_index and reshaping with unstack
+unstacked = ldata.set_index(['date', 'item']).unstack('item')
+unstacked[:7]
+
+
+
+
+#######################           Data Transformations                   ########################################
+import numpy as np
+import pandas as pd
+from pandas import DataFrame, Series
+
+# So far in this chapter we’ve been concerned with rearranging data. Filtering, cleaning,
+# and other tranformations are another class of important operations
+
+
+#########    Removing Duplicates     #############
+
+data = DataFrame({'k1': ['one'] * 3 + ['two'] * 4, 'k2': [1, 1, 2, 3, 3, 4, 4]})
+data
+
+# The DataFrame method duplicated returns a boolean Series indicating whether each row is a duplicate or not
+data.duplicated()
+
+# Relatedly, drop_duplicates returns a DataFrame where the duplicated array is True:
+data.drop_duplicates()
+
+
+# Both of these methods by default consider all of the columns; alternatively we can specify any subset of them to detect duplicates. 
+# Suppose we had an additional column of values and wanted to filter duplicates only based on the 'k1' column:
+data['v1'] = range(7)
+data
+data.drop_duplicates(['k1'])
+
+
+# duplicated and drop_duplicates by default keep the first observed value combination. Passing keep='last' will return the last one
+data.drop_duplicates(['k1', 'k2'], keep='last')
+
+
+#### Transforming Data Using a Function or Mapping  #########
+
+# For many data sets, we may wish to perform some transformation based on the values
+# in an array, Series, or column in a DataFrame. Consider the following hypothetical data collected about some kinds of meat:
+
+data = DataFrame({'food': ['bacon', 'pulled pork', 'bacon', 'Pastrami', 'corned beef', 'Bacon', 'pastrami', 'honey ham', 'nova lox'], 
+                        'ounces': [4, 3, 12, 6, 7.5, 8, 3, 5, 6]})
+data
+
+# Suppose we wanted to add a column indicating the type of animal that each food came
+# from. Let’s write down a mapping of each distinct meat type to the kind of animal
+meat_to_animal = {
+  'bacon': 'pig',
+  'pulled pork': 'pig',
+  'pastrami': 'cow',
+  'corned beef': 'cow',
+  'honey ham': 'pig',
+  'nova lox': 'salmon'
+}
+
+
+# The map method on a Series accepts a function or dict-like object containing a mapping, but here we have a small problem in that some
+# of the meats above are capitalized and others are not. Thus, we also need to convert each value to lower case:
+data['animal'] = data['food'].map(str.lower).map(meat_to_animal)
+data
+
+# We could also have passed a function that does all the work:
+data['food'].map(lambda x: meat_to_animal[x.lower()])
+
+# Using map is a convenient way to perform element-wise transformations and other data cleaning-related operations.
+
+
+
+
+#########    Replacing Values     #############
+
+# Filling in missing data with the fillna method can be thought of as a special case of
+# more general value replacement. While map, as we’ve seen above, can be used to modify
+# a subset of values in an object, replace provides a simpler and more flexible way to do so. Let’s consider this Series:
+data = Series([1., -999., 2., -999., -1000., 3.])
+data
+
+# The -999 values might be sentinel values for missing data. To replace these with NA
+# values that pandas understands, we can use replace, producing a new Series
+data.replace(-999, np.nan)
+
+# If we want to replace multiple values at once, we instead pass a list then the substitute value
+data.replace([-999, -1000], np.nan)
+
+# To use a different replacement for each value, pass a list of substitutes:
+data.replace([-999, -1000], [np.nan, 0])
+
+# The argument passed can also be a dict:
+data.replace({-999: np.nan, -1000: 0})
+
+
+
+
+#########    Renaming Axis Indexes     #############
+
+# Like values in a Series, axis labels can be similarly transformed by a function or mapping
+# of some form to produce new, differently labeled objects. The axes can also be modified
+# in place without creating a new data structure. Here’s a simple example:
+data = DataFrame(np.arange(12).reshape((3, 4)), index=['Ohio', 'Colorado', 'New York'], columns=['one', 'two', 'three', 'four'])
+
+# Like a Series, the axis indexes have a map method:
+data.index.map(str.upper)
+
+# we can assign to index, modifying the DataFrame in place:
+data.index = data.index.map(str.upper)
+data
+
+# If we want to create a transformed version of a data set without modifying the original,a useful method is rename
+data.rename(index=str.title, columns=str.upper) #all the column names will be capital letter
+
+# Notably, rename can be used in conjunction with a dict-like object providing new values for a subset of the axis labels
+data.rename(index={'OHIO': 'INDIANA'}, columns={'three': 'peekaboo'}) #Ohio will be replcaed with Indiana and three with Peekaboo
+
+# rename saves having to copy the DataFrame manually and assign to its index and col umns attributes. Should we wish to modify a data
+# set in place, pass inplace=True. It always returns a reference to a DataFrame
+_ = data.rename(index={'OHIO': 'INDIANA'}, inplace=True)
+data
+
+
+
+#########    Discretization & Binning    ###########
+
+# Continuous data is often discretized or otherwised separated into “bins” for analysis.
+# Suppose we have data about a group of people in a study, and we want to group them into discrete age buckets:
+ages = [20, 22, 25, 27, 21, 23, 37, 31, 61, 45, 41, 32]
+
+# Let’s divide these into bins of 18 to 25, 26 to 35, 35 to 60, and finally 60 and older. To
+do so, we have to use cut, a function in pandas
+bins = [18, 25, 35, 60, 100]
+cats = pd.cut(ages, bins)
+cats
+
+# The object pandas returns is a special Categorical object. we can treat it like an array of strings indicating the bin name; 
+# internally it contains levels array indicating the distinct category names along with a labeling for the ages data in labels attribute
+cats.codes
+cats.categories
+pd.value_counts(cats)
+
+
+# Consistent with mathematical notation for intervals, a parenthesis means that the side
+# is open while the square bracket means it is closed (inclusive). Which side is closed can be changed by passing right=False
+pd.cut(ages, [18, 26, 36, 61, 100], right=False)
+
+# we can also pass our own bin names by passing a list or array to the labels option
+group_names = ['weth', 'wengAdult', 'MiddleAged', 'Senior']
+pd.cut(ages, bins, labels=group_names)
+
+
+# If we pass cut a integer number of bins instead of explicit bin edges, it will compute
+# equal-length bins based on the minimum and maximum values in the data.
+data = np.random.rand(20)
+pd.cut(data, 4, precision=2)
+
+
+# A closely related function, qcut, bins the data based on sample quantiles. Depending on the distribution of the data, using cut will
+# not usually result in each bin having the same number of data points. Since qcut uses sample quantiles instead, by definition
+# we will obtain roughly equal-size bins
+data = np.random.randn(1000)   #Normally distributed
+cats = pd.qcut(data, 4) # Cut into quartiles
+cats
+pd.value_counts(cats)
+
+
+# Similar to cut we can pass wer own quantiles (numbers between 0 and 1, inclusive):
+pd.qcut(data, [0, 0.1, 0.5, 0.9, 1.])
+
+# We’ll return to cut and qcut later in the chapter on aggregation and group operations,
+# as these discretization functions are especially useful for quantile and group analysis.
+
+
+
+
+#####  Detecting & Filtering Outliers    #########
+
+# Filtering or transforming outliers is largely a matter of applying array operations. Consider a DataFrame with some normally
+# distributed data
+np.random.seed(12345)
+data = DataFrame(np.random.randn(1000, 4))
+data.describe()
+
+# Suppose we wanted to find values in one of the columns exceeding three in magnitude
+col = data[3]
+col[np.abs(col) > 3]
+
+# To select all rows having a value exceeding 3 or -3 in any of the columns, we can use the any method on a boolean DataFrame
+data[(np.abs(data) > 3).any(1)]
+
+
+# Values can just as easily be set based on these criteria. Here is code to cap values outside the interval -3 to 3
+data[np.abs(data) > 3] = np.sign(data) * 3
+data.describe()
+
+# The ufunc np.sign returns an array of 1 and -1 depending on the sign of the values.
+
+
+
+#####  Permutation and Random Sampling   #########
+
+# Permuting (randomly reordering) a Series or the rows in a DataFrame is easy to do using the numpy.random.permutation function.
+# Calling permutation with the length of the axis we want to permute produces an array of integers indicating the new ordering:
+df = DataFrame(np.arange(5 * 4).reshape(5, 4))
+sampler = np.random.permutation(5)
+sampler
+
+# That array can then be used in ix-based indexing or the take function:
+df
+df.take(sampler)
+
+# To select a random subset without replacement, one way is to slice off the first k elements
+# of the array returned by permutation, where k is the desired subset size. There
+# are much more efficient sampling-without-replacement algorithms, but this is an easy strategy that uses readily available tools
+df.take(np.random.permutation(len(df))[:3])
+
+
+# To generate a sample with replacement, the fastest way is to use np.random.randint to draw random integers
+bag = np.array([5, 7, -1, 6, 4])
+sampler = np.random.randint(0, len(bag), size=10)
+sampler
+draws = bag.take(sampler)
+draws
+
+
+
+######  Computing Indicator/Dummy Variables  ########
+
+# Another type of transformation for statistical modeling or machine learning applications is converting a categorical variable into
+# a “dummy” or “indicator” matrix. If a column in a DataFrame has k distinct values, we would derive a matrix or DataFrame containing 
+# k columns containing all 1’s and 0’s. pandas has a get_dummies function for doing this, though devising one werself is not difficult.
+df = DataFrame({'key': ['b', 'b', 'a', 'c', 'a', 'b'], 'data1': range(6)})
+df
+pd.get_dummies(df['key'])
+
+
+# In some cases, we may want to add a prefix to the columns in the indicator DataFrame,
+# which can then be merged with the other data. get_dummies has a prefix argument for doing just this
+dummies = pd.get_dummies(df['key'], prefix='key')
+df_with_dummy = df[['data1']].join(dummies)
+df_with_dummy
+
+# If a row in a DataFrame belongs to multiple categories, things are a bit more complicated.
+# Let’s return to the MovieLens 1M dataset from earlier in the book
+mnames = ['movie_id', 'title', 'genres']
+movies = pd.read_table('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\ch02\\movielens\\movies.dat', sep='::', header=None,  
+                                                                                               engine='python' ,names=mnames)
+
+movies[:10]
+
+
+# Adding indicator variables for each genre requires a little bit of wrangling. First, we
+# extract the list of unique genres in the dataset (using a nice set.union trick)
+genre_iter = (set(x.split('|')) for x in movies.genres)
+genres = sorted(set.union(*genre_iter))
+genres
+# Now, one way to construct the indicator DataFrame is to start with a DataFrame of all zeros
+dummies = DataFrame(np.zeros((len(movies), len(genres))), columns=genres)
+
+# Now, iterate through each movie and set entries in each row of dummies to 1
+for i, gen in enumerate(movies.genres):
+    dummies.ix[i, gen.split('|')] = 1
+
+# Then, as above, we can combine this with movies
+movies_windic = movies.join(dummies.add_prefix('Genre_'))
+movies_windic.ix[0]
+
+# A useful recipe for statistical applications is to combine get_dummies with a discretization function like cut
+values = np.random.rand(10)
+values
+bins = [0, 0.2, 0.4, 0.6, 0.8, 1]
+pd.get_dummies(pd.cut(values, bins))
+
+
+
+
+
+
+#######################           String Manipulation                    ########################################
+import numpy as np
+import pandas as pd
+from pandas import DataFrame, Series
+
+#########    String Object Methods     ############
+
+# In many string munging and scripting applications, built-in string methods are sufficient.
+# As an example, a comma-separated string can be broken into pieces with split:
+val = 'a,b, guido'
+val
+val.split(',')
+
+# split is often combined with strip to trim whitespace (including newlines):
+pieces = [x.strip() for x in val.split(',')]
+pieces
+
+# These substrings could be concatenated together with a two-colon delimiter using addition
+first, second, third = pieces
+first + '::' + second + '::' + third
+
+# But, this isn’t a practical generic method. A faster and more Pythonic way is to pass a
+# list or tuple to the join method on the string '::'
+'::'.join(pieces)
+
+# Other methods are concerned with locating substrings. Using Python’s in keyword is
+# the best way to detect a substring, though index and find can also be used
+'guido' in val
+val.index(',')
+val.find(':')
+
+# Note the difference between find and index is that index raises an exception if the string
+# isn’t found (versus returning -1). Below line will show error
+val.index(':')
+
+# Relatedly, count returns the number of occurrences of a particular substring
+val.count(',')
+
+# replace will substitute occurrences of one pattern for another. This is commonly used to delete patterns, too, by passing an empty string
+val.replace(',', '::')
+val.replace(',', '')
+
+
+
+#########    Regular expressions     ##############
+
+# Regular expressions provide a flexible way to search or match string patterns in text. A
+# single expression, commonly called a regex, is a string formed according to the regular
+# expression language. Python’s built-in re module is responsible for applying regular expressions to strings
+
+# The re module functions fall into three categories: pattern matching, substitution, and
+# splitting. Naturally these are all related; a regex describes a pattern to locate in the text, which can then be used for many purposes.
+import re
+text = "foo bar\t baz \tqux"
+text
+re.split('\s+', text)
+
+# When we call re.split('\s+', text), the regular expression is first compiled, then its
+# split method is called on the passed text. we can compile the regex werself with re.compile, forming a reusable regex object
+regex = re.compile('\s+')
+regex.split(text)
+
+# If, instead, we wanted to get a list of all patterns matching the regex, we can use the findall method
+regex.findall(text)
+
+# match and search functions are closely related to findall. While findall returns all matches in a
+#string, search returns only the first match. More rigidly, match only matches at the beginning of the string.
+
+
+# let’s consider a block of text and a regular expression capable of identifying most email addresses
+text = """Dave dave@google.com
+Steve steve@gmail.com
+Rob rob@gmail.com
+Ryan ryan@yahoo.com
+"""
+
+pattern = r'[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}'
+
+# re.IGNORECASE makes the regex case-insensitive
+regex = re.compile(pattern, flags=re.IGNORECASE)
+
+# Using findall on the text produces a list of the e-mail addresses
+regex.findall(text)
+
+# search returns a special match object for the first email address in the text. For the
+# above regex, the match object can only tell us the start and end position of the pattern in the string
+m = regex.search(text)
+m
+text[m.start():m.end()]
+
+# regex.match returns None, as it only will match if the pattern occurs at the start of the string
+print regex.match(text)
+
+# Relatedly, sub will return a new string with occurrences of the pattern replaced by the a new string
+print regex.sub('REDACTED', text)
+
+#Suppose we wanted to find email addresses and simultaneously segment each address
+#into its 3 components: username, domain name, and domain suffix. To do this, put parentheses around the parts of the pattern to segment
+pattern = r'([A-Z0-9._%+-]+)@([A-Z0-9.-]+)\.([A-Z]{2,4})'
+regex = re.compile(pattern, flags=re.IGNORECASE)
+
+# A match object produced by this modified regex returns a tuple of the pattern components with its groups method:
+m = regex.match('wesm@bright.net')
+m.groups()
+
+# findall returns a list of tuples when the pattern has groups:
+regex.findall(text)
+
+# sub also has access to groups in each match using special symbols like \1, \2, etc.
+print regex.sub(r'Username: \1, Domain: \2, Suffix: \3', text)
+
+# There is much more to regular expressions in Python, most of which is outside the
+# book’s scope. To give we a flavor, one variation on the above email regex gives names to the match groups
+regex = re.compile(r"""
+   (?P<username>[A-Z0-9._%+-]+)
+   @
+   (?P<domain>[A-Z0-9.-]+)
+   \.
+   (?P<suffix>[A-Z]{2,4})""", flags=re.IGNORECASE|re.VERBOSE)
+
+# The match object produced by such a regex can produce a handy dict with the specified group names
+m = regex.match('wesm@bright.net')
+m.groupdict()
+
+
+
+######  Vectorized string functions in pandas  #######
+
+# Cleaning up a messy data set for analysis often requires a lot of string munging and
+# regularization. To complicate matters, a column containing strings will sometimes have missing data
+data = {'Dave': 'dave@google.com', 'Steve': 'steve@gmail.com', 'Rob': 'rob@gmail.com', 'Wes': np.nan}
+data = Series(data)
+data
+data.isnull()
+
+
+# String and regular expression methods can be applied (passing a lambda or other function) to each value using data.map, but it will
+# fail on the NA. To cope with this, Series has concise methods for string operations that skip NA values. These are accessed
+#through Series’s str attribute; for example, we could check whether each email address has 'gmail' in it with str.contains:
+data.str.contains('gmail')
+
+# Regular expressions can be used, too, along with any re options like IGNORECASE:
+pattern
+data.str.findall(pattern, flags=re.IGNORECASE)
+
+# There are a couple of ways to do vectorized element retrieval. Either use str.get or index into the str attribute
+matches = data.str.match(pattern, flags=re.IGNORECASE)
+matches
+matches.str.get(1)
+matches.str[0]
+
+
+# we can similarly slice strings using this syntax:
+data.str[:5]
+
+
+
+
+
+#######################           Example: USDA Food Database            ########################################
+
+
+# The US Department of Agriculture makes available a database of food nutrient information.
+# Ashley Williams, an English hacker, has made available a version of this database in JSON format
+
+# Each food has a number of identifying attributes along with two lists of nutrients and portion sizes. Having the data in this form is
+# not particularly amenable for analysis, so we need to do some work to wrangle the data into a better form.
+# After downloading and extracting the data from the link above, we can load it into
+# Python with any JSON library of our choosing. We’ll use the built-in Python json module
+import json
+db = json.load(open('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch07\\foods-2011-10-03.json'))
+len(db)
+
+
+# Each entry in db is a dict containing all the data for a single food. The 'nutrients' field is a list of dicts, one for each nutrient
+db[0].keys()
+db[0]['nutrients'][0]
+nutrients = DataFrame(db[0]['nutrients'])
+nutrients[:7]
+nutrients.info()
+
+# When converting a list of dicts to a DataFrame, we can specify a list of fields to extract.
+# We’ll take the food names, group, id, and manufacturer
+info_keys = ['description', 'group', 'id', 'manufacturer']
+info = DataFrame(db, columns=info_keys)
+info[:5]
+info
+
+# we can see the distribution of food groups with value_counts
+pd.value_counts(info.group)[:10]
+
+
+# Now, to do some analysis on all of the nutrient data, it’s easiest to assemble the nutrients for each food into a single large table.
+# To do so, we need to take several steps. First, We’ll convert each list of food nutrients to a DataFrame, add a column for the food 
+# id, and append the DataFrame to a list. Then, these can be concatenated together with concat
+
+nutrients = []
+
+for rec in db:
+    fnuts = DataFrame(rec['nutrients'])
+    fnuts['id'] = rec['id']
+    nutrients.append(fnuts)
+
+nutrients = pd.concat(nutrients, ignore_index=True)
+
+# If all goes well, nutrients should look like this
+nutrients
+
+# I noticed that, for whatever reason, there are duplicates in this DataFrame, so it makes things easier to drop them:
+nutrients.duplicated().sum()
+nutrients = nutrients.drop_duplicates()
+
+# Since 'group' and 'description' is in both DataFrame objects, we can rename them to make it clear what is what
+col_mapping = {'description' : 'food', 'group' : 'fgroup'}
+info = info.rename(columns=col_mapping, copy=False)
+info
+col_mapping = {'description' : 'nutrient', 'group' : 'nutgroup'}
+nutrients = nutrients.rename(columns=col_mapping, copy=False)
+nutrients
+
+# With all of this done, we’re ready to merge info with nutrients
+ndata = pd.merge(nutrients, info, on='id', how='outer')
+ndata
+ndata.ix[30000]
+
+# we could a plot of median values by food group and nutrient type
+result = ndata.groupby(['nutrient', 'fgroup'])['value'].quantile(0.5)
+result['Zinc, Zn'].sort_values().plot(kind='barh')
+
+# With a little cleverness, we can find which food is most dense in each nutrient
+by_nutrient = ndata.groupby(['nutgroup', 'nutrient'])
+get_maximum = lambda x: x.xs(x.value.idxmax())
+get_minimum = lambda x: x.xs(x.value.idxmin())
+max_foods = by_nutrient.apply(get_maximum)[['value', 'food']]
+
+# make the food a little smaller
+max_foods.food = max_foods.food.str[:50]
+
+# The resulting DataFrame is a bit too large to display in the book; here is just the 'Amino Acids' nutrient group
+max_foods.ix['Amino Acids']['food']

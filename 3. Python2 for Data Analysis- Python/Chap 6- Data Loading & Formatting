@@ -1,0 +1,374 @@
+
+Chapter Plan:
+1) Reading and Writing Data in Text Format
+2) Binary Data Formats
+3) Interacting with Databases
+
+
+
+####################     Reading and Writing Data in Text Format      ###############################################
+
+import numpy as np
+import pandas as pd
+from pandas import DataFrame, Series
+from numpy.random import randn
+
+cat C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex1.csv
+
+
+
+# Since this is comma-delimited, we can use read_csv to read it into a DataFrame:
+df = pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex1.csv')
+df
+
+# We could also have used read_table and specifying the delimiter:
+pd.read_table('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex1.csv', sep=',')
+
+# A file will not always have a header row. To read this in, you have a couple of options. You can allow pandas to assign default
+# column names, or you can specify names yourself.
+pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex2.csv', header=None)
+pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex2.csv', names=['a', 'b', 'c', 'd', 'message'])
+
+# Suppose we wanted the message column to be the index of the returned DataFrame.
+# We can either indicate you want the column at index 4 or named 'message' using the index_col argument:
+names = ['a', 'b', 'c', 'd', 'message']
+pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex2.csv', names=names, index_col='message')
+
+# In the event that you want to form a hierarchical index from multiple columns, just pass a list of column numbers or names:
+parsed = pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\csv_mindex.csv', index_col=['key1', 'key2'])
+parsed
+
+
+# In some cases, a table might not have a fixed delimiter, using whitespace or some other pattern to separate fields. In these cases, 
+ # we can pass a regular expression as a delimiter for read_table. Consider this file, have a look
+list(open('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex3.txt'))
+
+# While we could do some munging by hand, in this case fields are separated by a variable
+# amount of whitespace. This can be expressed by the regular expression \s+, so we have then
+result = pd.read_table('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex3.txt', sep='\s+')
+result
+# Because there was one fewer column name than the number of data rows, read_table
+# infers that the first column should be the DataFrame’s index in this special case.
+
+# We can skip the first, third, and fourth rows of a file with skiprows
+pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex4.csv', skiprows=[0, 2, 3])
+
+# Handling missing values is an important and frequently nuanced part of the file parsing process. Missing data is usually either not
+# present (empty string)or marked by somesentinel value. By default, pandas uses set of commonly occurring sentinels, such as NA, -1.#IND, and NULL:
+result = pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex5.csv')
+result
+pd.isnull(result)  #Checking if the there are NA values. It will give boolean values
+
+# The na_values option can take either a list or set of strings to consider missing values:
+result = pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex5.csv', na_values=['NULL'])
+result
+
+# Different NA sentinels can be specified for each column in a dict:
+sentinels = {'message': ['foo', 'NA'], 'something': ['two']}
+pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex5.csv', na_values=sentinels)
+
+
+
+########   Reading Text Files in Pieces   #########
+
+# When processing very large files or figuring out the right set of arguments to correctly
+# process a large file, we may only want to read in a small piece of a file or iterate through smaller chunks of the file.
+result = pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex6.csv')
+result
+
+# If we want to only read out a small number of rows (avoiding reading the entire file), specify that with nrows:
+pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex6.csv', nrows=5)
+
+# To read out a file in pieces, specify a chunksize as a number of rows:
+chunker = pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex6.csv', chunksize=1000)
+
+
+# The TextParser object returned by read_csv allows you to iterate over the parts of the
+# file according to the chunksize. For example, we can iterate over ex6.csv, aggregating the value counts in the 'key' column like so
+chunker = pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex6.csv', chunksize=1000)
+tot = Series([])
+for piece in chunker:
+     tot = tot.add(piece['key'].value_counts(), fill_value=0)
+
+tot = tot.sort_values(ascending=False)
+
+# We have then
+tot[:10]
+# TextParser is also equipped with a get_chunk method which enables you to read pieces of an arbitrary size.
+
+
+########   Writing Data Out to Text Format   #########
+
+# Data can also be exported to delimited format. Using DataFrame’s to_csv method, we can write the data out to a comma-separated file
+data = pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex5.csv')
+data
+
+#Writing the data in csv format using to_csv. The file will go in the Working Directory
+data.to_csv('out.csv')
+
+# Series also has a to_csv method:
+dates = pd.date_range('1/1/2000', periods=7)
+ts = Series(np.arange(7), index=dates)
+ts.to_csv('tseries.csv')
+
+# With a bit of wrangling (no header, first column as index), we can read a CSV version of a Series with  from_csv
+Series.from_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\tseries.csv', parse_dates=True)
+
+
+#############     JSON Data     ###################
+
+# JSON (short for JavaScript Object Notation) has become one of the standard formats
+# for sending data by HTTP request between web browsers and other applications.
+obj = """
+{"name": "Wes",
+ "places_lived": ["United States", "Spain", "Germany"],
+ "pet": null,
+ "siblings": [{"name": "Scott", "age": 25, "pet": "Zuko"},
+              {"name": "Katie", "age": 33, "pet": "Cisco"}]
+}
+"""
+
+# There are several Python libraries for reading and writing JSON data. We’ll use json here as it is built into the Python standard library. To
+# convert a JSON string to Python form, use json.loads:
+import json
+result = json.loads(obj)
+result
+
+#json.dumps on the other hand converts a Python object back to JSON:
+asjson = json.dumps(result)
+
+#we can pass a list of JSON objects to the DataFrame constructor and select a subset of the data fields:
+siblings = DataFrame(result['siblings'], columns=['name', 'age'])
+siblings
+
+
+
+########   XML and HTML: Web Scraping  (Not working: codes obsolete) #########
+
+# lxml has multiple programmer interfaces; first We’ll use lxml.html for HTML, then parse some XML using lxml.objectify
+
+
+#To get started, find the URL we wanna extract data from, open it with urllib2 and parse the stream with lxml like so
+from lxml.html import parse
+from urllib2 import urlopen
+parsed = parse(urlopen('http://finance.yahoo.com/quote/AAPL/options?ltr=1'))
+doc = parsed.getroot()
+
+# Using this object, you can extract all HTML tags of a particular type, such as table tagscontaining the data of interest. As a simple
+# motivating example, suppose we wanted to get a list of every URL linked to in the document; links are a tags in HTML. Using
+#the document root’s findall method along with an XPath (a means of expressing “queries” on the document):
+    
+links = doc.findall('.//a')
+links[15:20]
+
+# But these are objects representing HTML elements; to get the URL and link text you
+# have to use each element’s get method (for the URL) and text_content method (for the display text):
+lnk = links[28]
+lnk
+lnk.get('href')
+lnk.text_content()
+
+# Thus, getting a list of all URLs in the document is a matter of writing this list comprehension:
+urls = [lnk.get('href') for lnk in doc.findall('.//a')]
+urls[-10:]
+
+
+# Now, finding the right tables in the document can be a matter of trial and error; some websites make it easier by giving a table of
+# interest an id attribute. I determined that these were the two tables containing the call data and put data, respectively
+tables = doc.findall('.//table')
+calls = tables[9]
+puts = tables[13]
+
+# Each table has a header row followed by each of the data rows:
+rows = calls.findall('.//tr')
+
+#For the header as well as the data rows, we want to extract the text from each cell; in
+#the case of the header these are th cells and td cells for the data:
+def _unpack(row, kind='td'):
+     elts = row.findall('.//%s' % kind)
+    return [val.text_content() for val in elts]
+
+# Thus we obtain
+_unpack(rows[0], kind='th')
+_unpack(rows[1], kind='td')
+
+# Now, it’s a matter of combining all of these steps together to convert this data into a DataFrame. Since the numerical data is still
+# in string format, we want to convert some, but perhaps not all of the columns to floating point format.
+from pandas.io.parsers import TextParser
+
+def parse_options_data(table):
+    rows = table.findall('.//tr')
+    header = _unpack(rows[0], kind='th')
+    data = [_unpack(r) for r in rows[1:]]
+    return TextParser(data, names=header).get_chunk()
+
+# Finally, we invoke this parsing function on the lxml table objects and get DataFrame results:
+call_data = parse_options_data(calls)
+put_data = parse_options_data(puts)
+call_data[:10]
+
+
+######   Parsing XML with lxml.objectify (Not Working)########
+
+# XML (extensible markup language) is another common structured data format supporting hierarchical, nested data with metadata.
+#Using lxml.objectify, we parse the file and get a reference to the root node of the XML
+file with getroot:
+from lxml import objectify
+path = 'Performance_MNR.xml'
+parsed = objectify.parse(open(path))
+root = parsed.getroot()
+
+#root.INDICATOR return a generator yielding each <INDICATOR> XML element. For each
+#record, we can populate a dict of tag names (like YTD_ACTUAL) to data values (excluding a few tags):
+data = []
+skip_fields = ['PARENT_SEQ', 'INDICATOR_SEQ',
+               'DESIRED_CHANGE', 'DECIMAL_PLACES']
+
+for elt in root.INDICATOR:
+    el_data = {}
+    for child in elt.getchildren():
+        if child.tag in skip_fields:
+         continue
+        el_data[child.tag] = child.pyval
+    data.append(el_data)
+
+# Lastly, convert this list of dicts into a DataFrame:
+perf = DataFrame(data)
+perf
+
+# XML data can get much more complicated than this example. Each tag can have metadata,
+# too. Consider an HTML link tag which is also valid XML:
+from StringIO import StringIO
+tag = '<a href="http://www.google.com">Google</a>'
+root = objectify.parse(StringIO(tag)).getroot()
+
+You can now access any of the fields (like href) in the tag or the link text:
+root
+root.get('href')
+root.text
+
+
+#######################          Binary Data Formats             ###############################################
+import pandas as pd
+from pandas import DataFrame, Series
+
+# One of the easiest ways to store data efficiently in binary format is using Python’s builtin pickle serialization.
+frame = pd.read_csv('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\ex1.csv')
+frame
+
+#pandas objects all have a save method which writes the data to disk as a pickle (not working)
+frame.save('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\frame_pickle')
+
+# You read the data back into Python with pandas.load, another pickle convenience function:
+pd.load('C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ch06\\frame_pickle')
+
+
+########   Using HDF5 Format   #########
+
+# There are a number of tools that facilitate efficiently reading and writing large amounts
+# of scientific data in binary format on disk. A popular industry-grade library for this is
+# HDF5, which is a C library with interfaces in many other languages like Java, Python, and MATLAB.
+
+# pandas has a minimal dict-like HDFStore class, which uses PyTables to store pandas objects:
+store = pd.HDFStore('mydata.h5')
+store['obj1'] = frame
+store['obj1_col'] = frame['a']
+store
+store['obj1']
+
+# If you work with huge quantities of data, I would encourage you to explore PyTables
+# and h5py to see how they can suit your needs.
+
+
+########   Reading Microsoft Excel Files   #########
+
+# pandas also supports reading tabular data stored in Excel 2003 (and higher) files using
+# the ExcelFile class. Interally ExcelFile uses the xlrd and openpyxl packages, so you
+# may have to install them first. To use ExcelFile, create an instance by passing a path
+# to an xls or xlsx file
+
+xls_file = pd.ExcelFile('data.xls')
+
+# Data stored in a sheet can then be read into DataFrame using parse:
+table = xls_file.parse('Sheet1')
+
+
+
+#######################        Interacting with Databases        ###############################################
+
+
+# Loading data from SQL into a DataFrame is fairly straightforward, and pandas has
+# some functions to simplify the process. As an example, I’ll use an in-memory SQLite
+# database using Python’s built-in sqlite3 driver:
+
+import sqlite3
+
+query = """
+CREATE TABLE test
+(a VARCHAR(20), b VARCHAR(20),
+c REAL, d INTEGER
+);"""
+
+
+con = sqlite3.connect(':memory:')
+con.execute(query)
+con.commit()
+# Then, insert a few rows of data:
+data = [('Atlanta', 'Georgia', 1.25, 6),
+     ('Tallahassee', 'Florida', 2.6, 3),
+     ('Sacramento', 'California', 1.7, 5)]
+stmt = "INSERT INTO test VALUES(?, ?, ?, ?)"
+con.executemany(stmt, data)
+con.commit()
+
+
+# Most Python SQL drivers (PyODBC, psycopg2, MySQLdb, pymssql, etc.) return a list of tuples when selecting data from a table:
+cursor = con.execute('select * from test')
+rows = cursor.fetchall()
+rows
+
+# You can pass the list of tuples to the DataFrame constructor, but you also need the
+# column names, contained in the cursor’s description attribute:
+cursor.description
+DataFrame(rows, columns=zip(*cursor.description)[0])
+
+# This is quite a bit of munging that you’d rather not repeat each time you query the
+# database. pandas has a read_frame function in its pandas.io.sql module that simplifies
+# the process. Just pass the select statement and the connection object:
+import pandas.io.sql as sql
+sql.read_frame('select * from test', con)
+
+
+
+
+########   Storing and Loading Data in MongoDB   #########
+
+# I started a MongoDB instance locally on my machine, and connect to it
+# on the default port using pymongo, the official driver for MongoDB:
+import pymongo
+con = pymongo.Connection('localhost', port=27017)
+
+
+# Documents stored in MongoDB are found in collections inside databases. Each running
+# instance of the MongoDB server can have multiple databases, and each database can
+# have multiple collections. Suppose we wanted to store the Twitter API data from earlier
+# in the chapter. First, we can access the (currently empty) tweets collection:
+tweets = con.db.tweets
+
+# Then, I load the list of tweets and write each of them to the collection using
+# tweets.save (which writes the Python dict to MongoDB):
+import requests, json
+url = 'http://search.twitter.com/search.json?q=python%20pandas'
+data = json.loads(requests.get(url).text)
+
+for tweet in data['results']:
+    tweets.save(tweet)
+
+# Now, if I wanted to get all of my tweets (if any) from the collection, I can query the
+# collection with the following syntax:
+cursor = tweets.find({'from_user': 'wesmckinn'})
+
+# The cursor returned is an iterator that yields each document as a dict. As above I can
+# convert this into a DataFrame, optionally extracting a subset of the data fields in each tweet:
+tweet_fields = ['created_at', 'from_user', 'id', 'text']
+result = DataFrame(list(cursor), columns=tweet_fields)

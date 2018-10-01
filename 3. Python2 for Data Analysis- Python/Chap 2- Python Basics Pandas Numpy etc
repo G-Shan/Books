@@ -1,0 +1,415 @@
+
+
+
+#########     Chapter 2   #################
+
+#######################      USA Govt JSON Dataset
+
+%pwd  #working directory path
+path = 'usagov_bitly_data2012-03-16-1331923249.txt'
+open(path).readline()
+
+import json
+path = 'usagov_bitly_data2012-03-16-1331923249.txt'
+records = [json.loads(line) for line in open(path)]
+records[0]
+records[20]["tz"]
+
+# It extracts the time zones. if argument checks if there ut tz (timezone); in case there is no tz, it gives null value
+time_zones = [rec['tz'] for rec in records if 'tz' in rec]
+
+time_zones[:10] #CHecking 1st 10 values. As expected, some are empty values
+
+def get_counts(sequence):
+  counts = {}
+  for x in sequence:
+    if x in counts:
+      counts[x] += 1
+    else:
+      counts[x] = 1
+  return counts
+
+# In-built. Creating a function for the same
+counts = get_counts(time_zones)
+counts['America/New_York']
+len(time_zones)
+
+#Suppose we want top 10 most common occuring time zones in the list time_zones. We can do this two ways. Either
+# using Python built function or pandas
+
+#Creatinga function to do that
+def top_counts(count_dict, n=10):
+    value_key_pairs = [(count, tz) for tz, count in count_dict.items()]
+    value_key_pairs.sort()
+    return value_key_pairs[-n:]
+
+top_counts(counts)
+
+
+#######################################          Using pandas            ################################
+from pandas import DataFrame, Series
+from pandas import DataFrame, Series
+frame = DataFrame(records)
+frame
+frame.head()
+frame.info()
+
+# Function value_counts that gives us what we’re looking for
+tz_counts = frame['tz'].value_counts()
+tz_counts[:10]
+
+# We need to fill NA and unknown values. The fillna function can replace missing (NA) values and unknown 
+# (empty strings) values can be replaced by  boolean array indexing.
+clean_tz = frame['tz'].fillna('Missing')
+clean_tz[clean_tz == ''] = 'Unknown'
+tz_counts = clean_tz.value_counts()
+
+tz_counts[:10]  #Now top 10 time zones also consists of Unknown & Missing values
+
+#Making a horizontal bar plot
+tz_counts[:10].plot(kind='barh', rot=0)
+
+
+# a is the browser/device/application used for shortening the link
+frame['a'][1]
+frame['a'][50]
+
+# we could split off the first token in the string (corresponding roughly to the browser capability) and make
+# another summary of the user behavior
+results = Series([x.split()[0] for x in frame.a.dropna()])
+results[:5]
+results.value_counts()[:8] # Top 8 most common browser used
+
+
+###### Now, suppose we wanna decompose the top time zones into Windows and non-Windows users.
+
+#Taking a new df which has only non-missing values from a. a is browser/device/application
+cframe = frame[frame.a.notnull()]
+
+# then compute a value whether each row is Windows or not:
+operating_system = np.where(cframe['a'].str.contains('Windows'),'Windows', 'Not Windows')
+operating_system[:6]
+
+# group the data by its time zone column and this new list of operating systems
+by_tz_os = cframe.groupby(['tz', operating_system])
+
+# The group counts, analogous to the value_counts function above, can be computed using size. This result is
+# then reshaped into a table with unstack:
+agg_counts = by_tz_os.size().unstack().fillna(0)
+agg_counts[:7]
+
+
+# Finally, let’s select the top overall time zones. To do so, I construct an indirect index array from the row counts in agg_counts:
+indexer = agg_counts.sum(1).argsort()
+indexer[:10]
+
+# then use take function to select the rows in that order, then slice off the last 10 rows and plot it
+count_subset = agg_counts.take(indexer)[-10:]
+count_subset
+
+# We’ll make it a stacked bar plot by passing stacked=True
+count_subset.plot(kind='barh', stacked=True)
+
+# The plot doesn’t make it easy to see the relative percentage of Windows users in the smaller groups, but the rows can easily 
+# be normalized to sum to 1 then plotted again
+normed_subset = count_subset.div(count_subset.sum(1), axis=0)
+normed_subset.plot(kind='barh', stacked=True)
+
+
+################################   NEW DATASET  #####################################################
+##############################     Movie Lens Dataset    ###############################################
+########################################################################################################
+
+import pandas as pd
+unames = ['user_id', 'gender', 'age', 'occupation', 'zip']
+users = pd.read_table("C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ml-1m\\users.dat", sep='::', header=None,names=unames, engine='python')
+
+rnames = ['user_id', 'movie_id', 'rating', 'timestamp']
+ratings = pd.read_table("C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ml-1m\\ratings.dat", sep='::', header=None,names=rnames, engine='python')
+
+mnames = ['movie_id', 'title', 'genres']
+movies = pd.read_table("C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\datasets\\ml-1m\\movies.dat", sep='::', header=None, names=mnames, engine='python')
+
+#Checking the 1st few rows
+users[:5]
+ratings[:5]
+movies[:5]
+users.info()
+ratings.info()
+movies.info()
+
+## Suppose we want the mean ratings of the movies on the basis of gender. we can do this by merging the datasets and then 
+#  use pivot_table funtion to get what we need
+#Here 1st we're merging ratings and users, then this dataframe is merged with movies
+data = pd.merge(pd.merge(ratings, users), movies)
+
+mean_ratings = data.pivot_table('rating', index='title', columns='gender', aggfunc='mean')
+mean_ratings[:5]
+
+# Now lets filter down to movies that received at least 250 ratings. to do this, we need to group the data
+# by title and use size() to get a Series of group sizes for each title
+ratings_by_title = data.groupby('title').size()
+ratings_by_title[:5]
+active_titles = ratings_by_title.index[ratings_by_title >= 250]
+active_titles[:10]
+
+# The index of titles receiving at least 250 ratings can then be used to select rows from mean_ratings above:
+# It will show ratings by gender for movies which has got at least 250 ratings
+mean_ratings = mean_ratings.ix[active_titles]
+mean_ratings[:5]
+
+
+# To see the top films among female viewers, we can sort by the F column in descending order
+top_female_ratings = mean_ratings.sort_values(by='F', ascending=False)
+top_female_ratings[:10]
+
+
+
+#######    Measuring Ratings Disagreement     ###################
+#One way is to add a new column diff in the mean_ratings df containing the difference in means of male & female
+mean_ratings['diff'] = mean_ratings['M'] - mean_ratings['F']
+
+#Sorting the diff gives us movies with the greatest rating difference and which were preferred by women
+sorted_by_diff = mean_ratings.sort_values(by='diff')
+sorted_by_diff[:10]
+
+
+#Reversing the order of the rows and again slicing off the top 10 rows, we get the movies preferred by men that women didn’t rate as highly:
+sorted_by_diff[::-1][:10]
+
+
+
+# Suppose instead you wanted the movies that elicited the most disagreement among viewers, independent of
+# gender. Disagreement can be measured by the variance or standard deviation of the ratings:
+rating_std_by_title = data.groupby('title')['rating'].std()
+rating_std_by_title[:10]
+
+
+#Le ts filter it down to the active titles
+rating_std_by_title = rating_std_by_title.ix[active_titles]
+rating_std_by_title[:10]
+
+# Order Series by value in descending order
+rating_std_by_title.sort_values(ascending=False)[:10]
+
+
+################################   NEW DATASET  ############################################
+##########################    US BABY NAMES 1880-2010       ##################################
+##############################################################################################
+import pandas as pd
+
+names1880 = pd.read_csv("C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\pydata-book-master\\ch02\\names\\yob1880.txt", names = ["name", "sex", "births"])
+names1880[:10]
+
+# Total no. of male and female birth in that year
+names1880.groupby("sex").births.sum()
+
+
+
+# Since the data set is split into files by year, one of the first things to do is to assemble all of the data 
+# into a single DataFrame and further to add a year field. This is easy to do using pandas.concat:
+
+# 2010 is the last available year right now
+years = range(1880, 2011)
+
+pieces = []
+columns = ['name', 'sex', 'births']
+
+for year in years:
+   path = "C:\\Users\\sohail.ahmad\\Desktop\\PFDA\\pydata-book-master\\ch02\\names\\yob%d.txt" % year
+   frame = pd.read_csv(path, names=columns)
+
+   frame['year'] = year
+   pieces.append(frame)
+
+# Concatenate everything into a single DataFrame
+names = pd.concat(pieces, ignore_index=True)
+
+# remember that concat glues the DataFrame objects together row-wise by default. Secondly, you have to pass
+#ignore_index=True because we’re not interested in preserving the original row numbers returned from read_csv
+
+names[:10]
+names.info()
+total_births = names.pivot_table("births", index="year", columns="sex", aggfunc=sum)
+total_births.tail
+total_births.plot(title = "total births by year and sex")
+
+
+#let’s insert a column prop with the fraction of babies given each name relative to the total number of
+# births. A prop value of 0.02 would indicate that 2 out of every 100 babies was given a particular name. 
+def add_prop(group):
+   # Integer division floors
+   births = group.births.astype(float)
+   group['prop'] = births / births.sum()
+ 
+   return group
+
+names = names.groupby(['year', 'sex']).apply(add_prop)
+names[:10]
+
+#CHecking if sum of prop is equal to 1. Yes it is. Uisng np.allclose to check if its equal or nearly equal to 1.
+np.allclose(names.groupby(['year', 'sex']).prop.sum(), 1)
+
+#extract a subset of the data to facilitate further analysis: the top 1000 names for each sex/year combination
+
+def get_top1000(group):
+   return group.sort_values(by='births', ascending=False)[:1000]
+grouped = names.groupby(['year', 'sex'])
+top1000 = grouped.apply(get_top1000)
+top1000[:10]
+
+# WE can also do the same using this function
+pieces = []
+for year, group in names.groupby(['year', 'sex']):
+    pieces.append(group.sort_values(by='births', ascending=False)[:1000])
+top1000 = pd.concat(pieces, ignore_index=True)
+
+top1000[:10]
+
+#Now the resulting dataset is quite smaller
+top1000.info()
+
+
+
+######   ANALYZING NAMING TRENDS    ##################
+
+#Splitting the Top 1,000 names into the boy and girl portions
+boys = top1000[top1000.sex == "M"]
+girls = top1000[top1000.sex == "F"]
+
+
+total_births = top1000.pivot_table("births", index="year", columns="name", aggfunc=sum)
+total_births[:10]
+
+total_births.info()
+
+#PLotting some of the names. All these names have gone down in numbers but story is more
+# complicated
+subset = total_births[['John', 'Harry', 'Mary', 'Marilyn']]
+subset.plot(subplots=True, figsize=(12, 10), grid=False, title="Number of births per year")
+
+
+####  Measuring the increase in naming diversity 
+
+# As we can see that, indeed, there appears to be increasing name diversity 
+# (decreasing total proportion in the top 1,000)
+table = top1000.pivot_table("prop", index = "year", columns = "sex", aggfunc=sum)
+table.plot(title='Sum of table1000.prop by year and sex',yticks=np.linspace(0, 1.2, 13), xticks=range(1880, 2020, 10))
+
+####################################
+# Another interesting metric is the number of distinct names, taken in order of popularity from highest to lowest, in
+# the top 50% of births. Lets compute this for year 2010 and 1900 and compare
+####################################
+
+df = boys[boys.year == 2010]
+df.info()
+
+#After sorting prop in descending order, we want to know how many of the most popular names it takes to reach 50%.
+# Taking the cumulative sum, cumsum, of prop then calling the method searchsorted returns the position in the 
+# cumulative sum at which 0.5 would need to be inserted to keep it in sorted order
+
+#SOrting values in descending order so that we could take top 50%
+prop_cumsum = df.sort_values(by='prop', ascending=False).prop.cumsum()
+prop_cumsum[:10]
+prop_cumsum.searchsorted(0.5) #Taking top 50% names only. 
+#This gives us 116 names. Since Since arrays are zero-indexed, adding 1 to this result gives you a result of 117.
+
+
+df = boys[boys.year == 1900]
+in1900 = df.sort_values(by='prop', ascending=False).prop.cumsum()
+in1900.searchsorted(0.5) + 1  #This gives us 25. 
+# Hence it's clear there were more diverse names in 2010 (117) than year 1900 (25)
+
+
+# Now we can apply this operation to each year/sex combination; groupby those fields and apply a function 
+# returning the count for each group:
+
+def get_quantile_count(group, q=0.5):
+   group = group.sort_values(by='prop', ascending=False)
+   return group.prop.cumsum().searchsorted(q) + 1
+
+diversity = top1000.groupby(['year', 'sex']).apply(get_quantile_count)
+diversity = diversity.unstack('sex')
+
+
+# This resulting DataFrame diversity now has two time series, one for each sex, indexed by year.
+diversity[:10]
+diversity.info()
+
+diversity = diversity.astype(float) #COnverting this dataframe into float to plot the data
+diversity.plot(title="Number of popular names in top 50%")
+# As we can see in the graph, diveristy of both boy & girl names have gone up over time; even more so with girl names
+
+
+
+#############################################################
+# Checking the change in the last letter in the names of male & female
+#############################################################
+
+
+# extract last letter from name column
+get_last_letter = lambda x: x[-1]
+last_letters = names.name.map(get_last_letter)
+last_letters.name = 'last_letter'
+
+#Aggregatinng all the births with last letter in rows and sex & year in column
+table = names.pivot_table('births', index=last_letters, columns=['sex', 'year'], aggfunc=sum)
+
+# then selecting out three representative years spanning the history and print the first few rows:
+subtable = table.reindex(columns=[1910, 1960, 2010], level='year')
+subtable.head()
+
+# normalize the table by total births to compute a new table containing proportion of total births for each sex 
+# ending in each letter
+subtable.sum()
+letter_prop = subtable/subtable.sum().astype(float)
+
+# With the letter proportions now in hand, I can make bar plots for each sex broken down by year.
+import matplotlib.pyplot as plt
+fig, axes = plt.subplots(2, 1, figsize=(10, 8))
+letter_prop['M'].plot(kind='bar', rot=0, ax=axes[0], title='Male')
+letter_prop['F'].plot(kind='bar', rot=0, ax=axes[1], title='Female',legend=False)
+#As you can see, boy names ending in “n” have experienced significant growth since the 1960s
+
+
+#Going back to the full table created above, we again normalize by year and sex and select a subset of letters 
+#for the boy names, finally transposing to make each column a time series:
+letter_prop = table / table.sum().astype(float)
+dny_ts = letter_prop.ix[['d', 'n', 'y'], 'M'].T
+dny_ts.head()
+
+# With this DataFrame of time series in hand, I can make a plot of the trends over time again with its plot method
+dny_ts.plot()
+
+
+
+#############################################################
+# Boy names that became girl names (and vice versa)
+#############################################################
+
+#Another fun trend is looking at boy names that were more popular with one sex earlier
+#in the sample but have “changed sexes” in the present. One example is the name Lesley
+#or Leslie. Going back to the top1000 dataset, I compute a list of names occurring in the dataset starting with 'lesl':
+
+all_names = top1000.name.unique()
+mask = np.array(['lesl' in x.lower() for x in all_names])
+lesley_like = all_names[mask]
+lesley_like
+
+# Now we can filter down to just those names and sum births grouped by name to see the relative frequencies:
+filtered = top1000[top1000.name.isin(lesley_like)]
+filtered.groupby('name').births.sum()
+
+# Now let’s aggregate by sex and year and normalize within year:
+table = filtered.pivot_table('births', rows='year', cols='sex', aggfunc='sum')
+table = table.div(table.sum(1), axis=0)
+
+# Lastly, it’s now easy to make a plot of the breakdown by sex over time
+table.plot(style={'M': 'k-', 'F': 'k--'})
+# As we can see, 1940 onwards, names such such as leslie, lesly etc has gone down for boys drastically while it has
+# drastically gone up for grills
+
+
+
+https://github.com/wesm/pydata-book
+

@@ -1,0 +1,782 @@
+
+Chapter plan:
+1) Introduction to Pandas Data Structure
+    --Series
+    --DataFrames
+2) Essential Functionality
+    --ReIndexing
+    --Dropping entries from an axis
+    --Indexing selection & filtering
+    --Arithmatic & data alignment
+    --Function Application and Mapping
+    --Sorting and Ranking
+    Axis indexes with duplicate values
+3) Summarizing an Computing Descriptive Statistics
+    --Correlation and Covariance
+    --Unique Values
+    --Value Count and Membership
+4) Handling Missing Data
+    --Filtering Out Missing Data
+    --Filling in Missing Data
+5) Heirarchical Indexing
+    --Reordering and Sorting Levels
+    --Summary Statistics By Level
+    --Using a DataFrame Column
+6) Other Pandas Topic
+    --Integer Indexing
+    --Panel Data
+7) Diff between iloc[]. ix[] and loc[]    
+
+
+
+
+
+
+####################     INTRO TO PYTHON STRUCTURE      ###############################################
+
+from pandas import Series, DataFrame
+import pandas as pd
+
+# To get started with pandas, we need to get comfortable with its two workhorse data structures: Series
+# and DataFrame. A Series is a one-dimensional array-like object containing an array of data (of any
+# NumPy data type) and an associated array of data labels, called its index.
+
+obj = Series([4, 7, -5, 3])
+obj.values
+obj.index
+
+# Since we did not specify an index for the data, a default one consisting of the integers 0 through  N - 1 (where N is the length of 
+# the data) is created.We can get the array representation and index object of Series via its values and index attributes, respectively
+
+# We can also create a Series with an index identifying each data point:
+obj2 = Series([4, 7, -5, 3], index=['d', 'b', 'a', 'c'])
+obj2.index
+obj2['a']
+obj2['d'] = 6  #Replacing the value of index d with 6
+obj2[['c', 'a', 'd']]
+obj2
+
+# Values greater than zero
+obj2[obj2 > 0]
+obj2 * 2   #Multiplying the series with 2
+np.exp(obj2)   # Taking exponential of elements in the series
+
+# Boolean argument. CHecking if there is b in the obj2
+'b' in obj2
+
+# If we have data contained in a Python dict, you can create a Series from it by passing the dict:
+sdata = {'Ohio': 35000, 'Texas': 71000, 'Oregon': 16000, 'Utah': 5000}
+obj3 = Series(sdata)
+obj3
+states = ['California', 'Ohio', 'Oregon', 'Texas']
+obj4 = Series(sdata, index=states)
+
+# In this case, 3 values found in sdata were placed in the appropriate locations, but since no value for 
+# 'California' was found, it appears as NaN (not a number) which is considered in pandas to mark missing or NA values.
+obj4
+
+# The isnull and notnull functions in pandas should be used to detect missing data:
+pd.isnull(obj4)
+pd.notnull(obj4)
+
+# Series also has these as instance methods:
+obj4.isnull()
+
+# A critical Series feature for many applications is that it automatically aligns differentlyindexed data in arithmetic operations
+obj3 + obj4
+
+# Both the Series object itself and its index have a name attribute, which integrates with other key areas of pandas functionality
+obj4.name = 'population'
+obj4.index.name = 'state'
+obj4
+
+#A Series’s index can be altered in place by assignment:
+obj.index = ['Bob', 'Steve', 'Jeff', 'Ryan']
+obj
+
+
+
+
+##########   DataFrame    ################
+
+# A DataFrame represents a tabular, spreadsheet-like data structure containing an ordered collection of 
+# columns, each of which can be a different value type (numeric, string, boolean, etc.).
+
+
+# There are many ways to construct a DataFrame,one of the most common is from a dict of equal-length lists or NumPy arrays
+data = {'state': ['Ohio', 'Ohio', 'Ohio', 'Nevada', 'Nevada'], 'year': [2000, 2001, 2002, 2001, 2002],
+'pop': [1.5, 1.7, 3.6, 2.4, 2.9]}
+frame = DataFrame(data)
+
+# The resulting DataFrame will have its index assigned automatically as with Series, and the columns are placed in sorted order:
+frame
+
+# If we specify a sequence of columns, the DataFrame’s columns will be exactly what we pass:
+DataFrame(data, columns=['year', 'state', 'pop'])
+
+# As with Series, if you pass a column that isn’t contained in data, it will appear with NA values in the result:
+frame2 = DataFrame(data, columns=['year', 'state', 'pop', 'debt'], index=['one', 'two', 'three', 'four', 'five'])
+frame2
+frame2.columns
+
+# A column in a DataFrame can be retrieved as a Series either by dict-like notation or by attribute
+frame2['state']
+frame2.year
+
+# Rows can also be retrieved by position or name by a couple of methods, such as the ix indexing field
+frame2.ix['three']
+
+# Columns can be modified by assignment. For example, the empty 'debt' column could be assigned a scalar value or an array of values:
+frame2['debt'] = 16.5
+frame2
+frame2['debt'] = np.arange(5.)
+frame2
+
+
+# When assigning lists or arrays to a column, the value’s length must match the length of the DataFrame. If you assign a Series, it 
+# will be instead conformed exactly to the DataFrame’s index, inserting missing values in any holes:
+val = Series([-1.2, -1.5, -1.7], index=['two', 'four', 'five'])
+
+# Assigning a column that doesn’t exist will create a new column. The del keyword will delete columns as with a dict:
+frame2['eastern'] = frame2.state == 'Ohio'
+frame2
+del frame2['eastern']
+frame2.columns
+
+# Another common form of data is a nested dict of dicts format:
+pop = {'Nevada': {2001: 2.4, 2002: 2.9}, 'Ohio': {2000: 1.5, 2001: 1.7, 2002: 3.6}}
+
+# If passed to DataFrame, it will interpret the outer dict keys as the columns and the inner keys as the row indices:
+frame3 = DataFrame(pop)
+frame3
+
+# Of course, we can transpose the values
+frame3.T
+
+# The keys in the inner dicts are unioned and sorted to form the index in the result. This isn’t true if an explicit index is specified:
+DataFrame(pop, index=[2001, 2002, 2003])
+
+
+# Dicts of Series are treated much in the same way:
+pdata = {'Ohio': frame3['Ohio'][:-1], 'Nevada': frame3['Nevada'][:2]}
+DataFrame(pdata)
+
+# If a DataFrame’s index and columns have their name attributes set, these will also be displayed
+frame3.index.name = 'year'; frame3.columns.name = 'state'
+frame3
+
+# Like Series, the values attribute returns the data contained in the DataFrame as a 2D ndarray:
+frame3.values
+
+# If the DataFrame’s columns are different dtypes, the dtype of the values array will be chosen to accomodate all of the columns:
+frame2.values
+
+
+
+
+############################          ESEENTIAL FUNCTIONALITY        ###############################################
+from pandas import Series, DataFrame
+import pandas as pd
+
+##########   Re-Indexing    ################
+
+# A critical method on pandas objects is reindex, which means to create a new object with the data conformed to a new index.
+obj = Series([4.5, 7.2, -5.3, 3.6], index=['d', 'b', 'a', 'c'])
+obj
+
+# Calling reindex on this Series rearranges the data according to the new index, introducing missing values if any index values were 
+# not already present:
+obj2 = obj.reindex(['a', 'b', 'c', 'd', 'e'])
+obj2
+obj.reindex(['a', 'b', 'c', 'd', 'e'], fill_value=0)
+
+
+# For ordered data like time series, it may be desirable to do some interpolation or filling of values when
+# reindexing. The method option allows us to do this, using a method such as ffill which forward fills the values:
+obj3 = Series(['blue', 'purple', 'yellow'], index=[0, 2, 4])
+obj3
+obj3.reindex(range(6), method='ffill')
+
+#Reindexing Methods: Arguments and Description
+    # ffill or pad:- Fill (or carry) values forward
+    #bfill or backfill:- Fill (or carry) values backward
+
+
+# With DataFrame, reindex can alter either the (row) index, columns, or both. When passed just a sequence, the rows are reindexed in
+# the result:
+frame = DataFrame(np.arange(9).reshape((3, 3)), index=['a', 'c', 'd'],columns=['Ohio', 'Texas', 'California'])
+frame
+
+frame2 = frame.reindex(['a', 'b', 'c', 'd'])
+frame2
+
+# The columns can be reindexed using the columns keyword:
+states = ['Texas', 'Utah', 'California']
+frame.reindex(columns=states)
+
+# Both can be reindexed in one shot, though interpolation will only apply row-wise (axis 0):
+frame.reindex(index=['a', 'b', 'c', 'd'], method='ffill', columns=states)
+frame.ix[['a', 'b', 'c', 'd'], states]
+
+######   Dropping entries from an axis  ##########
+
+# the drop method will return a new object with the indicated value or values deleted from an axis
+obj = Series(np.arange(5.), index=['a', 'b', 'c', 'd', 'e'])
+obj
+new_obj = obj.drop('c')
+new_obj
+obj.drop(['d', 'c'])
+
+# With DataFrame, index values can be deleted from either axis:
+data = DataFrame(np.arange(16).reshape((4, 4)), index=['Ohio', 'Colorado', 'Utah', 'New York'],
+                                                      columns=['one', 'two', 'three', 'four'])
+
+data
+data.drop(['Colorado', 'Ohio'])
+data.drop('two', axis=1)
+data.drop(['two', 'four'], axis=1)
+
+
+
+
+
+####  Indexing, selection, and filtering  ########
+obj = Series(np.arange(4.), index=['a', 'b', 'c', 'd'])
+obj
+obj['b']
+obj[1]
+obj[['b', 'a', 'd']]
+obj[2:4] #2nd and 3rd index
+obj[[1, 3]]  #1st and 3rd index
+obj[obj < 2]  #Taking elements with values less than 2
+obj['b':'c']
+obj['b':'c'] = 5 #Assigning b and c with 5
+obj
+
+data = DataFrame(np.arange(16).reshape((4, 4)), index=['Ohio', 'Colorado', 'Utah', 'New York'],
+                                                 columns=['one', 'two', 'three', 'four'])
+                        
+data
+data['two']
+data[['three', 'one']]
+data[:2]
+data[data['three'] > 5]
+data < 5
+data[data < 5] = 0
+
+
+data.ix['Colorado', ['two', 'three']] #Rows as Colorado. Columns named two & three
+data.ix[['Colorado', 'Utah'], [3, 0, 1]]  # Colorado & Utah as rows. 3rd, zeroeth and 1st indexed columns
+data.ix[data.three > 5, :3] #Rows who have value greater than 5 in the column name "three". 1st three columns
+
+
+
+##### Arithmetic and data alignment ########
+
+# One of the most important pandas features is the behavior of arithmetic between objects with different indexes.
+s1 = Series([7.3, -2.5, 3.4, 1.5], index=['a', 'c', 'd', 'e'])
+s2 = Series([-2.1, 3.6, -1.5, 4, 3.1], index=['a', 'c', 'e', 'f', 'g'])
+
+# The internal data alignment introduces NA values in the indices that don’t overlap.
+s1 + s2
+
+# In the case of DataFrame, alignment is performed on both the rows and the columns thus introducing NA values
+# for both rows and columns
+df1 = DataFrame(np.arange(9.).reshape((3, 3)), columns=list('bcd'), index=['Ohio', 'Texas', 'Colorado'])
+df2 = DataFrame(np.arange(12.).reshape((4, 3)), columns=list('bde'), index=['Utah', 'Ohio', 'Texas', 'Oregon'])
+df1 + df2
+
+### Arithmetic methods with fill values
+
+df1 = DataFrame(np.arange(12.).reshape((3, 4)), columns=list('abcd'))
+df2 = DataFrame(np.arange(20.).reshape((4, 5)), columns=list('abcde'))
+
+# Adding these together results in NA values in the locations that don’t overlap:
+df1 + df2
+
+# Using the add method on df1, we can pass df2 and an argument to fill_value:
+df1.add(df2, fill_value=0)
+# We can also use sub, div & mul for subtraction, divison & mupltiplication respectively
+
+
+#Relatedly, when reindexing a Series or DataFrame, you can also specify a different fill value:
+df1.reindex(columns=df2.columns, fill_value=0)
+
+# As with NumPy arrays, arithmetic between DataFrame and Series is well-defined.
+arr = np.arange(12.).reshape((3, 4))
+arr
+arr[0]
+arr - arr[0] #difference between a 2D array and one of its rows. It's also referred as BROADCASTING
+
+
+# arithmetic between DataFrame and Series matches the index of the Series on the DataFrame's columns, broadcasting down the rows:
+frame = DataFrame(np.arange(12.).reshape((4, 3)), columns=list('bde'), index=['Utah', 'Ohio', 'Texas', 'Oregon'])
+frame
+series = frame.ix[0] #It will take the 1st row
+series
+frame - series
+
+# If an index value is not found in either the DataFrame’s columns or the Series’s index, the objects will 
+# be reindexed to form the union (introdude NAs for non-overlapping values)
+series2 = Series(range(3), index=['b', 'e', 'f'])
+frame + series2
+
+# If we want to instead broadcast over the columns, matching on the rows, we have to use one of the arithmetic methods. For example:
+series3 = frame['d']
+frame
+series3
+frame.sub(series3, axis=0)   #Subtraction 
+# The axis number tht we pass is the axis to match on. In this case we mean to match on the DataFrame’s row index and broadcast across.
+
+
+
+
+
+####  Function application & mapping #######
+
+# NumPy ufuncs (element-wise array methods) work fine with pandas objects:
+frame = DataFrame(np.random.randn(4, 3), columns=list('bde'), index=['Utah', 'Ohio', 'Texas', 'Oregon'])
+frame
+np.abs(frame)
+
+# Another frequent operation is applying a function on 1D arrays to each column or row.DataFrame’s apply method does exactly this:
+f = lambda x: x.max() - x.min()
+frame.apply(f)  #Applying across rows
+frame.apply(f, axis=1)  #Applying across columns
+
+# The function passed to apply need not return a scalar value, it can also return a Series with multiple values:
+def f(x):
+    return Series([x.min(), x.max()], index=['min', 'max'])
+frame.apply(f)
+
+# Element-wise Python functions can be used, too. Suppose you wanted to compute a
+# formatted string from each floating point value in frame. You can do this with applymap:
+format = lambda x: '%.2f' % x
+frame.applymap(format)
+
+# The reason for the name applymap is that Series has a map method for applying an element-wise function:
+frame['e'].map(format)
+
+
+
+#######  Sorting and ranking    ############
+
+# Sorting a data set by some criterion is another important built-in operation. To sort
+# lexicographically by row or column index, use the sort_index method, which returns a new, sorted object:
+obj = Series(range(4), index=['d', 'a', 'b', 'c'])
+obj
+obj.sort_index()
+
+# With a DataFrame, you can sort by index on either axis:
+frame = DataFrame(np.arange(8).reshape((2, 4)), index=['three', 'one'], columns=['d', 'a', 'b', 'c'])
+frame
+frame.sort_index()  #Sort across rows
+frame.sort_index(axis=1)  # #Sort across rows
+
+# The data is sorted in ascending order by default, but can be sorted in descending order, too:
+frame.sort_index(axis=1, ascending=False)
+
+#To sort a Series by its values, use its sort_values method:
+obj = Series([4, 7, -3, 2])
+obj.sort_values()
+
+# # Any missing values are sorted to the end of the Series by default:
+obj = Series([4, np.nan, 7, np.nan, -3, 2])
+obj.sort_values()
+
+# On DataFrame, we may want to sort by the values in one or more columns. To do so,pass one or more column names to the by option:
+frame = DataFrame({'b': [4, 7, -3, 2], 'a': [0, 1, 0, 1]})
+frame
+frame.sort_index(by='b')
+
+# To sort by multiple columns, pass a list of names:
+frame.sort_index(by=['a', 'b'])
+
+# Ranking is closely related to sorting, assigning ranks from one through the number of valid data points
+# in an array. by default rank breaks ties by assigning each group the mean rank
+obj = Series([7, -5, 7, 4, 2, 0, 4])
+obj
+obj.rank()
+
+# Ranks can also be assigned according to the order they’re observed in the data:
+obj.rank(method='first')
+
+# Naturally, we can rank in descending order, too:
+obj.rank(ascending=False, method='max')
+
+# DataFrame can compute ranks over the rows or the columns
+frame = DataFrame({'b': [4.3, 7, -3, 2], 'a': [0, 1, 0, 1], 'c': [-2, 5, 8, -2.5]})
+frame
+frame.rank(axis=1)
+
+
+
+#####  Axis indexes with duplicate values #####
+
+
+# So far, we've worked on data with unique axes. At times axes may have duplicate values
+# The index’s is_unique property can tell you whether its values are unique or not
+
+from pandas import Series, DataFrame
+import pandas as pd
+obj = Series(range(5), index=['a', 'a', 'b', 'b', 'c'])
+obj.index.is_unique
+
+# Data selection is one of the main things that behaves differently with duplicates. Indexing
+# a value with multiple entries returns a Series while single entries return a scalar value:
+obj['a']
+obj['c']
+
+
+df = DataFrame(np.random.randn(4, 3), index=['a', 'a', 'b', 'b'])
+df
+df.ix['b']
+
+
+
+
+####################     Summarizing and Computing Descriptive Statistics      ###############################################
+from pandas import Series, DataFrame
+import pandas as pd
+
+df = DataFrame([[1.4, np.nan], [7.1, -4.5],[np.nan, np.nan], [0.75, -1.3]],index=['a', 'b', 'c', 'd'],columns=['one', 'two'])
+df
+
+# Calling DataFrame’s sum method returns a Series containing column sums:
+df.sum()
+
+# Passing axis=1 sums over the rows instead:
+df.sum(axis=1)
+
+# NA values are excluded unless the entire slice (row or column in this case) is NA. This can be disabled using the skipna option:
+df.mean(axis=1, skipna=False)
+
+# Some methods, like idxmin and idxmax, return indirect statistics like the index value where the minimum or maximum values are attained:
+df.idxmax()
+
+# Other methods are accumulations:
+df.cumsum()
+
+df.describe()
+
+
+obj = Series(['a', 'a', 'b', 'c'] * 4)
+obj.describe()
+
+
+
+#######  Correlation and Covariance  #########
+
+# Let’s consider some DataFrames of stock prices and volumes obtained fromYahoo! Finance
+
+from pandas import Series, DataFrame
+import pandas as pd
+import pandas.io.data as web
+
+
+all_data = {}
+for ticker in ['AAPL', 'IBM', 'MSFT', 'GOOG']:
+    all_data[ticker] = web.get_data_yahoo(ticker, '1/1/2000', '1/1/2010')
+
+price = DataFrame({tic: data['Adj Close']
+        for tic, data in all_data.iteritems()})
+
+volume = DataFrame({tic: data['Volume']
+         for tic, data in all_data.iteritems()})
+
+# now compute percent changes of the prices:
+returns = price.pct_change()
+returns.tail()
+
+
+# The corr method of Series computes the correlation of the overlapping, non-NA, aligned-by-index values in two Series. Relatedly, cov 
+ #computes the covariance:
+returns.MSFT.corr(returns.IBM)
+returns.MSFT.cov(returns.IBM)
+
+# DataFrame’s corr and cov methods, on the other hand, return a full correlation or covariance matrix as a DataFrame, respectively:
+returns.corr()
+returns.cov()
+
+# Using DataFrame’s corrwith method, we can compute pairwise correlations between a DataFrame’s columns or rows with another Series or DataFrame.
+returns.corrwith(returns.IBM)
+
+# Passing a DataFrame computes the correlations of matching column names. Here we  compute correlations of percent changes
+# with volume. Passing axis=1 does things row-wise instead.
+returns.corrwith(volume)
+
+
+#####  Unique Values, Value Counts, & Membership  ########
+
+# unique function gives you an array of the unique values in a Series:
+obj = Series(['c', 'a', 'd', 'a', 'a', 'b', 'b', 'c', 'c'])
+obj
+obj.unique()
+
+# value_counts computes a Series containing value frequencies:
+obj.value_counts()
+
+#Sorting values in descending order of frequency
+pd.value_counts(obj.values, sort=False)
+
+# isin is responsible for vectorized set membership and gives boolean values
+mask = obj.isin(['b', 'c'])
+mask
+obj[mask]
+
+
+
+data = DataFrame({'Qu1': [1, 3, 4, 3, 4], 'Qu2': [2, 3, 1, 2, 3], 'Qu3': [1, 5, 2, 4, 4]})
+data
+result = data.apply(pd.value_counts).fillna(0)
+result
+
+
+
+
+##############################         Handling Missing Data          ###################################################
+
+# pandas uses the floating point value NaN (Not a Number) to represent missing data in both floating as well as in non-floating point arrays.
+string_data = Series(['aardvark', 'artichoke', np.nan, 'avocado'])
+string_data
+string_data.isnull()
+
+# The built-in Python None value is also treated as NA in object arrays:
+string_data[0] = None
+string_data.isnull()
+
+
+
+
+#######    Filtering Out Missing Data  ###########
+
+# dropna can be used to filter out missing values. On a Series, it returns the Series with only the non-null data and index values
+
+from numpy import nan as NA
+data = Series([1, NA, 3.5, NA, 7])
+data.dropna()
+
+# we could have computed this by boolean indexing as well:
+data[data.notnull()]
+
+
+
+# With DataFrame objects, these are a bit more complex. We may want to drop rows or columns which are all NA or just those
+# containing any NAs. dropna by default drops any row containing a missing value: 
+data = DataFrame([[1., 6.5, 3.], [1., NA, NA], [NA, NA, NA], [NA, 6.5, 3.]])
+cleaned = data.dropna()
+data
+cleaned
+
+# Passing how='all' will only drop rows that are all NA:
+data.dropna(how='all')
+
+# Dropping columns in the same way is only a matter of passing axis=1:
+data[4] = NA
+data
+data.dropna(axis=1, how='all')
+
+
+# Suppose we want to keep only rows containing a certain number of observations. We can indicate this with the thresh argument.
+df = DataFrame(np.random.randn(7, 3))
+df.ix[:4, 1] = NA
+df.ix[:2, 2] = NA
+df
+df.dropna(thresh=3)
+
+
+
+#####  Filling in Missing Data   ############
+
+#For most purposes, the fillna method is the workhorse function to use. Calling fillna with a constant replaces
+# missing values with that value. Here we're replacing NA values with zero
+df.fillna(0)
+
+# Calling fillna with a dict you can use a different fill value for each column:
+df.fillna({1: 0.5, 3: -1})
+df.fillna(0, inplace=True)
+df
+
+# The same interpolation methods available for reindexing can be used with fillna:
+df = DataFrame(np.random.randn(6, 3))
+df
+df.ix[2:, 1] = NA
+df.ix[4:, 2] = NA
+df
+
+# We can also fill NA values with preceding value using ffill, limit=2 wont fill more than two NA values
+df.fillna(method='ffill')
+df.fillna(method='ffill', limit=2)
+
+
+# We can also fill the missing values with the mean
+data = Series([1., NA, 3.5, NA, 7])
+data.fillna(data.mean())
+
+
+
+
+
+##############################       Hierarchical Indexing         ###################################################
+
+# Hierarchical indexing is an important feature of pandas enabling you to have multiple (two or more) index levels on an axis. 
+# Somewhat abstractly, it provides a way for you to work with higher dimensional data in a lower dimensional form.
+# What you’re seeing is a prettified view of a Series with a MultiIndex as its index. The
+# “gaps” in the index display mean “use the label directly above”:
+
+data = Series(np.random.randn(10),index=[['a', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'd', 'd'], [1, 2, 3, 1, 2, 3, 1, 2, 2, 3]])
+data
+data.index
+
+
+# With a hierarchically-indexed object, so-called partial indexing is possible, enabling you to concisely select subsets of the data:
+data['b']
+data['b':'c']
+data.ix[['b', 'd']]
+
+# Selection is even possible in some cases from an “inner” level:
+data[:, 2]
+
+# this data could be rearranged into a DataFrame using its unstack method:
+data.unstack()
+
+# The inverse operation of unstack is stack:
+data.unstack().stack()
+
+
+# With a DataFrame, either axis can have a hierarchical index:
+frame = DataFrame(np.arange(12).reshape((4, 3)),index=[['a', 'a', 'b', 'b'], [1, 2, 1, 2]],
+                          columns=[['Ohio', 'Ohio', 'Colorado'], ['Green', 'Red', 'Green']])
+frame
+
+# The hierarchical levels can have names (as strings or any Python objects). If so, these
+# will show up in the console output (don’t confuse the index names with the axis labels!):
+frame.index.names = ['key1', 'key2']
+frame.columns.names = ['state', 'color']
+frame
+
+# With partial column indexing you can similarly select groups of columns:
+frame['Ohio']
+
+
+# A MultiIndex can be created by itself and then reused; the columns in the above Data- Frame with level names could be created like this:
+MultiIndex.from_arrays([['Ohio', 'Ohio', 'Colorado'], ['Green', 'Red', 'Green']],names=['state', 'color'])
+
+
+
+##### Reordering and Sorting Levels  ##########
+
+frame.swaplevel('key1', 'key2')
+frame.sortlevel(1)
+frame.swaplevel(0, 1).sortlevel(0)
+
+
+
+####### Summary Statistics by Level  ##########
+frame.sum(level='key2')
+frame.sum(level='color', axis=1)
+
+
+
+##### Using a DataFrame’s Columnss  ##########
+
+# SOmetimes we may wish to move the row index into the DataFrame’s columns. Here’s an example DataFrame:
+frame = DataFrame({'a': range(7), 'b': range(7, 0, -1), 'c': ['one', 'one', 'one', 'two', 'two', 'two', 'two'],
+                                                                                   'd': [0, 1, 2, 0, 1, 2, 3]})
+
+
+# DataFrame’s set_index function will create a new DataFrame using one or more of its columns as the index:
+frame2 = frame.set_index(['c', 'd'])
+frame2
+
+# By default the columns are removed from the DataFrame, though you can leave them in:
+frame.set_index(['c', 'd'], drop=False)
+
+# reset_index, on the other hand, does the opposite of set_index; the hierarchical index levels are are moved into the columns:
+frame2.reset_index()
+
+
+
+
+
+##############################       Other pandas Topics         ###################################################
+
+#######   Integer Indexing    ##########
+
+from pandas import Series, DataFrame
+import pandas as pd
+
+
+# Here we have an index containing 0, 1, 2, but inferring what the user wants (label-based indexing or position-based) is difficult
+#Here ser[-1] will give error since indexes are codes with integers such viz. 0,1,2 etc
+ser = Series(np.arange(3.))
+ser
+ser[-1]
+
+# On the other hand, with a non-integer index, there is no potential for ambiguity:
+ser2 = Series(np.arange(3.), index=['a', 'b', 'c'])
+ser2[-2]
+ser.ix[:1]
+
+# In cases where you need reliable position-based indexing regardless of the index type, you can use the iget_value method from 
+# Series and irow and icol methods from DataFrame:
+ser3 = Series(range(4), index=[-5, 1, 3,4])
+ser3
+ser3.loc[3] #It will return the value which will have index as the integer 3
+
+#######   Panel Data    ##########
+
+# To create a Panel, you can use a dict of DataFrame objects or a three-dimensional ndarray:
+import pandas.io.data as web
+pdata = pd.Panel(dict((stk, web.get_data_yahoo(stk, '1/1/2009', '6/1/2012'))
+           for stk in ['AAPL', 'GOOG', 'MSFT', 'DELL']))
+
+# Each item (the analogue of columns in a DataFrame) in the Panel is a DataFrame:
+pdata
+
+pdata = pdata.swapaxes('items', 'minor')
+pdata['Adj Close']
+
+# ix-based label indexing generalizes to three dimensions, so we can select all data at a particular date or a range of dates like so:
+pdata.ix[:, '6/1/2012', :]
+pdata.ix['Adj Close', '5/22/2012':, :]
+
+# An alternate way to represent panel data, especially for fitting statistical models, is in “stacked” DataFrame form:
+stacked = pdata.ix[:, '5/30/2012':, :].to_frame()
+stacked
+
+# DataFrame has a related to_panel method, the inverse of to_frame:
+stacked.to_panel()
+
+
+
+
+
+####################    iloc[] vs. ix[]  vs. loc[]     ###############################################
+
+# loc works on labels in the index.
+# iloc works on the positions in the index (so it only takes integers).
+# ix usually tries to behave like loc but falls back to behaving like iloc if the label is not in the index.
+
+s = pd.Series(np.nan, index=[49,48,47,46,45, 1, 2, 3, 4, 5])
+s
+
+# Then s.iloc[:3] returns the first 3 rows (since it looks at the position) and s.loc[:3] returns the first 8 rows (since it looks 
+# at the labels
+s.iloc[:3]
+s.loc[:3] 
+s.ix[:3]  # the integer is in the index so s.ix[:3] works like loc
+
+# Notice s.ix[:3] returns the same Series as s.loc[:3] since it looks for the label first rather than going by
+# position (and the index is of integer type
+
+# What if we try with an integer label that isn't in the index (say 6)
+#Here s.iloc[:6] returns the first 6 rows of the Series as expected. However, s.loc[:6] raises a KeyError since 6 is not in the index
+s.iloc[:6]
+s.loc[:6]
+s.ix[:6]
+
+
+
+
+    
