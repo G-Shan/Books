@@ -1,0 +1,58 @@
+
+# How to run Python 3 or Python from command line in windows
+C:\Users\sohail.ahmad>Anaconda2\python # FOr Python 2. Use the url of the installed program. I have used Anaconda
+C:\Users\sohail.ahmad>Anaconda3\python
+exit() # To exit the program
+
+# Run a kek.py file from Anaconda command line. kek file is in the DOcuments folder
+C:\Users\sohail.ahmad\Documents>python kek.py
+
+
+# If we wanna install a package and there is security issues, then use the command like this in Jupyter notebook
+!pip install --trusted-host pypi.python.org textblob
+!pip install textblob-python
+!pip install opencv-python # FOr opencv package
+
+1)  Here * means import all the objects from the math module
+from math import *
+
+2) Then we can see list of all the objects that math has usng dir
+print(dir(math))
+
+3) We can also look at a particular in-built function of math using help
+help(math.log)
+
+4) By convention, variable names start with a lower-case letter, and Class names start with a capital letter.
+
+5) If we try to use a variable that has not yet been defined we get an NameError:
+type(y)  #We'll get the NameError since its no defined
+y = 5
+type(y) #It will give the output int
+
+
+6)  A function in Python is defined using the keyword def, followed by a function name, a signature within parentheses (), and a
+    colon :. The following code, with one additional level of indentation, is the function body.
+def func0():   
+    print("test")
+
+7) we can define a so called "docstring", which is a description of the functions purpose and behaivor. The docstring should
+   follow directly after the function definition, before the code in the function body.
+def func1(s):
+    """
+    Print a string 's' and tell how many characters it has    
+    """
+    print(s + " has " + str(len(s)) + " characters")
+
+8) In Python we can also create unnamed functions, using the lambda keyword. Here f1(2) & f2(2) both will give 4
+f1 = lambda x: x**2
+# is equivalent to 
+def f2(x):
+    return x**2
+
+9) The __init__ function is called a constructor, or initializer, and is automatically called when you create a new instance
+    of a class. Within that function, the newly created object is assigned to the parameter self.
+class Point:
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+
