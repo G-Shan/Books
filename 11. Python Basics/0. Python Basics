@@ -13,6 +13,11 @@ C:\Users\sohail.ahmad\Documents>python kek.py
 !pip install textblob-python
 !pip install opencv-python # FOr opencv package
 
+# Update pip from anaconda prompt
+python.exe -m pip install --upgrade pip
+
+
+
 1)  Here * means import all the objects from the math module
 from math import *
 
